@@ -1,0 +1,27 @@
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  int i;
+
+    int i;
+  i = 0;
+  goto <D.1835>;
+  <D.1834>:;
+  if (i % 3 == 0 && i % 5 == 0)
+    {
+      {
+        extern int printf (const char *, ...);
+
+        printf ((const char *) "%d is divisible by 3 and 5.\n", i);
+      }
+    }
+   ++i;
+  <D.1835>:;
+  if (i <= 999) goto <D.1834>; else goto <D.1836>;
+  <D.1836>:;
+}
+return 0;
+

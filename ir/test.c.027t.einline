@@ -1,0 +1,53 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=1830, cgraph_uid=0, symbol_order=0)
+
+main ()
+{
+  int i;
+  int D.1844;
+  int D.1841;
+  int D.1838;
+  int _6;
+  int _7;
+  int _10;
+
+  <bb 2>:
+  i_4 = 0;
+  goto <bb 7>;
+
+  <bb 3>:
+  _6 = i_1 % 3;
+  if (_6 == 0)
+    goto <bb 4>;
+  else
+    goto <bb 6>;
+
+  <bb 4>:
+  _7 = i_1 % 5;
+  if (_7 == 0)
+    goto <bb 5>;
+  else
+    goto <bb 6>;
+
+  <bb 5>:
+  printf ("%d is divisible by 3 and 5.\n", i_1);
+
+  <bb 6>:
+  i_9 = i_1 + 1;
+
+  <bb 7>:
+  # i_1 = PHI <i_4(2), i_9(6)>
+  if (i_1 <= 999)
+    goto <bb 3>;
+  else
+    goto <bb 8>;
+
+  <bb 8>:
+  _10 = 0;
+
+<L7>:
+  return _10;
+
+}
+
+
