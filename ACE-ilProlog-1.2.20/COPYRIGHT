@@ -1,0 +1,49 @@
+The software package ACE-ilProlog is freely available for scientific
+(non-commercial) use.  It belongs to the Computer Science Department
+of the K.U.Leuven.  The following terms cover the use of the software
+package:
+
+1. The package ACE-ilProlog can be used only for the purpose of
+internal research excluding any commercial use of the package
+ACE-ilProlog as such or as a part of a software product.
+
+2. K.U.Leuven, Department of Computer Science shall for all purposes
+be considered the owner of ACE-ilProlog and of all copyright, trade
+secret, patent or other intellectual property rights therein.
+K.U.Leuven has granted an exclusive license for the commercial
+exploitation of ACE-ilProlog to PharmaDM (discovery@PharmaDM.com).
+
+3. The package ACE-ilProlog is provided on an "as is" basis and for
+the purpose described in paragraph 1 only.  In no circumstances can
+K.U.Leuven be held liable for any deficiency, fault or other
+mishappening with regard to the use or performance of the package
+ACE-ilProlog.
+
+4. All scientific publications, for which the package ACE-ilProlog has
+been used, shall mention usage of the package ACE-ilProlog, and shall
+refer to the following publication:
+        H. Blockeel, L. Dehaspe, B. Demoen, G. Janssens, J. Ramon, and 
+        H. Vandecasteele, Executing query packs in ILP, 
+        Inductive Logic Programming, 10th International Conference, ILP2000, 
+        London, UK, July 2000, Proceedings (J. Cussens and A. Frisch, eds.), 
+        Lecture Notes in Artificial Intelligence, vol. 1866, Springer,
+        2000, pp. 60-77. 
+
+
+In addition, the following references to publications describing
+algorithms available within the package ACE-ilProlog shall be included
+where relevant:
+
+  - Tilde (for classification):
+  H. Blockeel, and L. De Raedt, Top-down induction of first-order logical
+  decision trees, Artificial Intelligence 101 (1998), no. 1-2, 285-297.
+
+  - Tilde (for clustering or regression):
+  H. Blockeel, L. De Raedt, and J. Ramon, Top-down induction of clustering
+  trees, Proceedings of the 15th International Conference on Machine
+  Learning (J. Shavlik, ed.), Morgan Kaufmann, 1998, pp. 55-63.
+
+  - Warmr:
+  L. Dehaspe, and H. Toivonen, Discovery of frequent Datalog patterns,
+  Data Mining and Knowledge Discovery 3 (1999), no. 1, 7-36.
+

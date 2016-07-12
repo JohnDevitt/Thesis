@@ -1,0 +1,12 @@
+
+name('Linreg').
+
+authors(['Jan Struyf']).
+
+contact(['Jan.Struyf@cs.kuleuven.ac.be']).
+
+load_message('Loading Linreg for ACE').
+
+use_module('statistics/linreg/linreg').
+
+end_of_header.

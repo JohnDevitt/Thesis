@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Copyright (C) 2004-2010 by Grigori Fursin
+#
+# http://fursin.net/research
+# 
+# UNIDAPT Group
+# http://unidapt.org
+
+export COMPILER_CONFIGURATION_NAME=$1
+
+php $CCC_PLUGINS/plugins/get_compiler_id.php

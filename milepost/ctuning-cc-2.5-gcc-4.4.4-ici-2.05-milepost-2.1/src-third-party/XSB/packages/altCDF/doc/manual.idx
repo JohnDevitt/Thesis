@@ -1,0 +1,206 @@
+\indexentry{predicates!isa/2|hyperpage}{6}
+\indexentry{predicates!hasAttr/3|hyperpage}{6}
+\indexentry{predicates!allAttr/3|hyperpage}{6}
+\indexentry{predicates!classHasAttr/3|hyperpage}{6}
+\indexentry{predicates!minAttr/4|hyperpage}{6}
+\indexentry{predicates!maxAttr/4|hyperpage}{6}
+\indexentry{ontology language|hyperpage}{7}
+\indexentry{ontology structure|hyperpage}{7}
+\indexentry{ontology theory|hyperpage}{7}
+\indexentry{sorting predicates|hyperpage}{7}
+\indexentry{axioms!distinct identifiers|hyperpage}{7}
+\indexentry{axioms!predicate sorts|hyperpage}{8}
+\indexentry{axioms!non-empty classes|hyperpage}{8}
+\indexentry{axioms!domain containment|hyperpage}{8}
+\indexentry{predicates!hasAttr/3|hyperpage}{9}
+\indexentry{predicates!hasAttr/3|hyperpage}{10}
+\indexentry{axioms!downward closure|hyperpage}{13}
+\indexentry{axioms!implicit subclassing|hyperpage}{13}
+\indexentry{well-sorted|hyperpage}{14}
+\indexentry{{\sc inh} proof|hyperpage}{16}
+\indexentry{class!principle|hyperpage}{16}
+\indexentry{irredundant set|hyperpage}{16}
+\indexentry{irredundant basis|hyperpage}{16}
+\indexentry{irredundant set!more specific|hyperpage}{16}
+\indexentry{$\succ_{spec}$|hyperpage}{16}
+\indexentry{irredundant|hyperpage}{16}
+\indexentry{class expressions|hyperpage}{19}
+\indexentry{class expressions!inclusion statement|hyperpage}{19}
+\indexentry{predicates!necessCond/2|hyperpage}{22}
+\indexentry{identifiers!virtual|hyperpage}{22}
+\indexentry{class expressions!local|hyperpage}{23}
+\indexentry{sorts|hyperpage}{26}
+\indexentry{types|hyperpage}{26}
+\indexentry{domains|hyperpage}{26}
+\indexentry{CDF Identifer|hyperpage}{26}
+\indexentry{component tag|hyperpage}{26}
+\indexentry{extensional facts|hyperpage}{27}
+\indexentry{intensional rules|hyperpage}{27}
+\indexentry{components! cdfpt|hyperpage}{27}
+\indexentry{identifiers!cid('CDF Classes',cdf)|hyperpage}{28}
+\indexentry{identifiers!rid('CDF Object-Object Relations,cdf)|hyperpage}{28}
+\indexentry{identifiers!crid('CDF Class-Object Relations',cdf)|hyperpage}{28}
+\indexentry{identifiers!cid('CDF Primitive Types',cdf)|hyperpage}{28}
+\indexentry{identifiers!cid(allIntegers,cdf)|hyperpage}{28}
+\indexentry{identifiers!cid(allFloats,cdf)|hyperpage}{28}
+\indexentry{identifiers!cid(allAtoms,cdf)|hyperpage}{28}
+\indexentry{identifiers!cid(allStructures,cdf)|hyperpage}{28}
+\indexentry{identifiers!cid(atomicIntegers,cdf)|hyperpage}{28}
+\indexentry{components! cdfpt|hyperpage}{29}
+\indexentry{CDF predicates!isa\_ext/2|hyperpage}{29}
+\indexentry{CDF predicates!allAttr\_ext/3|hyperpage}{29}
+\indexentry{CDF predicates!hasAttr\_ext/3|hyperpage}{29}
+\indexentry{CDF predicates!classHasAttr\_ext/3|hyperpage}{29}
+\indexentry{CDF predicates!minAttr\_ext/4|hyperpage}{29}
+\indexentry{CDF predicates!maxAttr\_ext/4)|hyperpage}{29}
+\indexentry{CDF predicates!necessCond\_ext/2)|hyperpage}{29}
+\indexentry{predicates!newExtTerm/1|hyperpage}{29}
+\indexentry{cdf\_extensional.P|hyperpage}{29}
+\indexentry{CDF predicates!isa\_int/2|hyperpage}{29}
+\indexentry{CDF predicates!allAttr\_int/3|hyperpage}{29}
+\indexentry{CDF predicates!hasAttr\_int/3|hyperpage}{29}
+\indexentry{CDF predicates!classHasAttr\_int/3|hyperpage}{29}
+\indexentry{CDF predicates!minAttr\_int/4|hyperpage}{29}
+\indexentry{CDF predicates!maxAttr\_int/4)|hyperpage}{29}
+\indexentry{CDF predicates!necessCond\_int/2)|hyperpage}{29}
+\indexentry{predicates!???newIntRule/1|hyperpage}{29}
+\indexentry{cdf\_intensional.P|hyperpage}{29}
+\indexentry{CDF predicates!immed\_isa/2|hyperpage}{29}
+\indexentry{predicates!isa\_ext/2|hyperpage}{29}
+\indexentry{CDF predicates!immed\_allAttr/3|hyperpage}{29}
+\indexentry{CDF predicates!immed\_hasAttr/3|hyperpage}{29}
+\indexentry{CDF predicates!immed\_classHasAttr/3|hyperpage}{29}
+\indexentry{CDF predicates!immed\_minAttr/4|hyperpage}{29}
+\indexentry{CDF predicates!immed\_maxAttr/4)|hyperpage}{29}
+\indexentry{CDF predicates!immed\_necessCond/2)|hyperpage}{30}
+\indexentry{CDF predicates!cdf\_id\_fields/4|hyperpage}{30}
+\indexentry{predicates!necessCond/2|hyperpage}{30}
+\indexentry{CDF predicates!isa/2|hyperpage}{34}
+\indexentry{CDF predicates!explosive\_isa/2|hyperpage}{34}
+\indexentry{CDF predicates!allAttr/3|hyperpage}{34}
+\indexentry{CDF predicates!hasAttr/3|hyperpage}{34}
+\indexentry{CDF predicates!maxAttr/4|hyperpage}{34}
+\indexentry{CDF predicates!minAttr/4|hyperpage}{34}
+\indexentry{CDF predicates!classHasAttr/3|hyperpage}{34}
+\indexentry{CDF predicates!nessesCond/2|hyperpage}{34}
+\indexentry{CDF predicates!isType0Term/1|hyperpage}{34}
+\indexentry{domains!isType0Term/1|hyperpage}{34}
+\indexentry{predicates!checkIdConsistency/1|hyperpage}{36}
+\indexentry{CDF predicates!consistentWith/2|hyperpage}{36}
+\indexentry{CDF predicates!allModelsEntails/2|hyperpage}{36}
+\indexentry{CDF predicates!localClassExpression/3|hyperpage}{37}
+\indexentry{CDF predicates!check\_lce/2|hyperpage}{37}
+\indexentry{CDF predicates!newExtTerm/1|hyperpage}{38}
+\indexentry{CDF predicates!retractallExtTerm/1|hyperpage}{38}
+\indexentry{CDF predicates!newIntRule/2|hyperpage}{38}
+\indexentry{CDF predicates!retractallIntRule/2|hyperpage}{38}
+\indexentry{predicate indicator|hyperpage}{39}
+\indexentry{CDF predicates!addTableDependency/2|hyperpage}{39}
+\indexentry{domains!isDynSupportedPred/1|hyperpage}{39}
+\indexentry{CDF predicates!isDynSupportedPred/1|hyperpage}{39}
+\indexentry{domains!isDynSupportedPred/1|hyperpage}{39}
+\indexentry{CDF predicates!abolish\_cdf\_tables/0|hyperpage}{39}
+\indexentry{predicates!initialize\_state/0|hyperpage}{39}
+\indexentry{contexts|hyperpage}{39}
+\indexentry{predicates!addCheckToContext/2|hyperpage}{39}
+\indexentry{predicates!removeCheckToContext/2|hyperpage}{39}
+\indexentry{predicates!checkIdConsistency/1|hyperpage}{40}
+\indexentry{components! cdfpt|hyperpage}{40}
+\indexentry{predicates!cdf\_check\_identity/1|hyperpage}{40}
+\indexentry{contexts|hyperpage}{40}
+\indexentry{contexts! query|hyperpage}{40}
+\indexentry{contexts! newExtTermSingle|hyperpage}{40}
+\indexentry{predicates!newExtTerm/1|hyperpage}{40}
+\indexentry{contexts! newExtTermBatch|hyperpage}{40}
+\indexentry{predicates!load\_component/3|hyperpage}{40}
+\indexentry{predicates!load\_extensional\_facts/1|hyperpage}{40}
+\indexentry{contexts! retractallExtTermSingle|hyperpage}{40}
+\indexentry{predicates!retractExtTerm/1|hyperpage}{40}
+\indexentry{contexts! componentUpdate|hyperpage}{41}
+\indexentry{predicates!update\_all\_components/3|hyperpage}{41}
+\indexentry{contexts! loadComponent|hyperpage}{41}
+\indexentry{predicates!load\_component/3|hyperpage}{41}
+\indexentry{files!{\tt  cdf\_config.P}|hyperpage}{41}
+\indexentry{files!{\tt  xsbrc.P}|hyperpage}{41}
+\indexentry{predicates!addCheckToContext/2|hyperpage}{41}
+\indexentry{predicates!removeCheckFromContext/2|hyperpage}{41}
+\indexentry{CDF predicates!cdf\_check\_ground/1|hyperpage}{41}
+\indexentry{domains!isType0Term/1|hyperpage}{41}
+\indexentry{components! cdfpt|hyperpage}{41}
+\indexentry{components! cdfpt|hyperpage}{41}
+\indexentry{CDF predicates!cdf\_check\_sorts/2|hyperpage}{41}
+\indexentry{CDF predicates!cdf\_check\_sorts/1|hyperpage}{41}
+\indexentry{domains!isType0Term/1|hyperpage}{41}
+\indexentry{CDF predicates!cdf\_check\_implication/1|hyperpage}{42}
+\indexentry{domains!isType0Term/1|hyperpage}{42}
+\indexentry{CDF predicates!cdf\_check\_identity/1|hyperpage}{42}
+\indexentry{CDF predicates!cdf\_check\_redundancies/3|hyperpage}{42}
+\indexentry{CDF predicates!checkComponentConsistency/1|hyperpage}{42}
+\indexentry{CDF predicates!addCheckToContext/2|hyperpage}{42}
+\indexentry{CDF predicates!removeCheckFromContext/2|hyperpage}{42}
+\indexentry{CDF predicates!addUserContext/2|hyperpage}{42}
+\indexentry{CDF predicates!removeUserContext/1|hyperpage}{43}
+\indexentry{CDF predicates!apply\_checks/2|hyperpage}{43}
+\indexentry{CDF predicates!isContextType/1|hyperpage}{43}
+\indexentry{domains!isContextType/1|hyperpage}{43}
+\indexentry{CDF predicates!currentContext/3|hyperpage}{43}
+\indexentry{files!{\tt  cdf\_config.P}|hyperpage}{43}
+\indexentry{CDF predicates!cdf\_configuration/2|hyperpage}{43}
+\indexentry{files!{\tt  cdf\_definitions.h}|hyperpage}{43}
+\indexentry{CDF predicates!cdf\_index/3|hyperpage}{44}
+\indexentry{CDF predicates!initialize\_state/0|hyperpage}{44}
+\indexentry{predicates!isa\_ext/2|hyperpage}{44}
+\indexentry{predicates!necessCond\_ext/2|hyperpage}{44}
+\indexentry{predicates!isa\_int/2|hyperpage}{44}
+\indexentry{predicates!necessCond\_int/2|hyperpage}{44}
+\indexentry{predicates!hasAttr\_ext/3|hyperpage}{44}
+\indexentry{predicates!allAttr\_ext/3|hyperpage}{44}
+\indexentry{predicates!minAttr\_ext/4|hyperpage}{44}
+\indexentry{predicates!maxAttr\_ext/4|hyperpage}{44}
+\indexentry{predicates!classHasAttr\_ext/3|hyperpage}{44}
+\indexentry{component dependency|hyperpage}{45}
+\indexentry{component!name|hyperpage}{45}
+\indexentry{component!version|hyperpage}{45}
+\indexentry{component!location|hyperpage}{45}
+\indexentry{CDF predicates!load\_component/1|hyperpage}{46}
+\indexentry{CDF predicates!update\_all\_components/2|hyperpage}{46}
+\indexentry{CDF predicates!load\_extensional\_facts/1|hyperpage}{47}
+\indexentry{predicates!load\_extensional\_facts/1|hyperpage}{47}
+\indexentry{CDF predicates!load\_intensional\_rules/1|hyperpage}{47}
+\indexentry{CDF predicates!merge\_intensional\_rules/0|hyperpage}{47}
+\indexentry{CDF predicates!dump\_extensional\_facts/1|hyperpage}{47}
+\indexentry{predicates!dump\_extensional\_facts/0|hyperpage}{47}
+\indexentry{CDF predicates!dump\_intensional\_rules/1|hyperpage}{47}
+\indexentry{CDF predicates!cdf\_exists/1|hyperpage}{48}
+\indexentry{CDF predicates!clear\_db\_cdf/1|hyperpage}{48}
+\indexentry{CDF predicates!clear\_db\_cdf\_component/2|hyperpage}{48}
+\indexentry{CDF predicates!drop\_db\_cdf/1|hyperpage}{48}
+\indexentry{CDF predicates!drop\_db\_cdf\_component/2|hyperpage}{48}
+\indexentry{CDF predicates!create\_db\_cdf/1|hyperpage}{48}
+\indexentry{CDF predicates!create\_db\_cdf\_indices/1|hyperpage}{48}
+\indexentry{CDF predicates!create\_db\_cdf\_component/2|hyperpage}{49}
+\indexentry{CDF predicates!create\_db\_cdf\_component\_indices/2|hyperpage}{49}
+\indexentry{CDF predicates!load\_db\_cdf/1|hyperpage}{49}
+\indexentry{CDF predicates!dump\_db\_cdf/1|hyperpage}{49}
+\indexentry{CDF predicates!dump\_db\_component/3|hyperpage}{49}
+\indexentry{CDF predicates!cache\_abstract/3|hyperpage}{49}
+\indexentry{predicates!cdf\_db\_open/3|hyperpage}{50}
+\indexentry{predicates!coerce\_db\_type/5|hyperpage}{51}
+\indexentry{predicates!coerce\_db\_type/5|hyperpage}{51}
+\indexentry{predicates!coerce\_db\_type/5|hyperpage}{51}
+\indexentry{CDF predicates!cdf\_db\_open/3|hyperpage}{52}
+\indexentry{CDF predicates!isa\_int\_udb/2|hyperpage}{52}
+\indexentry{CDF predicates!assert\_cdf\_int\_udb/1|hyperpage}{53}
+\indexentry{CDF predicates!retractall\_cdf\_int\_udb/1|hyperpage}{53}
+\indexentry{CDF predicates!hasAttr\_int\_udb/3|hyperpage}{53}
+\indexentry{CDF predicates!cdf\_log\_component\_dirty/1|hyperpage}{53}
+\indexentry{CDF predicates!cdf\_set\_log\_on/2|hyperpage}{53}
+\indexentry{CDF predicates!cdf\_set\_log\_suspend/0|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_reset\_log/0|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_log/1|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_apply\_log/0|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_apply\_merge\_log/0|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_log\_OR\_dirty\_flags/0|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_save\_log/1|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_remove\_log\_file/1|hyperpage}{54}
+\indexentry{CDF predicates!cdf\_restore\_from\_log/1|hyperpage}{54}

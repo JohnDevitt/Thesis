@@ -1,0 +1,5 @@
+label(X, pos) :- pos(X).
+
+label(X, neg) :- neg(X).
+
+:- ['dbmstest.pro'].

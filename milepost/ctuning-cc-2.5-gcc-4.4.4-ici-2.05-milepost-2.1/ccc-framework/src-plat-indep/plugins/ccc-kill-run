@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Copyright (C) 2004-2009 by Grigori Fursin
+#
+# http://fursin.net/research
+# 
+# UNIDAPT Group
+# http://unidapt.org
+
+rm -rf tmp-run
+ps -U $1 > tmp-run
+
+exec 9< tmp-run
+while <&9 read line ;
+do
+ echo "killing process " . ${line%% *} 
+ kill ${line%% *} 
+done
+
+rm -rf tmp-run

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Copyright (C) 2004-2010 by Grigori Fursin
+#
+# http://fursin.net/research
+# 
+# UNIDAPT Group
+# http://unidapt.org
+
+STAT_FILE=_stats__best_flags_time
+
+# Delete previous statistic (some files are appended)
+rm -rf figure_density.png
+
+R CMD BATCH --no-save --no-restore --slave "$CCC_PLUGINS/plugins/plot_density_graph.r"

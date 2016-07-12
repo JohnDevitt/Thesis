@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# Copyright (C) 2004-2007 by Grigori Fursin
+#
+# http://fursin.net/research
+# 
+# UNIDAPT Group
+# http://unidapt.org
+
+STAT_FILE=Stats/_stats__all_environments
+
+# Set database variables
+if [ -f "ccc--select-db.sh" ] ; then
+ . ./ccc--select-db.sh
+fi
+
+# Delete previous statistic (some files are appended)
+rm -rf ${STAT_FILE}*
+
+# Run script to generate statistics
+export CCC_STATS=$STAT_FILE
+
+php $CCC_PLUGINS/plugins/get_all_environments.php

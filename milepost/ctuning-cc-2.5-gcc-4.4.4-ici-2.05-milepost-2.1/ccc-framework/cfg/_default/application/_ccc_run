@@ -1,0 +1,21 @@
+#! /bin/sh
+
+CCC_TIME_OUT1="1200"
+
+rm -f tmp-ccc-time
+rm -f tmp-ccc-out
+rm -f tmp-ccc-out-err
+
+CL=""
+if [ -e "_ccc_run_dataset$1" ]; then
+ cp _ccc_run_dataset$1 tmp-ccc-run-dataset
+else 
+ echo "Dataset is not defined!"
+ exit
+fi
+
+if test -n "$CCC_TIME_OUT"; then
+ CCC_TIME_OUT1=$CCC_TIME_OUT
+fi
+
+timed-run $CCC_TIME_OUT1 ccc-time -fe ./a.out -fp tmp-ccc-run-dataset -ft tmp-ccc-time

@@ -1,0 +1,27 @@
+/.cvsignore/1.2/Tue Feb 18 22:09:18 2003//
+/my_getindexes.sp/1.1/Wed Feb  5 19:35:04 2003//
+/newpp.P/1.1/Mon Apr 21 20:26:25 2003//
+/oms_cdf.P/1.6/Mon May  5 17:44:35 2003//
+/oms_components.P/1.17/Wed May 14 16:24:37 2003//
+/oms_config.P/1.5/Mon Apr 21 20:26:25 2003//
+/oms_constraints.P/1.2/Tue Mar 25 18:44:18 2003//
+/oms_db_storage.P/1.16/Wed May  7 15:18:26 2003//
+/oms_db_updatable.P/1.13/Thu May  8 19:33:33 2003//
+/oms_diffs.P/1.1/Fri Dec  6 20:15:33 2002//
+/oms_exceptions.P/1.4/Thu May  8 18:24:23 2003//
+/oms_filters.P/1.1/Fri Dec  6 20:15:34 2002//
+/oms_init_oms.P/1.39/Tue Jun 24 15:19:24 2003//
+/oms_io.P/1.17/Fri Jun 13 14:23:14 2003//
+/oms_oblivion.P/1.5/Tue Apr 22 21:05:39 2003//
+/oms_odbc.P/1.8/Wed Feb 19 01:50:51 2003//
+/oms_q_annot.P/1.6/Mon Apr  7 21:25:11 2003//
+/oms_queries.P/1.8/Mon Apr 14 20:29:01 2003//
+/oms_rules.P/1.2/Fri Mar 14 01:05:20 2003//
+/oms_utilities.P/1.5/Tue Apr 22 21:07:19 2003//
+/oms_utils.P/1.1/Fri Dec  6 20:15:36 2002//
+/todo/1.13/Mon May  5 17:44:36 2003//
+/xsb_logger.P/1.4/Mon May 12 19:08:39 2003//
+D/doc////
+D/rdf////
+D/test////
+D/theoremprover////

@@ -1,0 +1,7 @@
+Database:	cccdb_all
+Architectures: 	AMD Athlon 64 3700+
+Environments: 	Linux OpenSUSE 10.3 2.6.22-18-perfctr-0.2-bigsmp
+Programs: 	MiDataSets_V13_MiBench_V13a - automotive_bitcount
+Compilers: 	gcc 4.2.2-ICI-0.9.6
+
+Datasets: 	1) 1125000 > ftmp_out 

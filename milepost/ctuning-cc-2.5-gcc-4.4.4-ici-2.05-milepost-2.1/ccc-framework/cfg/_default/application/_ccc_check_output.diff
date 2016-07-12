@@ -1,0 +1,4 @@
+#Compare new output with the saved one (if size of tmp-ccc-diff !=0 - output is different)
+
+rm -f tmp-ccc-diff
+diff ftmp_out ftmp_out-std >> tmp-ccc-diff

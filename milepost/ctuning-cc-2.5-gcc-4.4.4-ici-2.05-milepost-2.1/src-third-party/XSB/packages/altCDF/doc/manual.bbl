@@ -1,0 +1,116 @@
+\newcommand{\etalchar}[1]{$^{#1}$}
+\providecommand{\bysame}{\leavevmode\hbox to3em{\hrulefill}\thinspace}
+\providecommand{\MR}{\relax\ifhmode\unskip\space\fi MR }
+% \MRhref is called by the amsart/book/proc definition of \MR.
+\providecommand{\MRhref}[2]{%
+  \href{http://www.ams.org/mathscinet-getitem?mr=#1}{#2}
+}
+\providecommand{\href}[2]{#2}
+\begin{thebibliography}{PSMB{\etalchar{+}}91}
+
+\bibitem[APS04]{AlPS03}
+J.~Alferes, L.~M. Pereira, and T.~Swift, \emph{Well-founded abduction and
+  generalized stable models via tabled dual programs}, Theory and Practice of
+  Logic Programming \textbf{4} (2004), no.~4, 383--428.
+
+\bibitem[BH95]{BaaH95}
+F.~Baader and B.~Hollunder, \emph{Embedding defaults into terminological
+  representation systems}, J. Automated Reasoning \textbf{14} (1995), 149--180.
+
+\bibitem[BN03]{BaNu03}
+F.~Baader and W.~Nutt, \emph{Basic description logics}, pp.~43--95, Cambridge
+  University Press, 2003.
+
+\bibitem[Cal01]{Cale01}
+M.~Calejo, \emph{Interprolog: A declarative java-{P}rolog interface}, EPIA,
+  Springer-Verlag, 2001.
+
+\bibitem[CGLN02]{CGLN02}
+D.~Calvenese, G.~De Giacomo, M.~Lenzerini, and D.~Nardi, \emph{Reasoning in
+  expressive description logics}, Handbook of Automated Theorem Proving,
+  vol.~2, 2002, pp.~1582--1634.
+
+\bibitem[CS02]{CuSw02}
+B.~Cui and T.~Swift, \emph{Preference logic grammars: Fixed-point semantics and
+  application to data standardization}, Artificial Intelligence \textbf{138}
+  (2002), 117--147.
+
+\bibitem[HPS99]{HoPS99}
+I.~Horrocks and P.~Patel-Schneider, \emph{Optimizing description logic
+  subsumption}, Journal of Logic and Computation \textbf{9} (1999), no.~3.
+
+\bibitem[KLW95]{KiLW95}
+M.~Kifer, G.~Lausen, and J.~Wu, \emph{Logical foundations of object-oriented
+  and frame-based languages}, Journal of the ACM \textbf{42} (1995), 741--843.
+
+\bibitem[Llo84]{Lloy84}
+J.~W. Lloyd, \emph{Foundations of logic programming}, Springer-Verlag, Berlin
+  Germany, 1984.
+
+\bibitem[MB92]{MacB94}
+R.~MacGregor and D.~Brill, \emph{Recognition algorithms for the {LOOM}
+  classifier}, Proceedings of the Tenth National Conference on Artificial
+  Intelligence, 1992, pp.~774--779.
+
+\bibitem[MH03]{MolH03}
+R.~Moller and V.~Haarslev, \emph{Description logic systems}, The Description
+  Logi Handbook, Cambridge University Press, 2003, pp.~282--305.
+
+\bibitem[MPS03]{MGPS03}
+D.~McGuiness and P.~Patel-Schneider, \emph{From description logic provers to
+  knowledge representation systems}, The Description Logi Handbook, Cambridge
+  University Press, 2003, pp.~265--281.
+
+\bibitem[Pro01]{protege}
+\emph{Protege documentation set: release 1.7}, 2001, Available via {\tt
+  http://protege.stanford.edu}.
+
+\bibitem[PSMB{\etalchar{+}}91]{PMBRB91}
+P.~Patel-Schneider, D.L. McGuiness, R.~Brachman, L.~Resnick, and A.~Borgida,
+  \emph{The {CLASSIC} knowledge representation system: Guiding principles and
+  implementation rationale}, SIGARGT Bull. \textbf{2} (1991), no.~3, 108--113.
+
+\bibitem[RBG{\etalchar{+}}97]{RBGHNS97}
+A.~Rector, S.~Bechhofer, C.~Goble, I.~Horrocks, W.~Nowlan, and W.D. Soloman,
+  \emph{The {GRAIL} concept modelling language for medical terminology},
+  Artificial Intelligence in Medicine \textbf{9} (1997), 131--171.
+
+\bibitem[RRS{\etalchar{+}}99]{RRSSW98}
+I.~V. Ramakrishnan, P.~Rao, K.~Sagonas, T.~Swift, and D.~S. Warren,
+  \emph{Efficient access mechanisms for tabled logic programs}, Journal of
+  Logic Programming \textbf{38} (1999), no.~1, 31--55.
+
+\bibitem[Rul03]{RuleML}
+\emph{{The Rule Markup Initiative}}, Available at
+  \url{http://www.dfki.uni-kl.de/ruleml}, 2003.
+
+\bibitem[SMVW02]{SMVW02}
+M.~Smith, D.~McGuiness, R~Volz, and C~Welty, \emph{Web ontology language (owl)
+  guide version 1.0}, 2002.
+
+\bibitem[SW03]{SwiW03b}
+T.~Swift and D.~S. Warren, \emph{The meaning of cold dead fish}, Available via
+  {\tt http://www.cs.sunysb.edu/\~{}tswift}, 2003.
+
+\bibitem[Swi99]{Swif99a}
+T.~Swift, \emph{Tabling for non-monotonic programming}, Annals of Mathematics
+  and Artificial Intelligence \textbf{25} (1999), no.~3-4, 201--240.
+
+\bibitem[Swi04]{Swif04}
+\bysame, \emph{Deduction in ontologies via answer set programming},
+  International Conference on Logic Programming and Non-Monotonic Reasoning,
+  LNAI, no. 2923, 2004, pp.~275--289.
+
+\bibitem[UNS02]{UNSPSC}
+\emph{Universal standard products and services classification},
+  \url{http://www.unspsc.org}, 2002.
+
+\bibitem[XSB03]{XSB-home}
+XSB, \emph{The {XSB} {L}ogic {P}rogramming {S}ystem version 2.6}, 2003, {\tt
+  http://xsb.sourceforge.net}.
+
+\bibitem[YKZ05]{YaKZ05}
+G.~Yang, M.~Kifer, and C.~Zhao, \emph{Flora-2: User's manual version 0.94},
+  2005, Avaliable via flora.sourceforge.net.
+
+\end{thebibliography}

@@ -1,0 +1,38 @@
+
+name('Multi-agent RRL').
+
+authors(['Tom Croonenborghs, Jan Ramon']).
+
+contact(['tomc@cs.kuleuven.ac.be, janr@cs.kuleuven.ac.be']).
+
+load_message('Loading the Multi Agent Relational Reinforcement System for ACE').
+
+use_module('irl/mas/mas').
+
+use_module('irl/mas/init_mas').
+
+load_package(irl).
+
+classdef_module(mas).
+
+classdef_module(mas_agent).
+
+classdef_module(mas_observer).
+
+end_of_header.
+
+command(irl_mas_run,irl_mas_run,[],'irl_mas -- mas_rrl','Start multi-agent rrl',irl_mas_run,init_mas,[globalvars]).
+
+command(multi_mas_run,multi_mas_run,[N],'irl -- irl','schrijf hier eens deftige help voor ???',irl_mas_run(N),init_mas,[globalvars]).
+
+setting(teacher_optimality,1.0,I,(number(I)),'must be a number').
+
+setting(spreaded_reward,1.0,I,(number(I)),'must be a number').
+
+setting(mas_setting,basic,I,(member(I,[basic])),'must be basic').
+
+setting(number_of_agents,2,I,(integer(I)),'must be an integer').
+
+setting(mas_agents,[teacher([optimality(0.6)])],I,(I = [_|_]),'must be an ordered list of agent types with parameters').
+
+setting(mas_observer_options,[],I,(I = [_]),'must be a list of observer options').

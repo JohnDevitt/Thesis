@@ -1,0 +1,27 @@
+company(jvt,commercial).
+company(scuf,university).
+company(ucro,university).
+course(cso,2,introductory).
+course(erm,3,introductory).
+course(so2,4,introductory).
+course(srw,3,advanced).
+
+job(J):-
+	participant(J, _, _, _).
+company(C):-
+	participant(_, C, _, _).
+party(P):-
+	participant(_, _, P, _).
+
+party_yes :- party(yes).
+party_no :- party(no).
+
+company_type(T):-
+	company(C),
+	company(C, T).
+
+course_len(C, L):-
+	course(C, L, _).
+	
+course_type(C, T):-
+	course(C, _, T).

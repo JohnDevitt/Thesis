@@ -1,0 +1,42 @@
+
+name('General prediction').
+
+authors(['Anneleen Vanassche','Jan Struyf']).
+
+contact(['Anneleen.Vanassche@cs.kuleuven.ac.be','Jan Struyf@cs.kuleuven.ac.be']).
+
+load_message('Loading Prediction for ACE').
+
+use_module('prediction/general').
+
+use_module('prediction/loofl').
+
+use_module('prediction/nfold').
+
+load_package('tilde').
+
+classdef_module(general).
+
+classdef_module(tildeB).
+
+classdef_module(ensemble).
+
+classdef_module(errormeasure).
+
+classdef_module(rmode_sampling).
+
+classdef_module(aggregate_refinement).
+
+classdef_module(local_model).
+
+classdef_module(remauve).
+
+end_of_header.
+
+command(induce,i,[Algo],'induce(Algo) -- i(Algo)','Induce a prediction model using algorithm Algo',user_induce(Algo),general,[globalvars]).
+
+command(nfold,nf,[Algo,N,R],'nfold(Algo, N, R) -- nf(Algo, N, R)','Perform an N-fold crossvalidation using seed R for random generator',user_nfold(Algo,N,R),general,[globalvars]).
+
+command(nfold,nf,[Algo,N],'nfold(Algo, N) -- nf(Algo, N)','Perform an N-fold crossvalidation using seed 1 for random generator',user_nfold(Algo,N),general,[globalvars]).
+
+command(leave_one_out_from_list,loofl,[Algo,L],'leave_one_out_from_list(Algo, L) -- loofl(Algo, L)','Perform a crossvalidation using a list of group ID''s',user_loofl(Algo,L),general,[globalvars]).

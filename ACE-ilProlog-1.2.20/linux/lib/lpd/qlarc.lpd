@@ -1,0 +1,54 @@
+
+name('QLARC').
+
+authors(['Tom Croonenborghs']).
+
+contact(['tomc@cs.kuleuven.ac.be,']).
+
+load_message('Loading qlarc for ACE').
+
+use_module('irl/qlarc/qlarc').
+
+load_package(irl).
+
+load_package(cpacks).
+
+load_package(ctransform).
+
+classdef_module(qlarc_policy).
+
+classdef_module(qlarc_test_policy).
+
+classdef_module(qlarc_learner).
+
+classdef_module(qlarc_nb_learner).
+
+classdef_module(qlarc_output).
+
+classdef_module(qlarc_valid).
+
+classdef_module(qlarc_statistics).
+
+classdef_module(qlarc_inference).
+
+end_of_header.
+
+command(qlarc,iq,[],'qlarc -- qlarc','Start the QLARC discovery process',qlarc_main,qlarc,[globalvars]).
+
+setting(qlarc_startLevel,2,I,(number(I)),'must be a number').
+
+setting(qlarc_lookahead,2,I,(number(I)),'must be a number').
+
+setting(qlarc_base_policy,ribc,I,(member(I,[ribc,kbr,random])),'must be ribc or kbr or random').
+
+setting(qlarc_infreq_spec_level,inf,T,(T = inf ; integer(T)),'should be an integer').
+
+setting(qlarc_batch_size,50000,T,(integer(T), T > 0),'should be an integer').
+
+setting(qlarc_output_options,[freq_queries,freq_packs],T,is_list(T),'should be a list of options: qfunction, pfuncition, ...').
+
+setting(qlarc_inference,preconditions,I,(member(I,[naive,preconditions,added_prob,naive_bayes])),'must be naive or preconditions').
+
+setting(qlarc_minimum_score,0.15,I,(double(T)),'must be a real value').
+
+setting(qlarc_nb_new_interesting,5,I,(number(I)),'must be a number').

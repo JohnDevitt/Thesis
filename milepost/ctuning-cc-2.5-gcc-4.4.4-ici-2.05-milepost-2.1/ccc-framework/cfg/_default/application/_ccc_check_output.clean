@@ -1,0 +1,3 @@
+# Remove all output files
+
+rm -f ftmp_out

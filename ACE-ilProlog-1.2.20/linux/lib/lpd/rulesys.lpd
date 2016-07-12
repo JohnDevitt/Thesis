@@ -1,0 +1,24 @@
+
+name('Rulesys').
+
+authors(['Jan Struyf']).
+
+contact(['Jan.Struyf@cs.kuleuven.ac.be']).
+
+load_message('Loading RuleSys for ACE').
+
+use_module('rulesys/rulesys').
+
+end_of_header.
+
+command(rulesys,rs,[],'rulesys -- rs','Start the RuleSys ruleinduction process',rule_main,rulesys).
+
+command(rulesystest,rst,[ID],'rulesys -- rs','Start the RuleSys ruleinduction process',rule_test(ID),rulesys).
+
+command(rulesysxval,rsx,[N],'rulesys(N) -- rs(N)','Start the RuleSys ruleinduction process',rule_xval_main(N),rulesys).
+
+command(discretize,dis,[],'rulesys(N) -- rs(N)','Start the RuleSys ruleinduction process',discretize_main,rulesys).
+
+setting(m_estimate,1.0,B,true,'must be either classify, regression, or cluster').
+
+setting(beam_size,5,B,true,'must be either classify, regression, or cluster').

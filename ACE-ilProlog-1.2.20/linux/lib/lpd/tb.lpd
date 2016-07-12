@@ -1,0 +1,34 @@
+
+name('Tree Booster').
+
+authors(['Kurt Driessens']).
+
+contact(['kurtd@cs.kuleuven.ac.be']).
+
+load_message('Loading the Tree Booster').
+
+load_package(inc).
+
+class(tb,[incremental_learned_theory],[],[method(update(Type,Examples,Values,InObject,OutObject),update_tb__M_tb(Examples,Values,InObject,OutObject),[virtual]),method(predict_value(Type,Example,Prediction,InObject,InObject),predict_value_tb__M_tb(Example,Prediction,InObject),[virtual]),method(show(Type,File,Object),show_tb__M_tb(File,Object),[virtual]),method(init(Type,Object),init_tb__M_tb(Object),[virtual]),method(destroy(Type,Object),destroy_tb__M_tb(Object),[virtual])]).
+
+load_package('tilde').
+
+use_module('inc/tb/tb').
+
+end_of_header.
+
+command(testgtb,tb,[],'testtb -- tb','Testrun for tb-engine',test_tb,tb,[globalvars]).
+
+setting(tb_numberOfExamples,0,I,(integer(I)),'must be an integer').
+
+setting(tb_numberOfEpisodes,1,I,(integer(I)),'must be an integer').
+
+setting(tb_maxTrees,0,I,(integer(I)),'must be an integer, set to 0 for no maximum').
+
+setting(tb_discardZeros,on,I,(member(I,[on,off])),'must be on or off').
+
+setting(tb_reduceDigitsForTree,off,I,(member(I,[on,off])),'must be on or off').
+
+setting(tb_precisionDigits,off,I,(integer(I) ; I = 'off'),'must be off or an integer').
+
+setting(tb_optimizeWeights,no,I,(member(I,[yes,no])),'must be yes or no').

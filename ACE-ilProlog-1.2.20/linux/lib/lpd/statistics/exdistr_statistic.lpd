@@ -1,0 +1,82 @@
+
+name('Example distribution statistics').
+
+authors(['Jan Struyf']).
+
+contact(['Jan.Struyf@cs.kuleuven.ac.be']).
+
+load_package('gapic').
+
+use_module('statistics/exdistr_statistic/exdistr_stat').
+
+class(exdistr_statistic_owner,[],[abstract],[method(exdistr_pos_stats(Type,Params,StatList),equals(StatList,[]),[virtual]),method(exdistr_tot_stats(Type,Params,StatList),abstract,[virtual]),method(exdistr_pos_stats(Type,TemplArgs,Params,StatList),(TemplArgs = [], exdistr_pos_stats(Type,Params,StatList)),[virtual]),method(exdistr_tot_stats(Type,TemplArgs,Params,StatList),(TemplArgs = [], exdistr_tot_stats(Type,Params,StatList)),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),abstract,[virtual]),method(exdistr_create(Type,TemplArgs,Params,Comps,SIdx,Object),(TemplArgs = [], exdistr_create(Type,Params,Comps,SIdx,Object)),[virtual])]).
+
+class(exdistr_multi_attr,[],[abstract],[method(exdistr_is_multi(Type),true,[virtual])]).
+
+class(exdistr_model_info,[exdistr_statistic_owner],[abstract],[method(get_info(Obj,TStat,Distr,Class,SS),abstract,[])]).
+
+class(exdistr_c_model_info,[exdistr_model_info],[abstract],[method(get_info(Obj,TStat,Distr,Class,SS),mi_get_info(Obj,TStat,Distr,Class,SS),[])]).
+
+class(mi_std_real,[exdistr_c_model_info],[],[method(exdistr_tot_stats(Type,Params,StatList),exsplit_regr_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),register_c_object(mi_std_real,SIdx,Object),[virtual])]).
+
+class(mi_std_nominal,[exdistr_c_model_info],[],[method(exdistr_tot_stats(Type,Params,StatList),exsplit_cl_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),register_c_object(mi_std_nominal,SIdx,Object),[virtual])]).
+
+class(mi_compound,[exdistr_statistic_owner],[],[method(exdistr_tot_stats(Type,Params,StatList),exsplit_wcount_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_get_components(Type,Params,Know,Comps),equals(Params,Comps),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),register_c_object(mi_compound,f(SIdx,Comps),Object),[virtual]),method(get_info(Obj,TStat,Distr,Info),mic_get_info(Obj,TStat,Info),[])]).
+
+class(exsplit_heuristic,[exdistr_statistic_owner],[abstract],[method(calculate(Obj,Distr,PS,TS,Query,Info),abstract,[]),method(get_value(Obj,Info,Value),abstract,[]),method(announce_best_test(Object),true,[virtual]),method(announce_querytype(Object,Query,Type,PS,TS),true,[virtual]),method(announce_regrvalues(Object,Query,Example,Max,Min,Avg,PS,TS),true,[virtual]),method(announce_example_ids(Object,ExList,ST),true,[virtual])]).
+
+class(exsplit_c_heuristic,[exsplit_heuristic],[abstract],[method(calculate(Obj,Distr,PS,TS,Query,Info),exsplit_heuristic_calculate(Obj,PS,TS,Query),[]),method(get_value(Obj,Info,Value),exsplit_heuristic_get_value(Obj,Value),[]),method(print_info(Obj,Info),exsplit_heuristic_print_info(Obj),[])]).
+
+class(exsplit_class_heuristic,[],[abstract],[method(exdistr_pos_stats(Type,Params,StatList),exsplit_cl_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_tot_stats(Type,Params,StatList),exsplit_cl_stat__M_exdistr_stat(Params,StatList),[virtual])]).
+
+class(esh_gain,[exsplit_class_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), register_c_object(gain_esh,f(MC,SIdx),Object)),[virtual])]).
+
+class(esh_mdl,[exsplit_class_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), register_c_object(mdl_esh,f(MC,SIdx),Object)),[virtual])]).
+
+class(esh_chi,[exsplit_class_heuristic,exsplit_c_heuristic],[],[method(exdistr_pos_stats(Type,TemplArgs,Params,StatList),exsplit_cl_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_tot_stats(Type,TemplArgs,Params,StatList),exsplit_cl_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), Signif is 1.0, register_c_object(chi_esh,f(MC,SIdx,Signif),Object)),[virtual]),method(exdistr_create(Type,TemplArgs,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), (TemplArgs = [Signif] -> true ; Signif = 1.0), register_c_object(chi_esh,f(MC,SIdx,Signif),Object)),[virtual])]).
+
+class(esh_gainratio,[exsplit_class_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), register_c_object(gainratio_esh,f(MC,SIdx),Object)),[virtual])]).
+
+class(esh_gini,[exsplit_class_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), register_c_object(gini_esh,f(MC,SIdx),Object)),[virtual])]).
+
+class(esh_randomisation,[exsplit_class_heuristic,exsplit_c_heuristic],[],[method(exdistr_pos_stats(Type,Params,StatList),(write('esh_randomisation::exdistr_pos_stats needs template args\n'), fail),[virtual]),method(exdistr_tot_stats(Type,Params,StatList),(write('esh_randomisation::exdistr_tot_stats needs template args\n'), fail),[virtual]),method(exdistr_pos_stats(Type,TemplArgs,Params,StatList),exsplit_rnd_cl_pos_stat__M_exdistr_stat(TemplArgs,Params,StatList),[virtual]),method(exdistr_tot_stats(Type,TemplArgs,Params,StatList),exsplit_rnd_cl_tot_stat__M_exdistr_stat(TemplArgs,Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),(write('esh_randomisation::exdistr_create needs template args\n'), fail),[virtual]),method(exdistr_create(Type,TemplArgs,Params,Comps,SIdx,Object),(TemplArgs = [N,SubHeur,Signif,RndType], SubHeur =.. [SubHeurName|SubHeurTemplArgs], exdistr_create(SubHeurName,SubHeurTemplArgs,Params,Comps,SIdx,SubHeurObj), (RndType == local -> LocalRnd is 1 ; LocalRnd is 0), register_c_object(randomisation_esh,f(N,SubHeurObj,SIdx,Signif,LocalRnd),Object)),[virtual])]).
+
+class(exsplit_regression_heuristic,[],[abstract],[method(exdistr_pos_stats(Type,Params,StatList),exsplit_regr_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_tot_stats(Type,Params,StatList),exsplit_regr_stat__M_exdistr_stat(Params,StatList),[virtual])]).
+
+class(exsplit_slr_regression_heuristic,[],[abstract],[method(exdistr_pos_stats(Type,Params,StatList),exsplit_slr_regr_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_tot_stats(Type,Params,StatList),exsplit_slr_regr_stat__M_exdistr_stat(Params,StatList),[virtual])]).
+
+class(esh_regression,[exsplit_regression_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), register_c_object(esh_regression,f(MC,SIdx),Object)),[virtual])]).
+
+class(esh_slr_regression,[exsplit_slr_regression_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), register_c_object(esh_slr_regression,f(MC,SIdx),Object)),[virtual]),method(announce_best_test(Object),slr_regr_announce_best_test__M_exdistr_stat(Object),[virtual]),method(announce_querytype(Object,Query,Type,PS,TS),(slr_regr_announce_querytype__M_exdistr_stat(Object,Query,Type,PS,TS)),[virtual]),method(announce_regrvalues(Object,Query,Example,Max,Min,Avg,PS,TS),(slr_regr_announce_regrvalues__M_exdistr_stat(Object,Query,Example,Max,Min,Avg,PS,TS)),[virtual]),method(announce_example_ids(Object,ExList,ST),slr_regr_announce_example_ids__M_exdistr_stat(Object,ExList,ST),[virtual])]).
+
+class(exsplit_compound_heuristic,[exsplit_heuristic],[abstract],[method(exdistr_tot_stats(Type,Params,StatList),equals(StatList,[]),[virtual]),method(exdistr_get_components(Type,Params,Know,Comps),exsplit_heuristic_comps__M_exdistr_stat(Params,Know,Comps),[virtual])]).
+
+class(esh_ftest,[exsplit_compound_heuristic,exsplit_c_heuristic],[],[method(exdistr_tot_stats(Type,Params,StatList),exsplit_wcount_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(ftest,FT), register_c_object(esh_ftest,f(FT,SIdx,Comps),Object)),[virtual])]).
+
+class(esh_ss_reduction,[exsplit_compound_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),register_c_object(esh_ss_reduction,Comps,Object),[virtual])]).
+
+class(esh_slr_ss_reduction,[exsplit_compound_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),register_c_object(esh_slr_ss_reduction,Comps,Object),[virtual])]).
+
+class(esh_min_entropy,[exsplit_compound_heuristic,exsplit_c_heuristic],[],[method(exdistr_create(Type,Params,Comps,SIdx,Object),register_c_object(esh_min_entropy,Comps,Object),[virtual])]).
+
+class(exdistr_stopcrit,[exdistr_statistic_owner],[abstract],[method(stopcrit(Obj,TStats),abstract,[])]).
+
+class(exdistr_c_stopcrit,[exdistr_stopcrit],[abstract],[method(stopcrit(Obj,TStats),esc_stop_crit(Obj,TStats),[])]).
+
+class(esc_single_nominal,[exdistr_c_stopcrit],[],[method(exdistr_tot_stats(Type,Params,StatList),exsplit_cl_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,Object),(get_setting(minimal_cases,MC), get_setting(accuracy,ACC), register_c_object(single_nominal_esc,f(MC,ACC,SIdx),Object)),[virtual])]).
+
+class(esc_minimal_cases,[exdistr_c_stopcrit],[],[method(exdistr_tot_stats(Type,Params,StatList),exsplit_wcount_stat__M_exdistr_stat(Params,StatList),[virtual]),method(exdistr_create(Type,Params,Comps,SIdx,SC),(get_setting(minimal_cases,MC), register_c_object(minimal_cases_esc,f(MC,SIdx),SC)),[virtual])]).
+
+class(packs_ref_info,[],[abstract],[method(create_report_info(CData,MData,RepInfo,RMData),abstract,[])]).
+
+class(packs_heuristic_rinfo,[packs_ref_info],[],[method(create_report_info(PackP,TIdx,RepInfo,NTIdx),(NTIdx is TIdx + 1, PackP = f(PS,Weight), equals(RepInfo,es_update_pack(PS,Weight,TIdx))),[])]).
+
+end_of_header.
+
+setting_handler(attribute,4,Value,handle_attribute(Value),exdistr_stat,[globalvars]).
+
+setting_handler(heuristic,3,Value,handle_heurdef(Value),exdistr_stat,[globalvars]).
+
+setting_handler(stopcrit,3,Value,handle_stopcritdef(Value),exdistr_stat,[globalvars]).
+
+setting_handler(model_info,3,Value,handle_modelinfodef(Value),exdistr_stat,[globalvars]).

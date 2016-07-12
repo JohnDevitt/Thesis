@@ -1,0 +1,30 @@
+
+name('Relational IB3').
+
+authors(['Kurt Driessens, Jan Ramon']).
+
+contact(['kurtd,janr@cs.kuleuven.ac.be']).
+
+load_message('Loading Relational IB3').
+
+load_package(inc).
+
+class(rib3,[incremental_learned_theory],[],[method(update(Type,Examples,Values,InObject,OutObject),update_rib3__M_rib3(Examples,Values,InObject,OutObject),[virtual]),method(predict_value(Type,Example,Prediction,InObject,OutObject),predict_value_rib3__M_rib3(Example,Prediction,InObject,OutObject),[virtual]),method(show(Type,File,Object),show_rib3__M_rib3(File,Object),[virtual]),method(init(Type,Object),init_rib3__M_rib3(Object),[virtual]),method(destroy(Type,Object),destroy_rib3__M_rib3(Object),[virtual])]).
+
+use_module('inc/rib3/rib3').
+
+use_module('inc/rib3/rib_learner').
+
+classdef_module(rib_learner).
+
+load_package(inc).
+
+end_of_header.
+
+setting(rib3_nearest_neighbour_number,5,I,(integer(I)),'must be an integer').
+
+setting(rib3_sigmaAll_factor,5.0,I,(float(I)),'must be a real number').
+
+setting(rib3_sigmaPred_factor,5.0,I,(float(I)),'must be a real number').
+
+setting(rib3_max_examples,100,I,(integer(I)),'must be an integer').

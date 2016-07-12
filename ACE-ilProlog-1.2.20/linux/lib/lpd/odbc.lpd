@@ -1,0 +1,10 @@
+
+name('Extended input (ODBC support)').
+
+authors(['Wim Van Laer']).
+
+contact(['wimv@cs.kuleuven.ac.be']).
+
+load_message('Loading ODBC support').
+
+use_module(extended_input).

@@ -1,0 +1,26 @@
+
+name('Constant Size Relational Instance Based Regression').
+
+authors(['Kurt Driessens, Jan Ramon']).
+
+contact(['kurtd,janr@cs.kuleuven.ac.be']).
+
+load_message('Loading Constant Size Instance Based Regression (CS-RIBR)').
+
+class(csribr,[incremental_learned_theory],[],[method(update(Type,Examples,Values,InObject,OutObject),update_csribr__M_csribr(Examples,Values,InObject,OutObject),[virtual]),method(predict_value(Type,Example,Prediction,InObject,OutObject),predict_value_csribr__M_csribr(Example,Prediction,InObject,OutObject),[virtual]),method(show(Type,File,Object),show_csribr__M_csribr(File,Object),[virtual]),method(init(Type,Object),init_csribr__M_csribr(Object),[virtual]),method(destroy(Type,Object),destroy_csribr__M_csribr(Object),[virtual])]).
+
+use_module('inc/rib3/csribr').
+
+load_package(inc).
+
+end_of_header.
+
+setting(csribr_stats_number,30,I,(integer(I)),'must be an integer').
+
+setting(csribr_sigmaAll_factor,5.0,I,(float(I)),'must be a real number').
+
+setting(csribr_sigmaPred_factor,5.0,I,(float(I)),'must be an real number').
+
+setting(csribr_max_examples,100,I,(integer(I)),'must be an integer').
+
+setting(rib_distance,(X, Y, D, delta_distance__M_rib(X,Y,D)),_,true,'must be an oo distance').

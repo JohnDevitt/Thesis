@@ -1,0 +1,25 @@
+# Declarations
+MISCOPT =
+MISCOPT1 =	-Wno-deprecated -Wno-deprecated-declarations
+MISCOPTLINK =   -lm
+COMPILER =	g++
+INCLUDE =       -I../../include
+EXTRAINCLUDE =
+
+TARGET =        ccc-time
+
+DEST =          ../../../install
+
+# Actions
+all:		
+		$(COMPILER) $(MISCOPT) $(MISCOPT1) $(MISCOPTLINK) $(INCLUDE) $(EXTRAINCLUDE) -o $(TARGET) *.cc
+
+install:
+	        if test ! -d "$(DEST)/bin" ; then mkdir $(DEST)/bin; fi
+	        cp -f $(TARGET) $(DEST)/bin
+            
+clean:		
+		rm -f core 
+		rm -f *.o
+		rm -f *.a
+		rm -f $(TARGET)

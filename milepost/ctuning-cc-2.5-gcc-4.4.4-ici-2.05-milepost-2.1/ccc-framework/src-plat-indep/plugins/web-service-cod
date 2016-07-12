@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Copyright (C) 2004-2009 by Grigori G.Fursin
+#
+# http://fursin.net/research
+# 
+# UNIDAPT Group
+# http://unidapt.org
+
+php $CCC_PLUGINS/plugins/web_service_cod.php

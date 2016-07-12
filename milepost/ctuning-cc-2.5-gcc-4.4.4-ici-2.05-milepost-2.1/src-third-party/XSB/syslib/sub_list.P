@@ -1,0 +1,158 @@
+:- export sub_list/5.
+
+:- import instantiation_error/2 from error_handler.
+
+sub_list(At, _Bef, _Size, _After, _SubAt) :-
+	var(At), !,
+	instantiation_error(sub_list/5,1).
+sub_list(At, Bef, Size, After, SubAt) :-
+	is_list(At),!,
+	'$sub_list2'(Bef, At, Size, After, SubAt, sub_list(At, Bef, Size, After, SubAt)).
+
+'$sub_list2'(Bef, Atl, Size, After, SubAt, ErrorTerm) :-
+	var(Bef), !,
+	'$sub_listbv'(Bef, Size, After, SubAt, Atl, ErrorTerm).
+'$sub_list2'(Bef, Atl, Size, After, SubAt, ErrorTerm) :-
+	'$sub_list_get_subchars'(Bef, Atl, NewAtl),
+	'$sub_list3'(Size, After, SubAt, NewAtl, ErrorTerm).
+
+% if SubAt is bound, the rest is deterministic.
+'$sub_list3'(Size, After, SubAt, Atl, _ErrorTerm) :-
+	nonvar(SubAt), !,
+	'$sub_list_needs_int'(Size,3),
+	'$sub_list_needs_int'(After,4),
+	'$$_length1'(SubAt, 0, Size),
+	'$sub_list_get_subchars_and_match'(Size, Atl, SubAt, NAtl),
+	'$$_length1'(NAtl,0,After).
+% SubAt is unbound, but Size is bound
+'$sub_list3'(Size, After, SubAt, Atl, _ErrorTerm) :-
+	nonvar(Size), !,
+	'$sub_list_needs_int'(Size,3),
+	'$sub_list_needs_int'(After,4),
+	'$sub_list_get_subchars_and_match'(Size, Atl, SubAt, NAtl),
+	'$$_length1'(NAtl,0,After).
+% SubAt and Size are unbound, but After is bound.
+'$sub_list3'(Size, After, SubAt, Atl, _ErrorTerm) :-
+	nonvar(After), !,
+	'$sub_list_needs_int'(After,4),
+	'$sub_list_get_last_subchars'(Atl,SubAt,After,Total,Size),
+	Total >= After.
+% SubAt, Size, and After are unbound.
+'$sub_list3'(Size, After, SubAt, Atl, _) :-
+	'$$_length1'(Atl,0,Len),
+	'$sub_list_split'(Atl,Len,SubAt,Size,_,After).
+
+% Bef is unbound, so we've got three hypothesis
+% ok: in the best case we just try to find SubAt in  the original atom.
+'$sub_listbv'(Bef, Size, After, SubAt, Atl, _ErrorTerm) :-
+	nonvar(SubAt), !,
+	'$sub_list_search'(SubAt, Atl, 0, Bef, AfterS),
+	'$$_length1'(SubAt, 0, Size),
+	'$$_length1'(AfterS, 0, After).
+% ok: in the second best case we just get rid of the tail
+'$sub_listbv'(Bef, Size, After, SubAt, Atl, _ErrorTerm) :-
+	nonvar(After), !,
+	'$sub_list_needs_int'(After,4),
+	'$sub_list_get_last_subchars'(Atl,SubAt0,After,Total,Size0),
+	Total >= After,
+	'$sub_list_split'(SubAt0,Size0,_,Bef,SubAt,Size).
+% ok: just do everything
+'$sub_listbv'(Bef, Size, After, SubAt, Atl, _) :-
+	'$$_length1'(Atl, 0, Len),
+	'$sub_list_split'(Atl,Len,_,Bef,Atls2,Len2),
+	'$sub_list_split'(Atls2,Len2,SubAt,Size,_,After).
+
+'$sub_list_search'([], AfterS, BefSize, BefSize, AfterS).
+'$sub_list_search'([C|SubAts], [C|Atl], BefSize, BefSize, AfterS) :-
+	'$sub_list_search2'(SubAts, Atl, AfterS).
+'$sub_list_search'([C|SubAts], [_|Atl], BefSize, BefSizeF, AfterS) :-
+	NBefSize is BefSize+1,
+	'$sub_list_search'([C|SubAts], Atl, NBefSize, BefSizeF, AfterS).
+
+'$sub_list_search2'([], AfterS, AfterS).
+'$sub_list_search2'([C|SubAts], [C|Atl], AfterS) :-
+	'$sub_list_search2'(SubAts, Atl, AfterS).
+
+'$sub_list_get_subchars'(0, Atl, Atl) :- !.
+'$sub_list_get_subchars'(I0, [_|Atl], NAtl) :-
+	I is I0-1,
+	'$sub_list_get_subchars'(I, Atl, NAtl).
+
+/**** unused
+'$sub_list_get_subchars'(0, Atl, [], Atl) :- !.
+'$sub_list_get_subchars'(I0, [C|Atl], [C|L], NAtl) :-
+	I is I0-1,
+	'$sub_list_get_subchars'(I, Atl, L, NAtl).
+***/
+
+'$sub_list_get_subchars_and_match'(0, Atl, [], Atl) :- !.
+'$sub_list_get_subchars_and_match'(I0, [C|Atl], [C|Match], NAtl) :-
+	I is I0-1,
+	'$sub_list_get_subchars_and_match'(I, Atl, Match, NAtl).
+
+/*** unused
+'$sub_list_check_length'([],0).
+'$sub_list_check_length'([_|L],N1) :-
+	N1 > 0,
+	N is N1-1,
+	'$sub_list_check_length'(L,N).	
+***/
+
+'$sub_list_get_last_subchars'([],[],_,0,0).
+'$sub_list_get_last_subchars'([C|Atl],SubAt,After,Total,Size) :-
+	'$sub_list_get_last_subchars'(Atl,SubAt0,After,Total0,Size0),
+	Total is Total0+1,
+	( Total > After ->
+	    Size is Size0+1, SubAt = [C|SubAt0]
+	 ;
+	    Size = Size0, SubAt = SubAt0
+	).
+
+'$sub_list_split'(Atl,After,[],0,Atl,After).
+'$sub_list_split'([C|Atl],Len,[C|Atls],Size,NAtl,After) :-
+	Len1 is Len-1,
+	'$sub_list_split'(Atl,Len1,Atls,Size0,NAtl,After),
+	Size is Size0+1.
+	
+'$sub_list_needs_int'(V,_) :- var(V), !.
+%'$sub_list_needs_int'(I,_) :- integer(I), I > 0, !.  -- bug -- TLS
+'$sub_list_needs_int'(I,_) :- integer(I), I >= 0, !.
+/*
+'$sub_list_needs_int'(I,Arg) :- integer(I), !,
+	domain_error(not_less_than_zero,I,sub_list/5,Arg).
+%	'$do_error'(domain_error(not_less_than_zero,I),ErrorTerm).
+'$sub_list_needs_int'(I,Arg) :-
+	type_error(integer,I,sub_list/5,Arg).
+%	'$do_error'(type_error(integer,I),ErrorTerm).
+
+'$sub_list_needs_atom'(V,_) :- var(V), !.
+'$sub_list_needs_atom'(A,_) :- atom(A), !.
+'$sub_list_needs_atom'(A,Arg) :-
+	type_error(atom,A,sub_list/5,Arg).
+%	'$do_error'(type_error(atom,A),ErrorTerm).
+*/
+
+/** unused
+'$singletons_in_term'(T,VL) :-
+	'$variables_in_term'(T,[],V10),
+	'$sort'(V10, V1),
+	'$non_singletons_in_term'(T,[],V20),
+	'$sort'(V20, V2),	
+	'$subtract_lists_of_variables'(V2,V1,VL).
+***/
+
+/*** unused
+'$subtract_lists_of_variables'([],VL,VL).
+'$subtract_lists_of_variables'([_|_],[],[]) :- !.
+'$subtract_lists_of_variables'([V1|VL1],[V2|VL2],VL) :-
+	V1 == V2, !,
+	'$subtract_lists_of_variables'(VL1,VL2,VL).
+'$subtract_lists_of_variables'([V1|VL1],[V2|VL2],[V2|VL]) :-
+	'$subtract_lists_of_variables'([V1|VL1],VL2,VL).
+***/
+
+'$$_length1'([], M, M).
+'$$_length1'([_|L], N, O) :-
+	M is N + 1,
+	'$$_length1'(L, M, O).
+

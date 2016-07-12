@@ -1,0 +1,18 @@
+
+name('Support for the abstract multi task rrl environment').
+
+authors(['Tom Croonenborghs']).
+
+contact(['tomc@cs.kuleuven.ac.be']).
+
+load_package(irl).
+
+load_message('Loading multi task rrl environment').
+
+use_module('appl/multitask_rrl_environment/multitask_rrl_environment').
+
+classdef_module(multitask_rrl_environment).
+
+end_of_header.
+
+setting(abstract_ma_rrl_env_options,[number_of_states(4),number_of_actions(100),optimal_actions([1,2,3,4])],I,(I = [_|_]),'must be a list').

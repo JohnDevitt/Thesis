@@ -1,0 +1,58 @@
+
+name('irl probabilistic planning').
+
+authors(['Tom Croonenborghs, Jan Ramon']).
+
+contact(['tomc@cs.kuleuven.ac.be, janr@cs.kuleuven.ac.be']).
+
+load_message('Loading probabilistic planning module for ACE').
+
+load_package(irl).
+
+use_module('irl/prob_planning/init_prob_planning').
+
+use_module('userinterface/algooutput').
+
+classdef_module(prob_planning).
+
+classdef_module(prob_planning_testers).
+
+classdef_module(reward_function_model).
+
+classdef_module(transition_function_model).
+
+classdef_module(world_model).
+
+classdef_module(prob_planning_policies).
+
+end_of_header.
+
+command(irl_prob_planning,ipp,[],'irl_prob_planning -- ipp','Start irl with probabilistic planning',ipp_main,init_prob_planning,[globalvars]).
+
+command(irl_prob_planning,ipp,[N],'irl_prob_planning(N) -- ipp(N)','Start irl with probabilistic planning',ipp_main(N),init_prob_planning).
+
+command(generate_ordering_search_dataset,gen_os_data,[],'generate_ordering_search_dataset -- gen_os_data','Generate a dataset for learning a lbn by ordering search',gen_ordering_search_dataset,init_prob_planning,[globalvars]).
+
+setting(prob_planning_ns_sampling_rate,10,T,(integer(T), T > 0),'should be an integer').
+
+setting(test_policy_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').
+
+setting(prob_policy_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').
+
+setting(afterstate_format,lists,I,(member(I,[lists,avl])),'must be either lists or avl ').
+
+setting(reward_function_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').
+
+setting(transition_function_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').
+
+setting(world_model_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').
+
+setting(qmodel_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').
+
+setting(test_postconditions,no,T,(member(T,[no,yes(_)])),'should be no or yes with options').
+
+setting(use_special_pp_testing,no,T,(member(T,[no,test_log_likelihood(_),generate_order_dataset(_)])),'should be no,test_log_likelihood(list), ...').
+
+setting(use_random_exploration,no,T,(member(T,[no,yes])),'should be no or yes').
+
+setting(generalized_ordering_search_options,[],T,is_list_or_empty_list(T),'should be a list of options: ...').

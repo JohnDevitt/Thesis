@@ -1,0 +1,16 @@
+
+name('Support for the IDO-IC application').
+
+authors(['Jan Ramon']).
+
+contact(['janr@cs.kuleuven.ac.be']).
+
+load_package(gapic).
+
+load_package(math).
+
+load_message('Loading IDO-IC support').
+
+use_module('appl/idoic/idoic').
+
+end_of_header.

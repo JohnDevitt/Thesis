@@ -1,0 +1,24 @@
+
+name('Compact Representation of Knowledge Bases').
+
+authors(['Jan Struyf']).
+
+contact(['Jan.Struyfl@cs.kuleuven.ac.be']).
+
+load_message('Loading Compact Representation of Knowledge Bases').
+
+use_module('kb/comprep/templinterp').
+
+use_module('kb/comprep/optimizecomb').
+
+use_module('kb/comprep/compact').
+
+end_of_header.
+
+command(optimizecomb,oc,[KB,Pats],'optimizecomb(KB, Patterns) -- oc(KB, Patterns)','Optimize knowledge base KB given set of patterns',optimizecomb2,optimizecomb).
+
+command(save_models,sm,[Key,File],'save_models(Key, File) -- sm(Key, File)','Save a set of theories identified by Key to File (models format)',save_models(Key,File),compact,[globalvars]).
+
+command(save_keys,sm,[Key,File],'save_keys(Key, File) -- sm(Key, File)','Save a set of theories identified by Key to File (relational format)',save_keys(Key,File),compact,[globalvars]).
+
+command(save_unreachables,su,[Key,File],'save_unreachables(Key, File) -- su(Key, File)','Save a set of unreachable theories to file',save_unreachables(Key,File),compact,[globalvars]).

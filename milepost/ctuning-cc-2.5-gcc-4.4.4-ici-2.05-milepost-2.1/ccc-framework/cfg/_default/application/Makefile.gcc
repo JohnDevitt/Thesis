@@ -1,0 +1,18 @@
+# ************ CCC Modification ************ 
+CCC_OPTS_DEF =
+ifneq ($(CCC_OPTS),)
+CCC_OPTS_DEF=$(CCC_OPTS)
+endif
+# ******************************************
+
+# Declarations
+COMPILER = gcc
+
+# Actions
+all:		
+	$(COMPILER) $(CCC_OPTS_DEF) -c *.c
+	$(COMPILER) $(CCC_OPTS_DEF) *.o -lm
+
+clean:
+	rm -f a.out *.o *.a *.s *.i *.I
+       

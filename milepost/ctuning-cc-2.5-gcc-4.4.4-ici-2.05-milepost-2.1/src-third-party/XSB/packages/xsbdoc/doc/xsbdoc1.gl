@@ -1,0 +1,286 @@
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{lpdoc}{1}{\code {lpdoc}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{lpdoc}{1}{\code {lpdoc}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{XSB}{1}{\code {XSB}}
+\entry{latex}{1}{\code {latex}}
+\entry{dvips}{1}{\code {dvips}}
+\entry{pred/1}{1}{\code {pred/1}}
+\entry{xsbdoc}{1}{\code {xsbdoc}}
+\entry{GNU general public license}{1}{\code {GNU general public license}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{lpdoc}{2}{\code {lpdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{assertions}{2}{\code {assertions}}
+\entry{comments}{2}{\code {comments}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{formatting commands}{2}{\code {formatting commands}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{XSB}{2}{\code {XSB}}
+\entry{assertions}{2}{\code {assertions}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{Prolog source files}{2}{\code {Prolog source files}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{texinfo}{2}{\code {texinfo}}
+\entry{Prolog}{2}{\code {Prolog}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{Prolog}{2}{\code {Prolog}}
+\entry{format file}{2}{\code {format file}}
+\entry{library}{2}{\code {library}}
+\entry{application}{2}{\code {application}}
+\entry{texinfo files}{2}{\code {texinfo files}}
+\entry{texinfo}{2}{\code {texinfo}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{texinfo}{2}{\code {texinfo}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{xsbdoc}{2}{\code {xsbdoc}}
+\entry{texinfo}{3}{\code {texinfo}}
+\entry{texinfo}{3}{\code {texinfo}}
+\entry{texinfo}{3}{\code {texinfo}}
+\entry{main file}{3}{\code {main file}}
+\entry{component files}{3}{\code {component files}}
+\entry{xsbdoc}{3}{\code {xsbdoc}}
+\entry{doc}{3}{\code {doc}}
+\entry{xsbdoc_main/1}{3}{\code {xsbdoc_main/1}}
+\entry{xsbdoc_component/1}{3}{\code {xsbdoc_component/1}}
+\entry{xsbdoc}{3}{\code {xsbdoc}}
+\entry{library_directory/1}{4}{\code {library_directory/1}}
+\entry{xsbdoc_bibfile/1}{4}{\code {xsbdoc_bibfile/1}}
+\entry{lpdoc}{4}{\code {lpdoc}}
+\entry{xsbdoc}{4}{\code {xsbdoc}}
+\entry{xsbdoc}{4}{\code {xsbdoc}}
+\entry{xsbdoc_option/1}{4}{\code {xsbdoc_option/1}}
+\entry{xsbdoc_option/1}{4}{\code {xsbdoc_option/1}}
+\entry{xsbdoc_option/1}{4}{\code {xsbdoc_option/1}}
+\entry{xsbdoc_index/1}{5}{\code {xsbdoc_index/1}}
+\entry{page numbering, changing}{5}{\code {page numbering, changing}}
+\entry{xsbdoc_startpage/1}{5}{\code {xsbdoc_startpage/1}}
+\entry{page size, changing}{5}{\code {page size, changing}}
+\entry{page style, changing}{5}{\code {page style, changing}}
+\entry{xsbdoc_papertype/1}{5}{\code {xsbdoc_papertype/1}}
+\entry{texinfo}{5}{\code {texinfo}}
+\entry{A4 paper}{5}{\code {A4 paper}}
+\entry{letter size paper}{6}{\code {letter size paper}}
+\entry{thesis-like style}{6}{\code {thesis-like style}}
+\entry{xsbdoc}{6}{\code {xsbdoc}}
+\entry{xsbdoc/2}{6}{\code {xsbdoc/2}}
+\entry{tex}{6}{\code {tex}}
+\entry{xdvi}{6}{\code {xdvi}}
+\entry{yap}{6}{\code {yap}}
+\entry{dvips}{6}{\code {dvips}}
+\entry{dvips}{6}{\code {dvips}}
+\entry{ps2pdf}{6}{\code {ps2pdf}}
+\entry{xsbdoc_main/1}{6}{\code {xsbdoc_main/1}}
+\entry{texi2html}{6}{\code {texi2html}}
+\entry{makeinfo}{6}{\code {makeinfo}}
+\entry{xsbdoc}{6}{\code {xsbdoc}}
+\entry{xsbdoc}{6}{\code {xsbdoc}}
+\entry{document_export/1}{6}{\code {document_export/1}}
+\entry{document_import/1}{6}{\code {document_import/1}}
+\entry{xsbdoc}{6}{\code {xsbdoc}}
+\entry{export/1}{6}{\code {export/1}}
+\entry{import/1}{6}{\code {import/1}}
+\entry{comment/2}{6}{\code {comment/2}}
+\entry{dynamic/1}{7}{\code {dynamic/1}}
+\entry{op/3}{7}{\code {op/3}}
+\entry{use_variant_tabling/1}{7}{\code {use_variant_tabling/1}}
+\entry{pred/2}{7}{\code {pred/2}}
+\entry{xsbdoc}{7}{\code {xsbdoc}}
+\entry{literate programming}{7}{\code {literate programming}}
+\entry{xsbdoc}{7}{\code {xsbdoc}}
+\entry{xsbdoc}{7}{\code {xsbdoc}}
+\entry{xsbdoc}{7}{\code {xsbdoc}}
+\entry{internals manual}{8}{\code {internals manual}}
+\entry{xsbdoc}{8}{\code {xsbdoc}}
+\entry{xsbdoc}{8}{\code {xsbdoc}}
+\entry{info}{8}{\code {info}}
+\entry{texinfo}{8}{\code {texinfo}}
+\entry{xsbdoc}{8}{\code {xsbdoc}}
+\entry{INSTALL.xsbdoc}{8}{\code {INSTALL.xsbdoc}}
+\entry{xsbdoc}{9}{\code {xsbdoc}}
+\entry{tex}{9}{\code {tex}}
+\entry{tex}{9}{\code {tex}}
+\entry{tex}{9}{\code {tex}}
+\entry{texinfo}{9}{\code {texinfo}}
+\entry{tex}{9}{\code {tex}}
+\entry{texinfo}{9}{\code {texinfo}}
+\entry{info}{9}{\code {info}}
+\entry{info}{9}{\code {info}}
+\entry{info}{9}{\code {info}}
+\entry{comment/2}{10}{\code {comment/2}}
+\entry{machine readable comments}{10}{\code {machine readable comments}}
+\entry{formatting commands}{10}{\code {formatting commands}}
+\entry{lpdoc}{10}{\code {lpdoc}}
+\entry{textual comments}{10}{\code {textual comments}}
+\entry{assertions}{10}{\code {assertions}}
+\entry{assertions}{10}{\code {assertions}}
+\entry{comment/2}{10}{\code {comment/2}}
+\entry{docstring/1}{10}{\code {docstring/1}}
+\entry{stringcommand/1}{10}{\code {stringcommand/1}}
+\entry{version_descriptor/1}{10}{\code {version_descriptor/1}}
+\entry{comment/2}{10}{\code {comment/2}}
+\entry{machine readable comments}{10}{\code {machine readable comments}}
+\entry{documentation strings}{10}{\code {documentation strings}}
+\entry{title}{10}{\code {title}}
+\entry{subtitle}{10}{\code {subtitle}}
+\entry{author}{11}{\code {author}}
+\entry{author indexing}{11}{\code {author indexing}}
+\entry{acknowledgements}{11}{\code {acknowledgements}}
+\entry{copyright}{11}{\code {copyright}}
+\entry{abstract}{11}{\code {abstract}}
+\entry{introduction}{12}{\code {introduction}}
+\entry{main body}{12}{\code {main body}}
+\entry{module comment}{12}{\code {module comment}}
+\entry{appendix}{12}{\code {appendix}}
+\entry{bug}{13}{\code {bug}}
+\entry{planned improvement}{13}{\code {planned improvement}}
+\entry{log of changes}{13}{\code {log of changes}}
+\entry{version number}{13}{\code {version number}}
+\entry{emacs CIAO mode}{13}{\code {emacs CIAO mode}}
+\entry{docstring/1}{14}{\code {docstring/1}}
+\entry{comment/2}{14}{\code {comment/2}}
+\entry{formatting commands}{14}{\code {formatting commands}}
+\entry{escape sequences}{14}{\code {escape sequences}}
+\entry{syntax of formatting commands}{14}{\code {syntax of formatting commands}}
+\entry{stringcommand/1}{14}{\code {stringcommand/1}}
+\entry{stringcommand/1}{14}{\code {stringcommand/1}}
+\entry{LaTeX}{14}{\code {LaTeX}}
+\entry{scribe}{14}{\code {scribe}}
+\entry{@index command}{14}{\code {@index command}}
+\entry{@cindex command}{15}{\code {@cindex command}}
+\entry{@concept command}{15}{\code {@concept command}}
+\entry{@pred command}{15}{\code {@pred command}}
+\entry{@op command}{15}{\code {@op command}}
+\entry{@lib command}{15}{\code {@lib command}}
+\entry{@apl command}{15}{\code {@apl command}}
+\entry{@file command}{15}{\code {@file command}}
+\entry{@var command}{15}{\code {@var command}}
+\entry{pred/1}{15}{\code {pred/1}}
+\entry{bibliographic citations}{16}{\code {bibliographic citations}}
+\entry{references}{16}{\code {references}}
+\entry{sections}{16}{\code {sections}}
+\entry{urls}{16}{\code {urls}}
+\entry{email addresses}{16}{\code {email addresses}}
+\entry{@cite command}{16}{\code {@cite command}}
+\entry{bibliographic entry}{16}{\code {bibliographic entry}}
+\entry{bibtex}{16}{\code {bibtex}}
+\entry{.bib files}{16}{\code {.bib files}}
+\entry{bibtex}{16}{\code {bibtex}}
+\entry{lpdoc}{16}{\code {lpdoc}}
+\entry{SETTINGS}{16}{\code {SETTINGS}}
+\entry{@ref command}{16}{\code {@ref command}}
+\entry{@uref command}{16}{\code {@uref command}}
+\entry{Universal Resource Locator}{16}{\code {Universal Resource Locator}}
+\entry{WWW address}{16}{\code {WWW address}}
+\entry{URL}{16}{\code {URL}}
+\entry{@uref command}{16}{\code {@uref command}}
+\entry{Universal Resource Locator}{16}{\code {Universal Resource Locator}}
+\entry{URL}{16}{\code {URL}}
+\entry{@email command}{16}{\code {@email command}}
+\entry{email address}{16}{\code {email address}}
+\entry{@email command}{16}{\code {@email command}}
+\entry{email address}{16}{\code {email address}}
+\entry{address}{16}{\code {address}}
+\entry{@comment command}{16}{\code {@comment command}}
+\entry{comment}{16}{\code {comment}}
+\entry{@begin{\tt \char 123}itemize{\tt \char 125} command}{16}{\code {@begin{\tt \char 123}itemize{\tt \char 125} command}}
+\entry{itemized list}{16}{\code {itemized list}}
+\entry{@item command}{16}{\code {@item command}}
+\entry{item in an itemized list}{16}{\code {item in an itemized list}}
+\entry{@end{\tt \char 123}itemize{\tt \char 125} command}{16}{\code {@end{\tt \char 123}itemize{\tt \char 125} command}}
+\entry{@begin{\tt \char 123}enumerate{\tt \char 125} command}{16}{\code {@begin{\tt \char 123}enumerate{\tt \char 125} command}}
+\entry{enumerated list}{16}{\code {enumerated list}}
+\entry{@end{\tt \char 123}enumerate{\tt \char 125} command}{17}{\code {@end{\tt \char 123}enumerate{\tt \char 125} command}}
+\entry{@begin{\tt \char 123}description{\tt \char 125} command}{17}{\code {@begin{\tt \char 123}description{\tt \char 125} command}}
+\entry{description list}{17}{\code {description list}}
+\entry{@item command}{17}{\code {@item command}}
+\entry{new item in description list}{17}{\code {new item in description list}}
+\entry{@end{\tt \char 123}description{\tt \char 125} command}{17}{\code {@end{\tt \char 123}description{\tt \char 125} command}}
+\entry{@begin{\tt \char 123}verbatim{\tt \char 125} command}{17}{\code {@begin{\tt \char 123}verbatim{\tt \char 125} command}}
+\entry{fixed format text}{17}{\code {fixed format text}}
+\entry{verbatim text}{17}{\code {verbatim text}}
+\entry{@end{\tt \char 123}verbatim{\tt \char 125} command}{17}{\code {@end{\tt \char 123}verbatim{\tt \char 125} command}}
+\entry{@begin{\tt \char 123}cartouche{\tt \char 125} command}{17}{\code {@begin{\tt \char 123}cartouche{\tt \char 125} command}}
+\entry{framed box}{17}{\code {framed box}}
+\entry{@end{\tt \char 123}cartouche{\tt \char 125} command}{17}{\code {@end{\tt \char 123}cartouche{\tt \char 125} command}}
+\entry{framed box}{17}{\code {framed box}}
+\entry{@section command}{17}{\code {@section command}}
+\entry{section}{17}{\code {section}}
+\entry{info}{17}{\code {info}}
+\entry{@subsection command}{17}{\code {@subsection command}}
+\entry{subsection}{17}{\code {subsection}}
+\entry{@footnote command}{17}{\code {@footnote command}}
+\entry{footnote}{17}{\code {footnote}}
+\entry{@today command}{17}{\code {@today command}}
+\entry{date}{17}{\code {date}}
+\entry{@hfill command}{17}{\code {@hfill command}}
+\entry{spcae, horizontal fill}{17}{\code {spcae, horizontal fill}}
+\entry{@bf command}{17}{\code {@bf command}}
+\entry{bold face}{17}{\code {bold face}}
+\entry{strong face}{17}{\code {strong face}}
+\entry{@em command}{17}{\code {@em command}}
+\entry{italics face}{17}{\code {italics face}}
+\entry{emphasis face}{17}{\code {emphasis face}}
+\entry{@tt command}{17}{\code {@tt command}}
+\entry{fixed-width font}{17}{\code {fixed-width font}}
+\entry{typewriter-like font}{17}{\code {typewriter-like font}}
+\entry{@key command}{17}{\code {@key command}}
+\entry{keyboard key}{17}{\code {keyboard key}}
+\entry{@sp command}{18}{\code {@sp command}}
+\entry{blank lines}{18}{\code {blank lines}}
+\entry{space, extra lines}{18}{\code {space, extra lines}}
+\entry{@p command}{18}{\code {@p command}}
+\entry{paragraph break}{18}{\code {paragraph break}}
+\entry{@noindent command}{18}{\code {@noindent command}}
+\entry{indentation, avoiding}{18}{\code {indentation, avoiding}}
+\entry{avoiding indentation}{18}{\code {avoiding indentation}}
+\entry{accents}{18}{\code {accents}}
+\entry{special characters}{18}{\code {special characters}}
+\entry{@` command}{18}{\code {@` command}}
+\entry{@' command}{18}{\code {@' command}}
+\entry{including code}{18}{\code {including code}}
+\entry{including files}{18}{\code {including files}}
+\entry{including images}{18}{\code {including images}}
+\entry{@include command}{18}{\code {@include command}}
+\entry{@includeverbatim command}{18}{\code {@includeverbatim command}}
+\entry{@includefact command}{18}{\code {@includefact command}}
+\entry{sharing pieces of text}{18}{\code {sharing pieces of text}}
+\entry{usage of a command}{18}{\code {usage of a command}}
+\entry{@includedef command}{18}{\code {@includedef command}}
+\entry{including a predicate definition}{18}{\code {including a predicate definition}}
+\entry{@image command}{18}{\code {@image command}}
+\entry{including an image}{18}{\code {including an image}}
+\entry{images, inserting}{18}{\code {images, inserting}}
+\entry{image file}{18}{\code {image file}}
+\entry{encapsulated postscript}{18}{\code {encapsulated postscript}}
+\entry{images, scaling}{19}{\code {images, scaling}}
+\entry{@image command}{19}{\code {@image command}}
+\entry{version_descriptor/1}{19}{\code {version_descriptor/1}}
+\entry{version_number/1}{19}{\code {version_number/1}}
+\entry{ymd_date/1}{19}{\code {ymd_date/1}}
+\entry{time_struct/1}{19}{\code {time_struct/1}}
+\entry{assertions}{20}{\code {assertions}}
+\entry{usage}{20}{\code {usage}}
+\entry{head_pattern/1}{20}{\code {head_pattern/1}}
+\entry{assertion_body/1}{20}{\code {assertion_body/1}}
+\entry{xsbdoc}{20}{\code {xsbdoc}}
+\entry{assertion_body/1}{20}{\code {assertion_body/1}}
+\entry{head_pattern/1}{20}{\code {head_pattern/1}}
+\entry{assrt_status/1}{20}{\code {assrt_status/1}}
+\entry{assertion_body/1}{20}{\code {assertion_body/1}}
+\entry{docstring/1}{20}{\code {docstring/1}}
+\entry{head_pattern/1}{21}{\code {head_pattern/1}}
+\entry{head pattern}{21}{\code {head pattern}}
+\entry{predname/1}{21}{\code {predname/1}}
+\entry{assrt_status/1}{21}{\code {assrt_status/1}}

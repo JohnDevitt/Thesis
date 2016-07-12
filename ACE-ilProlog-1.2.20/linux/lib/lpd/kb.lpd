@@ -1,0 +1,20 @@
+
+name('Knowledge Base').
+
+authors(['Jan Ramon & Jan Struyf']).
+
+contact(['Jan.Ramon@cs.kuleuven.ac.be, Jan.Struyf@cs.kuleuven.ac.be']).
+
+load_message('Loading knowledge base').
+
+load_package(common).
+
+use_module('kb/iterator').
+
+class(example_iterator,[],[abstract],[method(init(_Init,_ExIter),fail,[]),method(destroy(_Type,_ExIter),fail,[virtual]),method(size(_ExIter,undef),true,[virtual]),method(end_of_iterator(_ExIter),true,[virtual]),method(next_example(_InExIter,_OutExIter),fail,[virtual]),method(get_example(_InExIter,_OutExIter,_Example),fail,[virtual]),method(prepare_example(_InExIter,_OutExIter,_Example,_QueryableExample),fail,[virtual]),method(prepare_query(_InExIter,_OutExIter,_Query,_PreparedQuery),fail,[virtual]),method(query_example(_InExIter,_OutExIter,_PreparedQuery,_QueryableExample),fail,[virtual]),method(negated_query_example(InExIter,OutExIter,PreparedQuery,QueryableExample),\+(query_example(InExIter,OutExIter,PreparedQuery,QueryableExample)),[]),method(get_query_success_example(InExIter,OutExIter,PreparedQuery,QueryableExample,Success),(query_example(InExIter,OutExIter,PreparedQuery,QueryableExample) -> Success = 1 ; Success = 0),[]),method(bondless_query_example(_InExIter,_OutExIter,_PreparedQuery,_QueryableExample),\+(\+(query_example(_InExIter,_OutExIter,_PreparedQuery,_QueryableExample))),[]),method(prepare_target_value(_InExIter,_OutExIter),fail,[virtual]),method(query_target_value(_InExIter,_OutExIter,_Target),fail,[virtual]),method(query_example_weight(_InExIter,_OutExIter,_Weight),fail,[virtual]),method(add_example(_InExIter,_OutExIter,_Example),fail,[virtual])]).
+
+class(example_iterator_once_list,[example_iterator],[],[method(init(Init,ExIter),ExIter = Init,[virtual]),method(size(ExIter,Size),(ExIter = example_iterator_once_list(List,_), length(List,Size)),[virtual]),method(next_example(InExIter,OutExIter),(InExIter = example_iterator_once_list([_|R]), OutExIter = example_iterator_once_list(R)),[virtual]),method(get_example(ExIter,ExIter,Ex),ExIter = example_iterator_once_list([Ex|_]),[virtual]),method(prepare_example(ExIter,ExIter,Example,Example),true,[virtual]),method(prepare_query(ExIter,ExIter,Query,PreparedQuery),(functor(Query,':-',2), arg(1,Query,H), arg(2,Query,B), (H =.. [_Pred|Keys]), PreparedQuery = Keys / B),[virtual]),method(query_example(ExIter,ExIter,QueryableExample / B,QueryableExample),call(B),[virtual]),method(add_example(InExIter,OutExIter,Example),(InExIter = example_iterator_once_list(List,InLast), InLast = [Example|OutLast], OutExIter = example_iterator_once_list(List,OutLast)),[virtual])]).
+
+end_of_header.
+
+command(demo_iterator,demo_itr,[],'demo_iterator -- demo_itr','run the iterator self test',demo_iterator,iterator,[]).

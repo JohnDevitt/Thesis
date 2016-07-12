@@ -1,0 +1,742 @@
+This is pdfTeX, Version 3.141592-1.40.0-rc4 (Web2C 7.5.5) (format=latex 2007.1.4)  21 MAY 2008 15:51
+entering extended mode
+**manual
+(./manual.tex
+LaTeX2e <2005/12/01>
+Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, basque, bulgarian, coptic, welsh, czech, slovak, german, ngerman, d
+anish, spanish, catalan, galician, esperanto, estonian, finnish, french, greek,
+ monogreek, ancientgreek, croatian, hungarian, interlingua, ibycus, indonesian,
+ icelandic, italian, latin, mongolian, dutch, norsk, polish, portuguese, pinyin
+, romanian, russian, slovene, uppersorbian, serbian, swedish, turkish, ukenglis
+h, ukrainian, loaded.
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/report.cls
+Document Class: report 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/size11.clo
+File: size11.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/gwTeX/texmf.texlive/tex/generic/epsf/epsf.sty
+This is `epsf.tex' v2.7.3 <23 July 2005>
+\epsffilein=\read1
+\epsfframemargin=\dimen103
+\epsfframethickness=\dimen104
+\epsfrsize=\dimen105
+\epsftmp=\dimen106
+\epsftsize=\dimen107
+\epsfxsize=\dimen108
+\epsfysize=\dimen109
+\pspoints=\dimen110
+) (/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/config/graphics.cfg
+File: graphics.cfg 2001/08/31 v1.1 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 90.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen111
+\Gin@req@width=\dimen112
+)
+\epsfxsize=\dimen113
+\epsfysize=\dimen114
+)
+(./subfigure.sty
+\c@subfigure=\count88
+\c@lofdepth=\count89
+\c@subtable=\count90
+\c@lotdepth=\count91
+) (/usr/local/gwTeX/texmf.texlive/tex/latex/base/latexsym.sty
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/tools/xspace.sty
+Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2002/01/22 v2.2d
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2001/10/25 v2.2f
+\@emptytoks=\toks15
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 132.
+))
+(/usr/local/gwTeX/texmf.texlive/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2006/12/21 v6.75j Hypertext links for LaTeX
+\@linkdim=\dimen115
+\Hy@linkcounter=\count92
+\Hy@pagecounter=\count93
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2006/12/21 v6.75j Hyperref: PDFDocEncoding definition (HO)
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/config/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2006/08/22 v2.4 Connects package keyval with LaTeX options (
+HO)
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 2212.
+Package hyperref Info: Hyper figures OFF on input line 2262.
+Package hyperref Info: Link nesting OFF on input line 2267.
+Package hyperref Info: Hyper index ON on input line 2270.
+Package hyperref Info: Plain pages OFF on input line 2277.
+Package hyperref Info: Backreferencing OFF on input line 2282.
+
+Implicit mode ON; LaTeX internals redefined
+Package hyperref Info: Bookmarks ON on input line 2412.
+(./url.sty
+\Urlmuskip=\muskip10
+Package: url 1999/03/28  ver 1.5x  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 2567.
+\Fld@menulength=\count94
+\Field@Width=\dimen116
+\Fld@charsize=\dimen117
+\Choice@toks=\toks16
+\Field@toks=\toks17
+Package hyperref Info: Hyper figures OFF on input line 3045.
+Package hyperref Info: Link nesting OFF on input line 3050.
+Package hyperref Info: Hyper index ON on input line 3053.
+Package hyperref Info: backreferencing OFF on input line 3060.
+Package hyperref Info: Link coloring ON on input line 3063.
+\Hy@abspage=\count95
+\c@Item=\count96
+\c@Hfootnote=\count97
+)
+*hyperref using default driver hdvips*
+(/usr/local/gwTeX/texmf.texlive/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2006/12/21 v6.75j Hyperref driver for dvips
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2006/12/21 v6.75j Hyperref definitions for pdfmark specials
+\pdf@docset=\toks18
+\pdf@box=\box26
+\pdf@toks=\toks19
+\pdf@defaulttoks=\toks20
+\Fld@listcount=\count98
+)) (./float.sty
+Package: float 1995/03/29 v1.2c Float enhancements (AL)
+\c@float@type=\count99
+\float@box=\box27
+\@floatcapt=\box28
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks21
+\verbatim@line=\toks22
+\verbatim@in@stream=\read2
+)
+(/usr/local/gwTeX/texmf.texlive/tex/latex/eepic/epic.sty
+Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
+\@@multicnt=\count100
+\d@lta=\count101
+\@delta=\dimen118
+\@@delta=\dimen119
+\@gridcnt=\count102
+\@joinkind=\count103
+\@dotgap=\dimen120
+\@ddotgap=\dimen121
+\@x@diff=\count104
+\@y@diff=\count105
+\x@diff=\dimen122
+\y@diff=\dimen123
+\@dotbox=\box29
+\num@segments=\count106
+\num@segmentsi=\count107
+\@datafile=\read3
+) (./ecltree.sty
+ECL Tree graph macro by isozaki, Nov. 12, 1990 + 2e FIX
+\@BundleWidth=\dimen124
+\@BundleDepth=\dimen125
+\@BundleHeight=\dimen126
+\@NodeBox=\box30
+\GapDepth=\dimen127
+\GapWidth=\dimen128
+\EdgeLabelSep=\dimen129
+) (./include.tex
+\c@theorem=\count108
+\c@axiom=\count109
+\c@instance=\count110
+\c@proposition=\count111
+\c@corollary=\count112
+\c@example=\count113
+\c@dummylemma=\count114
+\c@ExampleN=\count115
+\c@Alg=\count116
+\c@algorithm=\count117
+\c@Algorithm=\count118
+\c@invariant=\count119
+\c@myrule=\count120
+) (./predindex.sty)
+\@predindexfile=\write3
+\openout3 = `manual.pdx'.
+
+
+Writing predicate index file manual.pdx 
+\@indexfile=\write4
+\openout4 = `manual.idx'.
+
+Writing index file manual.idx
+(./manual.aux)
+\openout1 = `manual.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 130.
+LaTeX Font Info:    ... okay on input line 130.
+ (/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/config/color.cfg
+File: color.cfg 2001/08/31 v1.1 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 130.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+Package hyperref Info: Link coloring ON on input line 130.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/hyperref/nameref.sty
+Package: nameref 2006/12/21 v2.27 Cross-referencing by name of section
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/oberdiek/refcount.sty
+Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
+)
+\c@section@level=\count121
+)
+LaTeX Info: Redefining \ref on input line 130.
+LaTeX Info: Redefining \pageref on input line 130.
+ (./manual.out) (./manual.out)
+\@outlinefile=\write5
+\openout5 = `manual.out'.
+
+ [1
+
+] (./acknowledgements.tex) [1] (./manual.toc
+LaTeX Font Info:    Try loading font information for U+lasy on input line 4.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/ulasy.fd
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 4.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 4.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+) [1
+
+] [2])
+\tf@toc=\write6
+\openout6 = `manual.toc'.
+
+ [3]
+(./intro.tex
+Chapter 1.
+
+Underfull \hbox (badness 10000) in paragraph at lines 8--9
+
+ []
+
+[1
+
+]
+File: Figures/arch.eps Graphic file (type eps)
+ <Figures/arch.eps> [2]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 108.
+
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 108.
+) [3] [4
+
+]
+(./semantics.tex
+Chapter 2.
+[5
+
+]
+Overfull \hbox (51.79636pt too wide) in paragraph at lines 114--121
+\OT1/cmr/m/n/10.95 can be read as ``the el-e-ment of the sin-gle-ton class \OT1
+/cmtt/m/n/10.95 oid(sutureU245H) \OT1/cmr/m/n/10.95 is in the class \OT1/cmtt/m
+/n/10.95 cid(absorbableSutures)\OT1/cmr/m/n/10.95 ''.
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 184--185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--201
+
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 249--251
+
+ []
+
+[8]
+Overfull \hbox (60.19237pt too wide) in paragraph at lines 316--331
+\OT1/cmtt/m/n/10.95 rid(hasNeedleDesign) \OT1/cmr/m/n/10.95 re-la-tion can be t
+hought of as an op-tional at-tribute for a given \OT1/cmtt/m/n/10.95 cid(absorb
+ableSutures)
+ []
+
+
+Overfull \hbox (13.73576pt too wide) in paragraph at lines 349--351
+[]\OT1/cmr/m/n/10.95 For each fact of the form \OT1/cmtt/m/n/10.95 allAttr(Id$[
+]$,Rid,Id$[]$)
+ []
+
+[9]
+Overfull \hbox (1.54823pt too wide) in paragraph at lines 408--412
+\OT1/cmr/m/n/10.95 The last of the above facts can be read as ``the ob-ject \OT
+1/cmtt/m/n/10.95 oid(sutureU245H) \OT1/cmr/m/n/10.95 has a \OT1/cmtt/m/n/10.95 
+rid(hasPointStyle)
+ []
+
+
+Overfull \hbox (13.73576pt too wide) in paragraph at lines 418--420
+[]\OT1/cmr/m/n/10.95 For each fact of the form \OT1/cmtt/m/n/10.95 hasAttr(Id$[
+]$,Rid,Id$[]$)
+ []
+
+[10]
+Overfull \hbox (25.23314pt too wide) in paragraph at lines 495--497
+[]\OT1/cmr/m/n/10.95 For each fact of the form \OT1/cmtt/m/n/10.95 maxAttr(Id$[
+]$,Rid,Id$[]$,N)
+ []
+
+
+Overfull \hbox (16.90991pt too wide) in paragraph at lines 540--547
+\OT1/cmr/m/n/10.95 implies that ev-ery sub-class of \OT1/cmtt/m/n/10.95 cid(abs
+Sutures) \OT1/cmr/m/n/10.95 will have a ma-te-rial in the class \OT1/cmtt/m/n/1
+0.95 cid(absSutMaterial)\OT1/cmr/m/n/10.95 .
+ []
+
+[11]
+Overfull \hbox (34.93721pt too wide) in paragraph at lines 569--577
+\OT1/cmr/m/n/10.95 re-la-tion to an ob-ject in \OT1/cmtt/m/n/10.95 cid(highWeig
+ht)\OT1/cmr/m/n/10.95 . Match-ing weights are made non-inheritable via \OT1/cmt
+t/m/n/10.95 classHasAttr/3
+ []
+
+
+Overfull \hbox (76.97133pt too wide) in paragraph at lines 580--582
+[]\OT1/cmr/m/n/10.95 For each fact of the form \OT1/cmtt/m/n/10.95 classHasAttr
+(Id$[]$,CRid,Id$[]$)
+ []
+
+) (./product.tex [12]
+Overfull \hbox (50.74751pt too wide) in paragraph at lines 52--56
+\OT1/cmr/m/it/10.95 For each prod-uct iden-ti-fier $\OML/cmm/m/it/10.95 cid\OT1
+/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 x[
+]; [] ; x[]\OT1/cmr/m/n/10.95 ))$\OT1/cmr/m/it/10.95 , $\OML/cmm/m/it/10.95 oid
+\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 ((\OML/cmm/m/it/10.
+95 x[]; [] ; x[]\OT1/cmr/m/n/10.95 ))$\OT1/cmr/m/it/10.95 , $\OML/cmm/m/it/10.9
+5 rid\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it
+/10.95 x[]; [] ; x[]\OT1/cmr/m/n/10.95 ))$\OT1/cmr/m/it/10.95 , and $\OML/cmm/m
+/it/10.95 crid\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 ((\OM
+L/cmm/m/it/10.95 x[]; [] ; x[]\OT1/cmr/m/n/10.95 ))$
+ []
+
+
+Overfull \hbox (45.32082pt too wide) in paragraph at lines 79--82
+[]\OT1/cmr/m/it/10.95 For each prod-uct iden-ti-fier $\OML/cmm/m/it/10.95 cid\O
+T1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 
+x[]; [] ; x[]\OT1/cmr/m/n/10.95 ))$ \OT1/cmr/m/it/10.95 or $\OML/cmm/m/it/10.95
+ oid\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/10.95 f\OT1/cmr/m/n/10.95 (\OML/cmm/m/it/
+10.95 x[]; :::; x[]\OT1/cmr/m/n/10.95 ))$\OT1/cmr/m/it/10.95 ,
+ []
+
+
+Overfull \hbox (6.00937pt too wide) in paragraph at lines 127--132
+\OT1/cmr/m/n/10.95 is im-prop-erly formed. On the other hand, if \OT1/cmtt/m/n/
+10.95 oid(sutureU245H) \OT1/cmr/m/n/10.95 is in the class \OT1/cmtt/m/n/10.95 c
+id(suturesRusPart)\OT1/cmr/m/n/10.95 ,
+ []
+
+[13]) (./inheritance.tex
+Overfull \hbox (45.28827pt too wide) in paragraph at lines 3--10
+\OT1/cmr/m/n/10.95 Example [][][][][][] in-di-cates that each ob-ject in the cl
+ass of \OT1/cmtt/m/n/10.95 cid(absorbableSutures) \OT1/cmr/m/n/10.95 has a \OT1
+/cmtt/m/n/10.95 rid(hasPointStyle)
+ []
+
+
+Overfull \hbox (12.10263pt too wide) in paragraph at lines 26--38
+\OT1/cmtt/m/n/10.95 oid(suture547466) \OT1/cmr/m/n/10.95 is re-lated to a sub-c
+lass of \OT1/cmtt/m/n/10.95 cid(pointStyle)\OT1/cmr/m/n/10.95 , namely \OT1/cmt
+t/m/n/10.95 cid(regularCuttingEdge)\OT1/cmr/m/n/10.95 .
+ []
+
+
+Overfull \hbox (20.70148pt too wide) in paragraph at lines 26--38
+\OT1/cmr/m/n/10.95 pred-i-cate. How-ever the con-straint that any \OT1/cmtt/m/n
+/10.95 rid(suturesRusMatch) \OT1/cmr/m/n/10.95 must be to a \OT1/cmtt/m/n/10.95
+ cid(suturesRusPart)
+ []
+
+[14]
+Overfull \hbox (5.25774pt too wide) in paragraph at lines 42--43
+[]\OT1/cmr/m/n/10.95 Let $\OMS/cmsy/m/n/10.95 M$ \OT1/cmr/m/n/10.95 be an on-to
+l-ogy model. 
+ []
+
+
+Overfull \hbox (4.27765pt too wide) in paragraph at lines 112--121
+\OT1/cmr/m/n/10.95 states that each per-son has at most one ge-netic mother. If
+ \OT1/cmtt/m/n/10.95 cid(mother) \OT1/cmr/m/n/10.95 is a sub-class of \OT1/cmtt
+/m/n/10.95 cid(parent)\OT1/cmr/m/n/10.95 ,
+ []
+
+
+Overfull \hbox (11.00728pt too wide) in paragraph at lines 140--144
+[]\OT1/cmr/m/n/10.95 If $\OMS/cmsy/m/n/10.95 M j[][] [][] ^ [][]$ \OT1/cmr/m/n/
+10.95 then $\OMS/cmsy/m/n/10.95 M j[][] [][]$ 
+ []
+
+[15]
+Overfull \hbox (11.00728pt too wide) in paragraph at lines 185--189
+[]\OT1/cmr/m/n/10.95 If $\OMS/cmsy/m/n/10.95 M j[][] [][] ^ [][]$ \OT1/cmr/m/n/
+10.95 then $\OMS/cmsy/m/n/10.95 M j[][] [][]$ 
+ []
+
+
+Overfull \hbox (8.59155pt too wide) in paragraph at lines 206--212
+\OT1/cmr/m/n/10.95 CDF in-stance $\OMS/cmsy/m/n/10.95 O$ \OT1/cmr/m/n/10.95 con
+-tain-ing \OT1/cmtt/m/n/10.95 hasAttr(Id1,Id2,Id3) \OT1/cmr/m/n/10.95 and \OT1/
+cmtt/m/n/10.95 isa(Id3,Id4) \OT1/cmr/m/n/10.95 then \OT1/cmtt/m/n/10.95 hasAttr
+(Id1,Id2,Id4)
+ []
+
+[16]) (./type1.tex [17]
+Chapter 3.
+[18
+
+] [19]
+Overfull \hbox (12.76187pt too wide) in paragraph at lines 150--156
+\OT1/cmr/m/n/10.95 tics given in Sec-tion [][][][][][], it is not hard to see t
+hat if an el-e-ment $\OML/cmm/m/it/10.95 O$ \OT1/cmr/m/n/10.95 is in the class 
+\OT1/cmtt/m/n/10.95 cid(absorbableSutures)
+ []
+
+[20] [21]
+Overfull \hbox (27.2304pt too wide) in paragraph at lines 357--359
+[]\OT1/cmr/m/n/10.95 For each fact of the form \OT1/cmtt/m/n/10.95 necessCond(C
+id,Vid)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 357--359
+
+ []
+
+
+Overfull \hbox (6.41254pt too wide) in paragraph at lines 385--386
+[]\OT1/cmr/m/n/10.95 Let $\OMS/cmsy/m/n/10.95 M$ \OT1/cmr/m/n/10.95 be
+ []
+
+[22] [23]) [24] [25
+
+] (./impl.tex
+Chapter 4.
+
+LaTeX Warning: Citation `ISO' on page 26 undefined on input line 32.
+
+(./instances.tex [26
+
+]
+Overfull \hbox (66.57922pt too wide) in paragraph at lines 26--35
+\OT1/cmr/m/n/10.95 in-stance the iden-ti-fier \OT1/cmtt/m/n/10.95 cid(absorbabl
+eSutures) \OT1/cmr/m/n/10.95 might ac-tu-ally have the form \OT1/cmtt/m/n/10.95
+ cid(absorbableSutures,unspsc)
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 160--161
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 165--166
+
+ []
+
+[28] [29]
+Overfull \hbox (3.16296pt too wide) in paragraph at lines 257--263
+\OT1/cmtt/m/n/10.95 cdf[]id[]fields(ID,Functor,NatId,Component) \OT1/cmr/m/n/10
+.95 is true if \OT1/cmtt/m/n/10.95 ID \OT1/cmr/m/n/10.95 is a le-gal CDF iden-t
+i-fier, \OT1/cmtt/m/n/10.95 Functor
+ []
+
+) (./type0impl.tex [30]
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\<def>-command' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\f@encoding' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\<let>-command' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\<def>-command' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\f@family' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\<def>-command' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\f@series' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\<def>-command' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\f@shape' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\<def>-command' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\font@name' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\OT1/cmtt/m/n/12' on input line 133.
+
+
+Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
+(hyperref)                removing `\ignorespaces' on input line 133.
+
+[31]
+Overfull \hbox (17.2284pt too wide) in paragraph at lines 184--188
+[]\OT1/cmr/m/n/10.95 Let \OT1/cmtt/m/n/10.95 cid(boolean,s) \OT1/cmr/m/n/10.95 
+be a class with two sub-classes: \OT1/cmtt/m/n/10.95 oid(true,s) \OT1/cmr/m/n/1
+0.95 and \OT1/cmtt/m/n/10.95 oid(false,s)\OT1/cmr/m/n/10.95 .
+ []
+
+[32] [33] [34]) (./type1impl.tex
+Overfull \hbox (3.58684pt too wide) in paragraph at lines 48--60
+[]\OT1/cmr/m/n/10.95 The the-o-rem prover of Ver-sion 1(beta) uses ex-haus-tive
+ back-track-ing, rather than the dependency-
+ []
+
+[35] [36]
+Overfull \hbox (40.90147pt too wide) in paragraph at lines 189--196
+\OT1/cmr/m/n/10.95 ger. In its se-man-tics, \OT1/cmtt/m/n/10.95 IdList \OT1/cmr
+/m/n/10.95 is in-ter-preted as a con-junc-tion of iden-ti-fiers, and \OT1/cmtt/
+m/n/10.95 check[]lce(+IdList,+N)
+ []
+
+) (./update.tex [37]
+Overfull \hbox (7.87526pt too wide) in paragraph at lines 105--114
+\OT1/cmtt/m/n/10.95 retractallExtTerm(?Head,?Body) \OT1/cmr/m/n/10.95 re-tracts
+ all in-ten-sional rules for which \OT1/cmtt/m/n/10.95 clause(Head,Body)
+ []
+
+[38]
+Overfull \hbox (29.59099pt too wide) in paragraph at lines 116--126
+\OT1/cmtt/m/n/10.95 addTableDependencies(+TableList,+DependencyList \OT1/cmr/m/
+n/10.95 in-forms CDF that each ta-ble in \OT1/cmtt/m/n/10.95 TableList
+ []
+
+) (./checks.tex [39] [40]
+Overfull \hbox (26.85555pt too wide) in paragraph at lines 126--131
+\OT1/cmr/m/n/10.95 or dis-sas-o-ci-ate the check from the con-text us-ing \OT1/
+cmtt/m/n/10.95 addCheckToContext/2[] \OT1/cmr/m/n/10.95 and \OT1/cmtt/m/n/10.95
+ removeCheckFromContext/2[]\OT1/cmr/m/n/10.95 . 
+ []
+
+
+Overfull \hbox (29.04884pt too wide) in paragraph at lines 142--150
+\OT1/cmr/m/n/10.95 At an op-er-a-tional level, a con-text is ex-e-cuted when-ev
+er the pred-i-cate \OT1/cmtt/m/n/10.95 apply[]checks(+Context,Argument)
+ []
+
+[41]
+Overfull \hbox (2.61263pt too wide) in paragraph at lines 228--234
+\OT1/cmtt/m/n/10.95 addCheckToContext(+PredIndicator,+Context) \OT1/cmr/m/n/10.
+95 en-sures that the check \OT1/cmtt/m/n/10.95 PredIndicator \OT1/cmr/m/n/10.95
+ (i.e.
+ []
+
+
+Overfull \hbox (1.15335pt too wide) in paragraph at lines 248--254
+\OT1/cmtt/m/n/10.95 removeCheckToContext(?PredIndicator,?Context) \OT1/cmr/m/n/
+10.95 en-sures that any checks that unify with
+ []
+
+[42]) (./configuration.tex
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 41.
+
+(/usr/local/gwTeX/texmf.texlive/tex/latex/base/omlcmr.fd
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 41.
+ [43])
+(./components.tex [44] [45] [46]
+Overfull \hbox (28.45268pt too wide) in paragraph at lines 219--227
+\OT1/cmr/m/n/10.95 ries in \OT1/cmtt/m/n/10.95 DirectoryList\OT1/cmr/m/n/10.95 
+. The files loaded must con-tain ex-ten-sional data. \OT1/cmtt/m/n/10.95 load[]
+extensional[]facts/1[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 251--252
+
+ []
+
+[47]) (./database.tex [48]
+Overfull \hbox (28.72746pt too wide) in paragraph at lines 67--71
+[]| [] 
+ []
+
+[49]
+Overfull \hbox (27.10175pt too wide) in paragraph at lines 174--176
+[]\OT1/cmr/m/n/10.95 The caller must have pre-vi-ously opened an ODBC con-nec-t
+ion, named Source, by us-ing \OT1/cmtt/m/n/10.95 cdf[]db[]open/3[]\OT1/cmr/m/n/
+10.95 ,
+ []
+
+[50] [51] [52]) (./concurrency.tex [53]
+Overfull \hbox (40.27866pt too wide) in paragraph at lines 84--87
+\OT1/cmr/m/n/10.95 makes ev-ery com-po-nent in \OT1/cmtt/m/n/10.95 cdf[]log[]co
+mponent[]dirty/1 \OT1/cmr/m/n/10.95 to be dirty, i.e., \OT1/cmtt/m/n/10.95 cdf[
+]flags(dirty,CompName)
+ []
+
+[54])) (./examples.tex [55]
+Chapter 5.
+[56
+
+]
+Overfull \hbox (11.43346pt too wide) in paragraph at lines 67--69
+[]\OT1/cmr/m/n/10.95 The con-sis-tency of the two clauses can be de-ter-mined b
+y check-ing the con-sis-tency of \OT1/cmtt/m/n/10.95 oid(o1,prop)\OT1/cmr/m/n/1
+0.95 . 
+ []
+
+
+Overfull \hbox (9.24098pt too wide) in paragraph at lines 77--78
+[]\OT1/cmtt/m/n/10 all(rid(rel,modal),(cid(p,modal) ; exists(rid(rel,modal),(ci
+d(q,modal) , cid(r,modal))))
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+
+LaTeX Warning: Citation `Stir94' on page 57 undefined on input line 86.
+
+[57] [58] [59]) (./manual.bbl [60] [61]
+Underfull \hbox (badness 10000) in paragraph at lines 65--67
+[]\OT1/cmr/m/it/10.95 Protege doc-u-men-ta-tion set: re-lease 1.7\OT1/cmr/m/n/1
+0.95 , 2001, Avail-able via
+ []
+
+[62
+
+]
+Underfull \hbox (badness 1824) in paragraph at lines 92--94
+[]\OT1/cmr/m/n/10.95 T. Swift and D. S. War-ren, \OT1/cmr/m/it/10.95 The mean-i
+ng of cold dead fish\OT1/cmr/m/n/10.95 , Avail-able via
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 109--111
+[]\OT1/cmr/m/n/10.95 XSB, \OT1/cmr/m/it/10.95 The XSB Logic Pro-gram-ming Sys-t
+em ver-sion 2.6\OT1/cmr/m/n/10.95 , 2003,
+ []
+
+)
+No file manual.ind.
+[63] (./manual.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 3857 strings out of 94088
+ 51609 string characters out of 1163888
+ 2111204 words of memory out of 4562417
+ 6994 multiletter control sequences out of 10000+50000
+ 18975 words of font info for 78 fonts, out of 2000000 for 2000
+ 645 hyphenation exceptions out of 5000
+ 32i,17n,41p,240b,553s stack positions out of 5000i,500n,6000p,200000b,50000s
+
+Output written on manual.dvi (68 pages, 367776 bytes).

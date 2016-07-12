@@ -1,0 +1,190 @@
+#!/bin/bash
+
+# Copyright (C) 2004-2009 by Grigori Fursin
+#
+# http://fursin.net/research
+# 
+# UNIDAPT Group
+# http://unidapt.org
+
+prog_id="_ccc_program_id"
+FILE_CCC_TMP="tmp-ccc.tmp"
+FILE_CCC_DB_EXT="ccc-db.cfg"
+FILE_CCC_TMP1="tmp-ccc1.tmp"
+FILE_CCC_TMP2="tmp-ccc2.tmp"
+FILE_CCC_TMP3="tmp-ccc3.tmp"
+
+################################################################################
+echo "*************** CCC: Configure program ***************"
+
+export PATH=.:$PATH
+
+echo ""
+echo "Current directory:     " $PWD
+
+### Check configuration
+if [ -z "$CCC_CFG" ] ; then
+ echo "\$CCC_CFG is not specified"
+ exit
+fi
+
+echo "Current configuration: " $CCC_CFG
+
+echo ""
+echo "Copy default CCC program configuration files to this directory (Y/N)?"
+read var
+ 
+if [ "$var" = "Y" ] || [ "$var" = "y" ] ; then
+ echo ""
+ echo "Copying default CCC program configuration files - you can edit them later..."
+ 
+ cp -rf $CCC_CFG/application/* .
+fi
+
+if [ -f "$prog_id" ] ; then
+ echo ""
+ echo "File with PROGRAM_ID ($prog_id) already exists!"
+ exit
+fi
+
+echo ""
+echo "Would you like to generate unique PROGRAM_ID (Y/N)?"
+read var
+ 
+pid=""
+if [ "$var" = "Y" ] || [ "$var" = "y" ] ; then
+ echo ""
+ ccc-uuidgen > $FILE_CCC_TMP
+ exec 9< $FILE_CCC_TMP
+ read <&9 uuid1
+ read <&9 uuid2
+ rm -rf $FILE_CCC_TMP
+ pid=$uuid1$uuid2
+else
+ echo ""
+ echo "Enter PROGRAM_ID (from the Collective Tuning Database http://cTuning.org/cdatabase):"
+ 
+ read pid
+fi
+
+echo ""
+echo "PROGRAM_ID=" $pid
+echo $pid > $prog_id
+
+echo ""
+echo "Add short name of this benchmark:"
+read var
+
+echo $var >> $prog_id
+
+###### check database info ######
+upd=0
+if [ ! -z "$CCC_URL" ] ; then
+ . ccc--db-cur-info.sh
+else
+ echo "CCC_URL=\"\"."
+ echo "If you would like to use database, "
+ echo "install and configure it using appropriate installation script..."
+ rm -f *.tmp
+ exit 
+fi
+
+echo ""
+echo "Would you like to add information about program to the COMMON database (Y/N)?"
+read var
+
+if [ "$var" = "Y" ] || [ "$var" = "y" ] ; then
+ ###### check fileds ######
+
+ echo "show FIELDS from PROGRAMS" > $FILE_CCC_TMP
+ mysql -h $CCC_C_URL -u $CCC_C_USER --password=$CCC_C_PASS $CCC_C_DB < $FILE_CCC_TMP > $FILE_CCC_TMP1
+ rm -rf $FILE_CCC_TMP
+
+ echo ""
+ echo "Available fields:"
+ echo ""
+
+ i=0
+ fin=0
+ exec 9< $FILE_CCC_TMP1
+ while <&9 read line ;
+ do
+  if [ $i -gt "0" ] && [ $fin -ne "1" ]; then
+   fld=${line%%	*}
+   if [ $fld = "DATETIME" ] ; then
+    fin=1
+   else
+    echo "$fld:"
+   fi
+  fi
+  let i=i+1
+ done
+
+ echo ""
+
+ echo -n "insert into PROGRAMS (PROGRAM_ID" > $FILE_CCC_TMP
+ echo -n "values (\"$pid\"" > $FILE_CCC_TMP2
+
+ i=0
+ fin=0
+ exec 9< $FILE_CCC_TMP1
+ while <&9 read line ;
+ do
+  if [ $i -gt "1" ] && [ $fin -ne "1" ] ; then
+    fld=${line%%	*}
+ 
+    if [ $fld = "DATETIME" ] ; then
+     fin=1
+    else
+     echo "$fld:"
+     read xfld
+   
+     echo -n ,$fld >> $FILE_CCC_TMP
+     echo -n ,\"$xfld\" >> $FILE_CCC_TMP2
+    fi
+  fi
+  let i=i+1
+ done
+
+ #Add datetime
+  fld="DATETIME"
+   date '+%F %T' > $FILE_CCC_TMP3
+   exec 8< $FILE_CCC_TMP3
+   read <&8 xfld
+   rm -rf $FILE_CCC_TMP3
+  echo -n ,$fld >> $FILE_CCC_TMP
+  echo -n ,\"$xfld\" >> $FILE_CCC_TMP2
+   
+ #Add IP   
+  fld="IP"
+   ccc-read-ip > $FILE_CCC_TMP3
+   exec 8< $FILE_CCC_TMP3
+   read <&8 xfld
+   rm -rf $FILE_CCC_TMP3
+  echo -n ,$fld >> $FILE_CCC_TMP
+  echo -n ,\"$xfld\" >> $FILE_CCC_TMP2
+
+ #Add USER
+  fld="USER"
+  xfld=$CCC_CTS_USER
+  echo -n ,$fld >> $FILE_CCC_TMP
+  echo -n ,\"$xfld\" >> $FILE_CCC_TMP2
+
+ echo -n ") " >> $FILE_CCC_TMP
+ echo -n ")" >> $FILE_CCC_TMP2
+
+ cat $FILE_CCC_TMP2 >> $FILE_CCC_TMP
+
+ echo ""
+ echo "Recording data to the database ..."
+
+ mysql -h $CCC_C_URL -u $CCC_C_USER --password=$CCC_C_PASS $CCC_C_DB < $FILE_CCC_TMP > $FILE_CCC_TMP1
+
+ rm -f *.tmp
+
+ echo ""
+ echo "Now you can edit _ccc* and Makefile* files to setup compilation and execution scripts ..."
+
+fi
+
+exit

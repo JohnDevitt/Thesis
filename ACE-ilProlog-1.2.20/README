@@ -1,0 +1,33 @@
+==================================================================
+ACE-ilProlog 1.2.20 for scientific (non-commercial) use only.
+Copyright K.U.Leuven, Department of Computer Science.
+For commercial version contact PharmaDM (http://www.PharmaDM.com).
+==================================================================
+
+Please read the COPYRIGHT file.
+
+Installation
+============
+
+Unix
+====
+
+Untar the ACE archive in a directory of your choice.
+For example:
+        cd <ROOT>
+        tar -xzf ACE-ilProlog-1.2.20-linux.tar.gz 
+
+Set environment variable ACE_ILP_ROOT to <ROOT>/<ACE>/<OS>
+For example:
+        export ACE_ILP_ROOT=<ROOT>/ACE-ilProlog-1.2.20-linux/linux
+
+Go to the directory that contains your application.
+For example:
+        cd <APPLICATION>
+        ${ACE_ILP_ROOT}/bin/ace
+	
+One can also define an alias (to start ACE by typing ACE):
+	alias ACE=${ACE_ILP_ROOT}/bin/ace
+	
+
+Happy ACE'ing !

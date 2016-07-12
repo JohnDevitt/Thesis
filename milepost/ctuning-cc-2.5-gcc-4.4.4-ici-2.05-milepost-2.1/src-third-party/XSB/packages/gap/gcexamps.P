@@ -1,0 +1,64 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%% Fuzzy
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%p:[fuzz,.7]:- a.
+%p:[fuzz,.9]:- b.
+
+%----
+
+:- import '_$$get_returns'/3 from tables.
+:- import delete_return/2 from tables.
+:- compiler_options([spec_off,unfold_off]).
+
+:- table '_$ann'/3.
+'_$ann'(fuzz,p,Vout):- 	
+	'_$savecp'(Breg),
+	breg_retskel(Breg,3,Skel,Subgptr),
+Need to figure out copy term	Vout
+	do_bodies(Vin),
+	table_add(Subgptr,Skel,fuzz,Vin,Vout).
+
+do_bodies(0.7):- a.
+do_bodies(0.9):- b.
+
+a.
+b.
+
+gcall(Term,Domain,Val):- 
+	'_$ann'(Domain,Term,Vabs),
+	(var(Val) ->
+	    Vabs = Val
+	  ; gte(Domain,Vabs,Val) ).
+
+% assuming Term is ground.
+% get_returns will need to be extended to check for delay lists. etc.
+% will be ok to immediately delete returns.
+table_add(Subgptr,Skel,Domain,Vin,Vout):- 
+	('_$$get_returns'(Subgptr,Skel,AnsLeaf) -> 
+	    get_annot_from_skel(Skel,Vabs),
+	    lub(Domain,Vabs,Vin,NewVal),
+	    (NewVal \== Vabs -> 
+	       delete_return(Subgptr,AnsLeaf),writeln((NewVal,Vout)),NewVal = Vout
+	     ; fail)
+	 ; Vout = Vin),
+	 writeln(Vout).
+
+adjust_value(Vabs,NewVal,Subgptr,AnsLeaf,Vout):- 
+	writeln(Vout),
+	    (NewVal \== Vabs -> 
+	       delete_return(Subgptr,AnsLeaf),writeln((NewVal,Vout)),NewVal = Vout
+	     ; fail).
+
+get_annot_from_skel(Skel,Vabs):- 
+	functor(Skel,_,ArgNum),
+	arg(ArgNum,Skel,Vabs).
+
+gte(fuzz,X,Y):- X >= Y.
+
+lub(fuzz,X,Y,Z):- (X >= Y -> Z = X ; Z = Y).
+
+breg_retskel(_BregOffset,_Arity,_RetTerm,_SubgoalPtr) :- '_$builtin'(154).
+
+end_of_file.
+

@@ -1,0 +1,50 @@
+/.cvsignore/1.7/Wed Jun  1 04:10:56 2005//
+/cdf.P/1.1/Wed Dec 11 16:09:38 2002//
+/chr.P/1.2/Tue Dec  7 17:52:18 2004//
+/chr_d.P/1.2/Thu May 25 14:49:06 2006//
+/dbdrivers.P/1.13/Mon Jun 25 13:53:29 2007//
+/flora2.P/1.25/Wed May 17 21:55:10 2006//
+/gap.P/1.2/Thu Dec 30 18:20:55 1999//
+/justify.P/1.2/Sun Jan  1 22:03:26 2006//
+/libwww.P/1.9/Fri Jul 27 03:12:42 2001//
+/perlmatch.P/1.5/Sun Sep 26 01:33:34 2004//
+/regmatch.P/1.8/Sat Dec  4 03:10:06 1999//
+/sgml.P/1.3/Mon Mar 14 05:43:29 2005//
+/slx.P/1.1.1.1/Thu Nov  5 17:01:10 1998//
+/wildmatch.P/1.4/Sat Dec  4 03:10:06 1999//
+/xasp.P/1.1/Fri Feb 21 16:51:56 2003//
+/xmc.H/1.1/Fri May 25 19:18:30 2001//
+/xmc.P/1.4/Sun Jul  1 21:55:12 2001//
+/xpath.P/1.2/Mon Mar  7 20:31:24 2005//
+D/CDF////
+D/altCDF////
+D/chr////
+D/chr_d////
+D/clpqr////
+D/dbdrivers////
+D/flip////
+D/flora////
+D/flora2////
+D/gap////
+D/justify////
+D/libwww////
+D/perlmatch////
+D/regmatch////
+D/sgml////
+D/slx////
+D/w4////
+D/wildmatch////
+D/xasp////
+D/xmc////
+D/xpath////
+D/xsbdoc////
+/README/1.2/Thu Aug  9 14:50:41 2007//
+D/SModels////
+D/iprolog////
+/clpr.P/1.9/Sat Feb  2 19:03:41 2008//
+/Makefile/1.33/Sat Feb  2 22:46:15 2008//
+D/bounds////
+/bounds.pl/1.2/Wed Feb 13 22:11:45 2008//
+/bounds.xwam/1.1/Thu Feb 14 23:46:12 2008/-kb/
+/xsbdoc.P/1.3/Fri Apr 25 14:04:23 2008//
+/altcdf.P/1.4/Thu Oct 16 17:58:01 2008//

@@ -1,0 +1,10 @@
+
+name('Huge key support').
+
+authors(['Jan Ramon']).
+
+contact(['janr@cs.kuleuven.ac.be']).
+
+load_message('Loading huge key setting support').
+
+use_module(hugechunk).

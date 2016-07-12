@@ -1,0 +1,55 @@
+:- ensure_loaded(xasp).
+
+:- import smcInit/0, smcAddRule/2, smcCommitProgram/0 from sm_int.
+:- import smcSetCompute/1, smComputeModel/0, smcExamineModel/1, smEnd/0 
+					from sm_int.
+:- import thread_create/1 from thread.
+:- import thread_get_message/2,  thread_send_message/2, message_queue_create/1 from mutex_xsb.
+
+test1(Queue) :-
+	smcInit,
+	smcAddRule(a1,[]),
+	smcAddRule(b1,[]),
+	smcAddRule(d1,[a1,not(c1)]),
+	smcAddRule(c1,[b1,not(d1)]),
+	smcCommitProgram,
+	write('All Solutions: '),nl,
+	(   smComputeModel,
+	    smcExamineModel(Model),
+	    thread_send_message(Queue,solution(program1,Model)),
+	    fail
+	;
+	    thread_send_message(Queue,no_more_solutions),
+	    smEnd  ).
+
+test2(Queue) :-
+	smcInit,
+	smcAddRule(a2,[]),
+	smcAddRule(b2,[]),
+	smcAddRule(d2,[a2,not(c2)]),
+	smcAddRule(c2,[b2,not(d2)]),
+	smcCommitProgram,
+	write('All Solutions: '),nl,
+	(   smComputeModel,
+	    smcExamineModel(Model),
+	    thread_send_message(Queue,solution(program2,Model)),
+	    fail
+	;
+	    thread_send_message(Queue,no_more_solutions),
+	    smEnd  ).
+
+test:- 
+	message_queue_create(Queue1),
+	message_queue_create(Queue2),
+	thread_create(test1(Queue1)),
+	thread_create(test2(Queue2)),
+	read_models(Queue1),
+	read_models(Queue2).
+
+read_models(Queue):- 
+	repeat,
+	thread_get_message(Queue,Message),
+	(Message = no_more_solutions ->
+	    true
+	  ; writeln(Message),
+	    fail ).

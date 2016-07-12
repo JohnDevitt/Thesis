@@ -1,0 +1,12 @@
+
+name('MultiLinreg').
+
+authors(['Celine Vens']).
+
+contact(['Celine.Vens@cs.kuleuven.ac.be']).
+
+load_message('Loading MultiLinreg for ACE').
+
+use_module('statistics/multilinreg/multilinreg').
+
+end_of_header.
