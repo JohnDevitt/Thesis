@@ -1,0 +1,30 @@
+# Configure input file for DejaGnu site.exp
+
+# Copyright (C) 2013-2014 Embecosm Limited and the University of Bristol
+
+# Contributor Pierre Langlois <pierre.langlois@embecosm.com>
+
+# This file is part of BEEBS
+
+# This program is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the Free
+# Software Foundation; either version 3 of the License, or (at your option)
+# any later version.
+
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for
+# more details.
+
+# You should have received a copy of the GNU General Public License along
+# with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+set benchmarks "2dfir adpcm aha-compress aha-mont64 blowfish bs bubblesort cnt compress cover crc crc32 ctl-stack ctl-string ctl-vector cubic dhrystone dijkstra dtoa duff edn expint fac fasta fdct fft fibcall fir frac huffbench insertsort janne_complex jfdctint lcdnum levenshtein lms ludcmp matmult-int matmult-float mergesort miniz minver nbody ndes nettle-arcfour nettle-cast128 nettle-des nettle-md5 newlib-exp newlib-log newlib-mod newlib-sqrt ns nsichneu picojpeg prime qrduino qsort qurt recursion rijndael select sglib-arraybinsearch sglib-arrayheapsort sglib-arrayquicksort sglib-dllist sglib-hashtable sglib-listinsertsort sglib-listsort sglib-queue sglib-rbtree sha slre stringsearch1 strstr sqrt st statemate stb_perlin tarai trio-snprintf trio-sscanf ud wikisort whetstone "
+
+if ![info exists boards_dir] {
+  lappend boards_dir "$srcdir/dejagnu"
+} else {
+  set boards_dir "$srcdir/dejagnu"
+}
+lappend boards_dir "$srcdir/dejagnu/baseboards"
+lappend boards_dir "$srcdir/dejagnu/config"
