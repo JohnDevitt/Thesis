@@ -1,3 +1,0 @@
-#Save all output files during reference run
-
-cp -f ftmp_out ftmp_out-std

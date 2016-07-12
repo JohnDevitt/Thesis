@@ -1,5 +1,0 @@
-#!/bin/bash
-
-. $CCC_CFG/ccc-env.c.$1
-
-ccc-comp1 $1 "$2" "$3"

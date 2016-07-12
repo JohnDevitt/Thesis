@@ -1,1 +1,0 @@
-macuser@dialup-4.248.47.182.dial1.washington2.level3.net.14735
