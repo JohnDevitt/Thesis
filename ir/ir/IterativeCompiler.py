@@ -65,7 +65,7 @@ def build_compile_command(source_directory, subdirectory, optimisation_flags):
 	compile_command += " "
 
 	for flag in optimisation_flags[optimisation_level - 1]:
-		if(random.uniform(0, 1) < 0.1):
+		if(random.uniform(0, 1) < 0.5):
 			compile_command += flag
 			compile_command += " "
 

@@ -12,7 +12,7 @@ subdirectories = [ name for name in os.listdir(source_directory) if os.path.isdi
 
 def main():
 
-	iterative_compilation_depth = 100
+	iterative_compilation_depth = 1000
 
 	for subdirectory in subdirectories:
 		IterativeCompiler.main(source_directory, subdirectory, flag_database, iterative_compilation_depth)

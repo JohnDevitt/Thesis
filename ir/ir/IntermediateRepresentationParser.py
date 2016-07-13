@@ -2,93 +2,93 @@
 
 import re
 import ControlFlowAnalyser
+import MethodSeperator
 import os
 
 
 def main(source_directory, subdirectory):
 
 
-	# Counter varibles
-	edge_count = 0;
-	#expression_count = 0;
-	#stmt_count = 0;
 
-	# Intermediate Representation file
+	## FILE IO
 	filepath = os.path.join(source_directory, subdirectory) + "/" + subdirectory + ".c.018t.ssa"
-	
-	# Sometimes it isn't generated for some reason
 	if os.path.exists(filepath):
 		raw_ir = open(filepath, "r")
-
-		# Tabular representation of the programs control flow
-		control_flow_dict = ControlFlowAnalyser.main(filepath)
-
-		# Varible to hold the parsed result
-		processed_ir = ""
-
-		# We'll now loop through the file and parse it, line by line.
-		for line in raw_ir:
-			current_processed_line = ""
-			if re.match("(.*)<bb \D*(.*)>:", line):
-				current_processed_line, edge_count = basic_block(line, control_flow_dict, edge_count)
-			#elif re.match("(.*)if(.*)", line):	
-				#current_processed_line, stmt_count, expression_count = parse_if(line, stmt_count, expression_count)
-			#elif re.match("(.*) = (.*)", line):
-				#current_processed_line, stmt_count = assignment(line, stmt_count)
-			processed_ir += current_processed_line
-
-		write_to_file(source_directory, subdirectory, processed_ir)
-
-
-def basic_block(line, control_flow_dict, edge_count):
-
-	bb_num = re.findall(r'\d+', line)[0]
-	processed_line = "% New Basic Block %\n"
-	processed_line += "bb_p(bb" + bb_num + ").\n"
-	processed_line += "% Here is the control flow info from this basic block %\n"
-
-	for src in control_flow_dict[bb_num]:
-		processed_line += "edge_src(ed" + str(edge_count) + ", bb" + str(src) + ").\n"
-		processed_line += "edge_dest(ed" + str(edge_count) + ", bb" + str(bb_num) + ").\n"
-		edge_count = edge_count + 1
-
-	processed_line += "% bb End control flow info %\n"
-
-	return processed_line, edge_count
+		processed_ir = raw_ir.readlines()
+		ace_ir = "\nbegin(model(" + subdirectory + ")).\n"
+		ace_ir += "classification.\n"
 
 
 
-def parse_if(line, stmt_count, expression_count):
+		## First, break the code down into it's seperate methods.
+		method_dict = MethodSeperator.build_method_dict(processed_ir)
 
 
-	processed_line = "% start if stmt %\n"
-	processed_line += "stmt_code(st"  +str(stmt_count) + ", gimple_cond).\n"
-	stmt_count = stmt_count + 1
-	processed_line += "cond_op(st" + str(stmt_count) + ", e" +  str(expression_count) + "). % Left operand % \n"
-	expression_count = expression_count + 1
-	processed_line += "cond_op(st" + str(stmt_count) + ", e" +  str(expression_count) + "). % Right operand % \n"
-	expression_count = expression_count + 1
-	processed_line += "cond_true(st"+ str(stmt_count) + ", e" +  str(expression_count) + ").\n"
-	expression_count = expression_count + 1
-	processed_line += "cond_false(st"+ str(stmt_count) + ", e" +  str(expression_count) + ").\n"
-	expression_count = expression_count + 1
-	processed_line += "% end if stmt %\n"
-	return processed_line, stmt_count, expression_count
 
-def assignment(line, stmt_count):
+###############################################################################################
 
-	processed_line = "% start assign stmt %\n"
-	processed_line += "stmt_code(st"  +str(stmt_count) + ", gimple_assign).\n"
-	processed_line += "stmt_flag(st"  +str(stmt_count) + ", has_mem_ops).\n"
-	stmt_count = stmt_count + 1
-	processed_line += "% end assign stmt %\n"
-	return processed_line, stmt_count
+		ace_ir += "%%%%%%%%%% STRUCTURAL ELEMENTS %%%%%%%%%%\n"
+		for method in method_dict:
+			ace_ir += "method(" + method + ").\n"
+
+		for method in method_dict:
+			control_flow_dict = ControlFlowAnalyser.main(method_dict[method])
+			for bblock in control_flow_dict:
+				ace_ir += "basic_block(" + method + "_" + bblock + ").\n"
+
+		ace_ir += "\n\n\n\n\n\n\n\n\n"
+		ace_ir += "%%%%%%%%%% STRUCTURE %%%%%%%%%%\n"
+
+		for method in method_dict:
+			control_flow_dict = ControlFlowAnalyser.main(method_dict[method])
+			for bblock in control_flow_dict:
+				ace_ir += "in(" + method + "_" + bblock + ", " + method + ").\n"
+
+		ace_ir += "\n\n\n\n"
+
+###############################################################################################
+
+
+		for method in method_dict:
+			## Then analyse the structure of each method.
+			control_flow_dict = ControlFlowAnalyser.main(method_dict[method])
+			for bblock in control_flow_dict:
+				for source in control_flow_dict[bblock]:
+					ace_ir += "directed_edge(" + method + "_" + str(source) + ", " + method + "_" + bblock + ").\n"
+
+
+		ace_ir += "\n\n\n\n"
+
+###############################################################################################
+	
+		for method in method_dict:
+			for line in method_dict[method].splitlines():
+				print line
+				if re.match("(.*)\);", line):
+					method_name = line.split()
+					ace_ir += "method_call(" + method + ", " + method_name[0] + ")."
+
+		ace_ir += "\n\n\n\n"
+
+
+
+		ace_ir += "end(model(" + subdirectory + ")).\n"
+		write_to_file(source_directory, subdirectory, ace_ir)
+
+
 
 def write_to_file(source_directory, subdirectory, processed_ir):
 	# Print the output
 	outfile = os.path.join(source_directory, subdirectory, "processed_ir.P")
 	file = open(outfile, 'w')
 	file.write(processed_ir)
+
+def parse_function_name(line):
+	processed_string = line.split()
+	return processed_string[0]
+
+
+
 
 if __name__ == '__main__':
 	main()
