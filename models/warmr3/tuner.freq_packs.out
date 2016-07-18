@@ -1,0 +1,21 @@
+/** -------------------------------------------------
+ ** Algorithm:   Warmr
+ ** Output type: freq_packs.out
+ ** Date:        7/18/2016 0:30:6
+ ** ACE version: 1.2.20
+ ** Hardware:    ubuntu : x86_64 running Linux
+ ** -------------------------------------------------
+ **/
+
+sample_size(104.0)
+min_rel_freq(0.01)
+min_abs_freq(1.04)
+
+level(1)
+true 1.0
+c_counter(1,1)
+f_counter(1,1)
+
+level(2)
+c_counter(2,0)
+f_counter(2,0)
