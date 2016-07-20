@@ -17,6 +17,12 @@ def main(source_directory, subdirectory):
 	generate_command = "make -C " + directory + "/ clean; make -C " + directory + "/ CFLAGS='-fdump-tree-ssa'"
 	print subprocess.Popen(generate_command, shell=True, stdout=subprocess.PIPE).stdout.read()
 
+	filename = subdirectory + ".c.018t.ssa"
+	filepath = os.path.join(source_directory, subdirectory, filename) 
+	if os.path.exists(filepath):
+		return True
+	else:
+		return False
 
 if __name__ == '__main__':
 	main()

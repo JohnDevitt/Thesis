@@ -1,0 +1,62 @@
+/** -------------------------------------------------
+ ** Algorithm:   Warmr
+ ** Output type: freq_queries.out
+ ** Date:        7/20/2016 18:10:1
+ ** ACE version: 1.2.20
+ ** Hardware:    ubuntu : x86_64 running Linux
+ ** -------------------------------------------------
+ **/
+
+sample_size(52.0).
+min_rel_freq(0.5).
+min_abs_freq(26.0).
+
+level(1).
+freq(1,1,[true],0.5).
+c_counter(1,1).
+f_counter(1,1).
+
+level(2).
+freq(2,1,[true,method(A)],0.5).
+freq(2,2,[true,basic_block(A)],0.5).
+freq(2,3,[true,in(A,B)],0.5).
+freq(2,4,[true,directed_edge(A,B)],0.5).
+c_counter(2,8).
+f_counter(2,4).
+
+level(3).
+freq(3,1,[true,method(A),basic_block(B)],0.5).
+freq(3,2,[true,method(A),in(B,A)],0.5).
+freq(3,3,[true,method(A),in(B,C)],0.5).
+freq(3,4,[true,method(A),directed_edge(B,C)],0.5).
+freq(3,5,[true,basic_block(A),in(A,B)],0.5).
+freq(3,6,[true,basic_block(A),in(B,C)],0.5).
+freq(3,7,[true,basic_block(A),directed_edge(B,A)],0.5).
+freq(3,8,[true,basic_block(A),directed_edge(B,C)],0.5).
+freq(3,9,[true,in(A,B),directed_edge(C,A)],0.5).
+freq(3,10,[true,in(A,B),directed_edge(C,D)],0.5).
+c_counter(3,25).
+f_counter(3,10).
+
+level(4).
+freq(4,1,[true,method(A),basic_block(B),in(B,A)],0.5).
+freq(4,2,[true,method(A),basic_block(B),in(B,C)],0.5).
+freq(4,3,[true,method(A),basic_block(B),in(C,A)],0.5).
+freq(4,4,[true,method(A),basic_block(B),in(C,D)],0.5).
+freq(4,5,[true,method(A),basic_block(B),directed_edge(C,B)],0.5).
+freq(4,6,[true,method(A),basic_block(B),directed_edge(C,D)],0.5).
+freq(4,7,[true,method(A),in(B,A),directed_edge(C,B)],0.5).
+freq(4,8,[true,method(A),in(B,A),directed_edge(C,D)],0.5).
+freq(4,9,[true,method(A),in(B,C),method(C)],0.5).
+freq(4,10,[true,method(A),in(B,C),directed_edge(D,B)],0.5).
+freq(4,11,[true,method(A),in(B,C),directed_edge(D,E)],0.5).
+freq(4,12,[true,basic_block(A),in(A,B),directed_edge(C,A)],0.5).
+freq(4,13,[true,basic_block(A),in(A,B),directed_edge(C,D)],0.5).
+freq(4,14,[true,basic_block(A),in(B,C),basic_block(B)],0.5).
+freq(4,15,[true,basic_block(A),in(B,C),directed_edge(D,B)],0.5).
+freq(4,16,[true,basic_block(A),in(B,C),directed_edge(D,A)],0.5).
+freq(4,17,[true,basic_block(A),in(B,C),directed_edge(D,E)],0.5).
+freq(4,18,[true,basic_block(A),directed_edge(B,C),basic_block(C)],0.5).
+freq(4,19,[true,in(A,B),directed_edge(C,D),in(D,B)],0.5).
+c_counter(4,19).
+f_counter(4,19).

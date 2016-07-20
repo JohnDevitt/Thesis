@@ -20,11 +20,5 @@ for subdirectory in subdirectories:
 with open(os.path.join("/home/john/Thesis", "app.kb"), 'w') as outfile:
 	for subdirectory in subdirectories:
 		if os.path.exists(os.path.join(source_directory, subdirectory, "processed_ir.P")):
-			with open(os.path.join(source_directory, subdirectory, "good_processed_ir.P")) as infile:
+			with open(os.path.join(source_directory, subdirectory, "processed_ir.P")) as infile:
 				outfile.write(infile.read())
-			with open(os.path.join(source_directory, subdirectory, "bad_processed_ir.P")) as infile:
-				outfile.write(infile.read())
-
-
-
-print count
