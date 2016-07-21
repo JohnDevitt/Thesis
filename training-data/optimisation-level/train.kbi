@@ -1,0 +1,1 @@
+example_predicates([three/0,method/1,basic_block/1,in/2,directed_edge/2,method_call/2,one/0,two/0]).

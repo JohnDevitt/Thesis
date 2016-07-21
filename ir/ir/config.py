@@ -10,3 +10,78 @@ iteative_compilation_depth = 1000
 
 
 training_data_directory = "/home/john/Thesis/training-data"
+
+
+optimisation_settings = """
+
+load(models).
+prune_rules(false).
+use_packs(ilp).
+
+classes([one, two, three]).
+
+
+use_packs(0).
+resume(off).
+sampling_strategy(none).
+
+warmode(method(+-obj)).
+warmode(basic_block(+-obj)).
+warmode(in(+-obj, +-obj)).
+warmode(directed_edge(+-obj, +-obj)).
+warmode(method_call(+-obj, +-obj)).
+
+load_package(query).
+log_queries([prettypacks]).
+
+minfreq(0.5).
+warmr_maxdepth(4).
+warmode(method_call(+-obj, +-obj)).
+
+
+"""
+
+
+
+binary_settings = """
+
+load(models).
+prune_rules(false).
+use_packs(ilp).
+
+classes([true, false]).
+
+
+use_packs(0).
+resume(off).
+sampling_strategy(none).
+
+warmode(method(+-obj)).
+warmode(basic_block(+-obj)).
+warmode(in(+-obj, +-obj)).
+warmode(directed_edge(+-obj, +-obj)).
+warmode(method_call(+-obj, +-obj)).
+
+load_package(query).
+log_queries([prettypacks]).
+
+minfreq(0.5).
+warmr_maxdepth(4).
+warmode(method_call(+-obj, +-obj)).
+
+
+"""
+
+runner_script = """
+
+#!/usr/bin/env bash
+ 
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
+echo "$SCRIPT_DIR"
+cd $SCRIPT_DIR
+
+echo "tilde" | $ACE_ILP_ROOT/bin/ace
+echo "warmr" | $ACE_ILP_ROOT/bin/ace
+
+
+"""

@@ -10,120 +10,103 @@ Should take days to run so use with caution!!!
 import os
 import subprocess
 import config
-import IterativeCompiler
-import IntermediateRepresentationGenerator
-import IntermediateRepresentationParser
-import FlagParser
-import CRReader
+import iterative.IterativeCompiler as IterativeCompiler
+import parser.IntermediateRepresentationGenerator as IntermediateRepresentationGenerator
+import parser.IntermediateRepresentationParser as IntermediateRepresentationParser
+import parser.FlagParser as FlagParser
+import parser.CRReader as CRReader
 
 ## This is a list of all the programs in beebs
 subdirectories = [ name for name in os.listdir(config.source_directory) if os.path.isdir(os.path.join(config.source_directory, name)) ]
-
+## Parse the Flags into a list
+flags = FlagParser.main(config.flag_database)
 
 def main():
 
-	## Parse the Flags into a list
-	flags = FlagParser.main(config.flag_database)
+
+	################################### Initial directory structure setup ###################################
+	## Build the directory for the optimistation level flag
+	build_directory("optimisation-level", config.optimisation_settings)
+
 	for flag in flags:
 
-		directory = os.path.join(config.training_data_directory, "dir" + flag)
-		if not os.path.exists(directory):
-			os.makedirs(directory)
+		## Build the directory for every other flag
+		directory_name = "dir" + flag
+		build_directory(directory_name, config.binary_settings)
 
-		filepath = os.path.join(config.training_data_directory, "dir" + flag, "train.kb")
-		file = open(filepath, 'w')
-		file.close()
-
-	## And this is the pipeline
+	################################### And this is the pipeline ###################################
 	for subdirectory in subdirectories:
+		## Iterative Compilation
 		if(config.run_iterative_compilation):
-			## Run Iterative Compilation (and generate the compilation reports).
-			## A nice addition would be a supplied variable as to whether you want to run
-			## iterative compilation again, or proceed with previously generated compilation reports.
 			IterativeCompiler.main(config.source_directory, subdirectory, config.flag_database, config.iterative_compilation_depth)
 
-		## Change the c files into the ssa representation.
+		## SSA generation
 		generated = IntermediateRepresentationGenerator.main(config.source_directory, subdirectory)
 
 		if(generated):
-			compiler_configuration = CRReader.main(config.source_directory, subdirectory)
+			## Fetch the configuration
+			compiler_configuration = CRReader.binary_flag_reader(config.source_directory, subdirectory)
+			optimisation_level = CRReader.optimisation_flag_reader(config.source_directory, subdirectory)
+
+			directory_name = "optimisation-level"
+			filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
+			file = open(filepath, 'a')
+
+			file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, optimisation_level))		
+
 			for flag in flags:
-
-				#print flag
-
-				filepath = os.path.join(config.training_data_directory, "dir" + flag, "train.kb")
+				directory_name = "dir" + flag
+				filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
 				file = open(filepath, 'a')
 				
 				## Parse the intermediate representation once per flag.
 				if flag in compiler_configuration:
-					file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, flag, True))
+					file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, True))
 				else:
-					file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, flag, False))
+					file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, False))
 
 				file.close()
-
-	print subprocess.Popen("rm -rf" + config.training_data_directory, shell=True, stdout=subprocess.PIPE).stdout.read()
-
-
-	for directory in os.walk(config.training_data_directory):
-		path = str(directory[0]) + "/" + "train.s"
-		settings_file = open(path, 'w')
-		settings_file.write("""
-
-load(models).
-prune_rules(false).
-use_packs(ilp).
-
-classes([true, false]).
-
-
-use_packs(0).
-resume(off).
-sampling_strategy(none).
-
-warmode(method(+-obj)).
-warmode(basic_block(+-obj)).
-warmode(in(+-obj, +-obj)).
-warmode(directed_edge(+-obj, +-obj)).
-warmode(method_call(+-obj, +-obj)).
-
-load_package(query).
-log_queries([prettypacks]).
-
-minfreq(0.5).
-warmr_maxdepth(4).
-warmode(method_call(+-obj, +-obj)).
-
-
-""")
-		settings_file.close()
-
 	
-	for directory in os.walk(config.training_data_directory):
-		path = str(directory[0]) + "/" + "run.sh"
-		print "-------------------------------------------"
-		print path
-		print "-------------------------------------------"
-		runner_script = open(path, 'w')
-		runner_script.write("""
-
-#!/usr/bin/env bash
- 
-SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
-echo "$SCRIPT_DIR"
-cd $SCRIPT_DIR
-
-echo "tilde" | $ACE_ILP_ROOT/bin/ace
-echo "warmr" | $ACE_ILP_ROOT/bin/ace
+	################################### Model Builder ###################################
+	build_all()
 
 
-""")
-		runner_script.close()
 
+def build_directory(directory_name, settings):
 
-		print subprocess.Popen("chmod +x " + path, shell=True, stdout=subprocess.PIPE).stdout.read()
-		print subprocess.Popen(path, shell=True, stdout=subprocess.PIPE).stdout.read()
+	## Build the directory
+	directory = os.path.join(config.training_data_directory, directory_name)
+	if not os.path.exists(directory):
+		os.makedirs(directory)
 
+	## Build the knowledge base
+	filepath = os.path.join(directory, "train.kb")
+	file = open(filepath, 'w')
+	file.close()
+
+	## Build the settings file
+	path = os.path.join(directory, "train.s")
+	settings_file = open(path, 'w')
+	settings_file.write(settings)
+	settings_file.close()
+
+	## Build the runner script
+	path = os.path.join(directory, "run.sh")
+	runner_script = open(path, 'w')
+	runner_script.write(config.runner_script)
+	runner_script.close()
+
+def build_model(path):
+	print subprocess.Popen("chmod +x " + os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE).stdout.read()
+	print subprocess.Popen(os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE).stdout.read()
+
+def build_all():
+	path = os.path.join(config.training_data_directory, "optimisation-level")
+	build_model(path)
+
+	for flag in flags:
+		path = os.path.join(config.training_data_directory, "dir" + flag)
+		build_model(path)
 
 
 if __name__ == '__main__':
