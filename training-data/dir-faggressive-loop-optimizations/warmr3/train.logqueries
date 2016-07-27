@@ -1,2 +1,10 @@
 % fail
 
+% true,method_call(A,A)
+%      method_call(B,C)
+
+% method_call(A,B),method_call(B,A)
+%                  method_call(B,C)
+
+% directed_edge(A,B),directed_edge(B,C),method_call(D,E)
+

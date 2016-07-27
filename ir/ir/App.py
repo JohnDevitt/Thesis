@@ -32,44 +32,47 @@ def main():
 		build_directory(directory_name, config.binary_settings)
 
 	################################### And this is the pipeline ###################################
-	## Iterative Compilation
-
-	report = IterativeCompiler.main(config.source_directory, config.flag_database, config.iterative_compilation_depth)
+	if(config.run_iterative_compilation):
+		## Iterative Compilation
+		report = IterativeCompiler.main(config.source_directory, config.flag_database, config.iterative_compilation_depth)
 		
-	for directory in subdirectories:
+	## IR Parse
+	for subdirectory in subdirectories:
 
 		## SSA generation
 		generated = IntermediateRepresentationGenerator.main(config.source_directory, subdirectory)
 
-	'''
+		## If SSA generation worked
 		if(generated):
 			## Fetch the configuration
 			compiler_configuration = CRReader.binary_flag_reader(config.source_directory, subdirectory)
+			## And parse the optimisation flag
 			optimisation_level = CRReader.optimisation_flag_reader(config.source_directory, subdirectory)
 
-			directory_name = "optimisation-level"
-			filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
-			file = open(filepath, 'a')
+			if(not compiler_configuration == False or 
+				not optimisation_level == False):
 
-			file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, optimisation_level))		
-
-			for flag in flags:
-				directory_name = "dir" + flag
+				## And write accordingly to that datum
+				directory_name = "optimisation-level"
 				filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
 				file = open(filepath, 'a')
-				
-				## Parse the intermediate representation once per flag.
-				if flag in compiler_configuration:
-					file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, True))
-				else:
-					file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, False))
+				file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, optimisation_level))		
 
-				file.close()
+				for flag in flags:
+					directory_name = "dir" + flag
+					filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
+					file = open(filepath, 'a')
+					
+					## Parse the intermediate representation once per flag.
+					if flag in compiler_configuration:
+						file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, True))
+					else:
+						file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, False))
+
+					file.close()
 	
 	################################### Model Builder ###################################
 	build_all()
-
-'''
 
 def build_directory(directory_name, settings):
 

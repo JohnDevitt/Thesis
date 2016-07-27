@@ -1,5 +1,1 @@
-directed_edge(A,-A) ? 
-+--yes: method(A) ? 
-|       +--yes: [three] 9.0 [[one:3.0,two:3.0,three:3.0]]
-|       +--no:  [three] 5.0 [[one:2.0,two:1.0,three:2.0]]
-+--no:  [one] 38.0 [[one:17.0,two:13.0,three:8.0]]
+[three] 52.0 [[one:0.0,two:0.0,three:52.0]]

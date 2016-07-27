@@ -7,7 +7,9 @@ import FlagParser
 import os
 
 
-def main(source_directory, subdirectory, enabled):
+
+
+def main(source_directory, subdirectory, flag):
 
 
 
@@ -17,7 +19,7 @@ def main(source_directory, subdirectory, enabled):
 	raw_ir = open(filepath, "r")
 	processed_ir = raw_ir.readlines()
 	ace_ir = "\nbegin(model(" + subdirectory + ")).\n"
-	ace_ir += str(enabled).lower() + ".\n"
+	ace_ir += str(flag).lower() + ".\n"
 
 
 
@@ -57,15 +59,16 @@ def main(source_directory, subdirectory, enabled):
 
 ###############################################################################################
 
+	#print method_dict
+
 	for method in method_dict:
 		for line in method_dict[method].splitlines():
-			if re.match("(.*) \((.*)\);", line):
-				method_name = line.split()
-				if(len(method_name) == 2):
-					ace_ir += "method_call(" + method + ", " + method_name[0] + ").\n"
-
-
-
+			pattern = r'(\w*) \((.*)\);$'
+			match = re.search(pattern, line)
+			if match:
+				method_name = list(match.groups())[0]
+				if(method_name in method_dict.keys()):
+					ace_ir += "method_call(" + method + ", " + method_name + ").\n"
 	ace_ir += "end(model(" + subdirectory + ")).\n\n"
 	return ace_ir
 

@@ -2,18 +2,18 @@
 import os
 import pickle
 
-def binary_flag_reader(directory, subdirectory):
-	if os.path.isfile(os.path.join(source_directory, directory, "compilation_report.pickle")):
-		with open(os.path.join(source_directory, directory, "compilation_report.pickle"), 'rb') as input_file:
+def binary_flag_reader(source_directory, subdirectory):
+	if os.path.isfile(os.path.join(source_directory, subdirectory, "compilation_report.pickle")):
+		with open(os.path.join(source_directory, subdirectory, "compilation_report.pickle"), 'rb') as input_file:
 			compilation_report = pickle.load(input_file)
 
 		flags = compilation_report['Configuration'][1:]
 		return flags
 	return False
 
-def optimisation_flag_reader(directory, subdirectory):
-	if os.path.isfile(os.path.join(source_directory, directory, "compilation_report.pickle")):
-		with open(os.path.join(source_directory, directory, "compilation_report.pickle"), 'rb') as input_file:
+def optimisation_flag_reader(source_directory, subdirectory):
+	if os.path.isfile(os.path.join(source_directory, subdirectory, "compilation_report.pickle")):
+		with open(os.path.join(source_directory, subdirectory, "compilation_report.pickle"), 'rb') as input_file:
 			compilation_report = pickle.load(input_file)
 
 		flag = compilation_report['Configuration'][1:]
@@ -24,4 +24,4 @@ def optimisation_flag_reader(directory, subdirectory):
 			return "two"
 		else:
 			return "three"
-	return false
+	return False

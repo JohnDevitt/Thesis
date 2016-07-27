@@ -1,2 +1,9 @@
 % fail
 
+% true,method_call(A,A)
+%      method_call(B,C)
+
+% fail
+
+% fail
+
