@@ -119,10 +119,10 @@ def compile_and_run(directory, filename, configuration):
 	compile_command = command_generator.parse_configuration(configuration, directory)
 
 	## Run Bash Commands
-	command_executor.compile_program(compile_command)
-	median = numpy.median([command_executor.run_program(run_command) for num in range(0, 10)])
+	if( command_executor.compile_program(compile_command) ):
+		return command_executor.run_program(run_command)
 
-	return median
+	return 0
 
 def get_optimisiation_level(configuration):
 	return configuration[0][1:]

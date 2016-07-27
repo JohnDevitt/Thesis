@@ -2,35 +2,26 @@
 #!/usr/bin/env python
 
 import subprocess
-import time
+import timeit
+import numpy
 
-def compile_program(compile_command):
+def compile_program(command):
 
-	successful = make_system_call(compile_command)	
-
-def run_program(run_command):
-	
-	end = 0
-	start = 0
-
-	start = time.time()
-	successful = make_system_call(run_command)
-	end = time.time()
-
-	runtime = end - start
-
-	if successful:
-		return runtime
-	else:
-		return float('inf')
-
-
-def make_system_call(command):
 	p = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE)
 	p.communicate()[0]
 
 	if (p.returncode > 1):
 		return False
 	return True
+
+def run_program(path):
+
+
+	command = 'p = subprocess.Popen(\'time ' + path + '\', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE); out, err = p.communicate()'
+
+	result = timeit.Timer(command, setup='import subprocess').repeat(1, 10)
+	return numpy.median(result)
+
+
 
 
