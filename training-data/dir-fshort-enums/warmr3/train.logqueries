@@ -3,7 +3,13 @@
 % true,method_call(A,A)
 %      method_call(B,C)
 
-% fail
+% method_call(A,B),method_call(B,B)
+%                  method_call(B,A)
+%                  method_call(B,C)
 
-% fail
+% method_call(A,B),method_call(B,A),method_call(B,B)
+%                  method_call(B,C),method_call(C,B)
+%                                   method_call(C,A)
+%                                   method_call(C,D)
+%                                   method_call(A,C)
 

@@ -6,7 +6,7 @@ flag_database = "/home/john/Thesis/ir/ir/arm-none-eabi-gcc-4.8.2-flags.csv"
 
 
 run_iterative_compilation = False
-iteative_compilation_depth = 1000
+iterative_compilation_depth = 10
 
 
 training_data_directory = "/home/john/Thesis/training-data"

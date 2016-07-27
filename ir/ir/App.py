@@ -10,7 +10,7 @@ Should take days to run so use with caution!!!
 import os
 import subprocess
 import config
-import iterative.IterativeCompiler as IterativeCompiler
+import iterative_compiler.App as IterativeCompiler
 import parser.IntermediateRepresentationGenerator as IntermediateRepresentationGenerator
 import parser.IntermediateRepresentationParser as IntermediateRepresentationParser
 import parser.FlagParser as FlagParser
@@ -23,26 +23,25 @@ flags = FlagParser.main(config.flag_database)
 
 def main():
 
-
 	################################### Initial directory structure setup ###################################
 	## Build the directory for the optimistation level flag
 	build_directory("optimisation-level", config.optimisation_settings)
-
 	for flag in flags:
-
 		## Build the directory for every other flag
 		directory_name = "dir" + flag
 		build_directory(directory_name, config.binary_settings)
 
 	################################### And this is the pipeline ###################################
-	for subdirectory in subdirectories:
-		## Iterative Compilation
-		if(config.run_iterative_compilation):
-			IterativeCompiler.main(config.source_directory, subdirectory, config.flag_database, config.iterative_compilation_depth)
+	## Iterative Compilation
+
+	report = IterativeCompiler.main(config.source_directory, config.flag_database, config.iterative_compilation_depth)
+		
+	for directory in subdirectories:
 
 		## SSA generation
 		generated = IntermediateRepresentationGenerator.main(config.source_directory, subdirectory)
 
+	'''
 		if(generated):
 			## Fetch the configuration
 			compiler_configuration = CRReader.binary_flag_reader(config.source_directory, subdirectory)
@@ -70,7 +69,7 @@ def main():
 	################################### Model Builder ###################################
 	build_all()
 
-
+'''
 
 def build_directory(directory_name, settings):
 

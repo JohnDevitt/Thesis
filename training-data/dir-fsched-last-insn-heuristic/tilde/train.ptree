@@ -1,3 +1,1 @@
-method(-A) ? 
-+--yes: [true] 31.0 [[true:31.0,false:0.0]]
-+--no:  [false] 21.0 [[true:0.0,false:21.0]]
+[false] 0.0 [[true:0.0,false:0.0]]

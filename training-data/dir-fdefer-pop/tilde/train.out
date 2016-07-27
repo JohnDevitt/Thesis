@@ -1,7 +1,7 @@
 /** -------------------------------------------------
  ** Algorithm:   Tilde
  ** Output type: out
- ** Date:        7/21/2016 0:40:31
+ ** Date:        7/21/2016 13:47:19
  ** ACE version: 1.2.20
  ** Hardware:    ubuntu : x86_64 running Linux
  ** -------------------------------------------------
@@ -122,47 +122,21 @@ Average discretization time: 0.0
 Average induction time: 0.0
 
 Model:
-    Complexity: 1.0 nodes, 1.0 literals
-    C4.5 error estimate: 2.69827184812997, relative: 0.0518898432332686
+    Complexity: 0.0 nodes, 0.0 literals
+    C4.5 error estimate: -nan, relative: -nan
 Training:
-    Number of examples: 52
-
-    REAL\PRED | true      false     
-    ----------------------------------------------
-    true      | 30        0         | 30
-    false     | 0         22        | 22
-    ----------------------------------------------
-              | 30        22        | 52
-
-    Accuracy: 1.0 (stderr: 0.0, default: 0.576923076923077)
-    Cramer's coefficient: 1.0
-    Class: true: TP = 1.0, FP = 0.0
+    No examples available.
 Testing:
-    Number of examples: 22
-
-    REAL\PRED | true      false     
-    ----------------------------------------------
-    true      | 0         0         | 0
-    false     | 0         22        | 22
-    ----------------------------------------------
-              | 0         22        | 22
-
-    Accuracy: 1.0 (stderr: 0.0, default: 1.0)
-    Cramer's coefficient: 0.0
-    Class: true: TP = -nan, FP = 0.0
+    No examples available.
 
 
 Compact notation of tree:
 
-method(-A) ? 
-+--yes: [true] 30.0 [[true:30.0,false:0.0]]
-+--no:  [false] 22.0 [[true:0.0,false:22.0]]
+[false] 0.0 [[true:0.0,false:0.0]]
 
 Equivalent prolog program:
 
-class([true]) :- method(A), !.
-% 30.0/30.0=1.0
 class([false]).
-% 22.0/22.0=1.0
+% 0.0/0.0=-nan
 
 

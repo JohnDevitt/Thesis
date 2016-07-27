@@ -1,13 +1,5 @@
 directed_edge(A,-A) ? 
-+--yes: method_call(-B,-C) ? 
-|       +--yes: in(A,C) ? 
-|       |       +--yes: method_call(A,A) ? 
-|       |       |       +--yes: [three] 6.0 [[one:2.0,two:1.0,three:3.0]]
-|       |       |       +--no:  [one] 3.0 [[one:2.0,two:1.0,three:0.0]]
-|       |       +--no:  [three] 2.0 [[one:0.0,two:0.0,three:2.0]]
-|       +--no:  [two] 3.0 [[one:1.0,two:2.0,three:0.0]]
-+--no:  method_call(-D,-E) ? 
-        +--yes: method_call(E,-F) ? 
-        |       +--yes: [two] 2.0 [[one:0.0,two:2.0,three:0.0]]
-        |       +--no:  [one] 8.0 [[one:6.0,two:1.0,three:1.0]]
-        +--no:  [one] 28.0 [[one:11.0,two:10.0,three:7.0]]
++--yes: method(A) ? 
+|       +--yes: [three] 9.0 [[one:3.0,two:3.0,three:3.0]]
+|       +--no:  [three] 5.0 [[one:2.0,two:1.0,three:2.0]]
++--no:  [one] 38.0 [[one:17.0,two:13.0,three:8.0]]

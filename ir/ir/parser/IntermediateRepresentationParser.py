@@ -59,7 +59,7 @@ def main(source_directory, subdirectory, enabled):
 
 	for method in method_dict:
 		for line in method_dict[method].splitlines():
-			if re.match("(.*)\);", line):
+			if re.match("(.*) \((.*)\);", line):
 				method_name = line.split()
 				if(len(method_name) == 2):
 					ace_ir += "method_call(" + method + ", " + method_name[0] + ").\n"
