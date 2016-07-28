@@ -1,0 +1,151 @@
+/** -------------------------------------------------
+ ** Algorithm:   Warmr
+ ** Output type: freq_packs.out
+ ** Date:        7/28/2016 12:9:35
+ ** ACE version: 1.2.20
+ ** Hardware:    ubuntu : x86_64 running Linux
+ ** -------------------------------------------------
+ **/
+
+sample_size(52.0)
+min_rel_freq(0.5)
+min_abs_freq(26.0)
+
+level(1)
+true 1.0
+c_counter(1,1)
+f_counter(1,1)
+
+level(2)
+true,method(A) 1.0
+     basic_block(A) 1.0
+     in(A,B) 1.0
+     directed_edge(A,B) 1.0
+     method_call(A,B) 0.903846153846154
+c_counter(2,8)
+f_counter(2,5)
+
+level(3)
+true,method(A),basic_block(B) 1.0
+               in(B,A) 1.0
+               in(B,C) 1.0
+               directed_edge(B,C) 1.0
+               method_call(A,B) 0.903846153846154
+               method_call(B,A) 0.903846153846154
+               method_call(B,C) 0.903846153846154
+     basic_block(A),in(A,B) 1.0
+                    in(B,C) 1.0
+                    directed_edge(A,B) 0.980769230769231
+                    directed_edge(B,A) 1.0
+                    directed_edge(B,C) 1.0
+                    method_call(B,C) 0.903846153846154
+     in(A,B),directed_edge(A,C) 0.980769230769231
+             directed_edge(C,A) 1.0
+             directed_edge(C,D) 1.0
+             method_call(B,C) 0.903846153846154
+             method_call(C,B) 0.903846153846154
+             method_call(C,D) 0.903846153846154
+     directed_edge(A,B),directed_edge(B,C) 0.980769230769231
+                        method_call(C,D) 0.903846153846154
+     method_call(A,B),method_call(B,C) 0.576923076923077
+c_counter(3,47)
+f_counter(3,22)
+
+level(4)
+true,method(A),basic_block(B),in(B,A) 1.0
+                              in(B,C) 1.0
+                              in(C,A) 1.0
+                              in(C,D) 1.0
+                              directed_edge(B,C) 0.980769230769231
+                              directed_edge(C,B) 1.0
+                              directed_edge(C,D) 1.0
+                              method_call(A,C) 0.903846153846154
+                              method_call(C,A) 0.903846153846154
+                              method_call(C,D) 0.903846153846154
+               in(B,A),directed_edge(B,C) 0.980769230769231
+                       directed_edge(C,B) 1.0
+                       directed_edge(C,D) 1.0
+                       method_call(A,C) 0.903846153846154
+                       method_call(C,A) 0.903846153846154
+                       method_call(C,D) 0.903846153846154
+               in(B,C),method(C) 1.0
+                       directed_edge(B,D) 0.980769230769231
+                       directed_edge(D,B) 1.0
+                       directed_edge(D,E) 1.0
+                       method_call(C,A) 0.903846153846154
+                       method_call(C,D) 0.903846153846154
+                       method_call(A,C) 0.903846153846154
+                       method_call(A,D) 0.903846153846154
+                       method_call(D,C) 0.903846153846154
+                       method_call(D,A) 0.903846153846154
+                       method_call(D,E) 0.903846153846154
+               directed_edge(B,C),directed_edge(C,D) 0.980769230769231
+                                  method_call(A,D) 0.903846153846154
+                                  method_call(D,A) 0.903846153846154
+                                  method_call(D,E) 0.903846153846154
+               method_call(A,B),method(B) 0.903846153846154
+                                method_call(B,C) 0.576923076923077
+                                method_call(C,A) 0.576923076923077
+               method_call(B,A),method_call(C,B) 0.576923076923077
+               method_call(B,C),method(C) 0.903846153846154
+                                method(B) 0.903846153846154
+                                method_call(C,D) 0.576923076923077
+     basic_block(A),in(A,B),directed_edge(A,C) 0.980769230769231
+                            directed_edge(C,A) 1.0
+                            directed_edge(C,D) 1.0
+                            method_call(B,C) 0.903846153846154
+                            method_call(C,B) 0.903846153846154
+                            method_call(C,D) 0.903846153846154
+                    in(B,C),basic_block(B) 1.0
+                            directed_edge(B,A) 0.980769230769231
+                            directed_edge(B,D) 0.980769230769231
+                            directed_edge(A,B) 0.980769230769231
+                            directed_edge(A,D) 0.980769230769231
+                            directed_edge(D,B) 1.0
+                            directed_edge(D,A) 1.0
+                            directed_edge(D,E) 1.0
+                            method_call(C,D) 0.903846153846154
+                            method_call(D,C) 0.903846153846154
+                            method_call(D,E) 0.903846153846154
+                    directed_edge(A,B),basic_block(B) 0.980769230769231
+                                       directed_edge(B,C) 0.961538461538462
+                                       directed_edge(C,A) 0.980769230769231
+                                       method_call(C,D) 0.903846153846154
+                    directed_edge(B,A),directed_edge(C,B) 0.980769230769231
+                                       method_call(C,D) 0.903846153846154
+                    directed_edge(B,C),basic_block(C) 1.0
+                                       basic_block(B) 0.980769230769231
+                                       directed_edge(C,D) 0.980769230769231
+                                       method_call(D,E) 0.903846153846154
+                    method_call(B,C),method_call(C,D) 0.576923076923077
+     in(A,B),directed_edge(A,C),in(C,B) 0.980769230769231
+                                in(C,D) 0.980769230769231
+                                directed_edge(C,D) 0.961538461538462
+                                directed_edge(D,A) 0.980769230769231
+                                method_call(B,D) 0.673076923076923
+                                method_call(D,B) 0.846153846153846
+                                method_call(D,E) 0.903846153846154
+             directed_edge(C,A),directed_edge(D,C) 0.980769230769231
+                                method_call(B,D) 0.903846153846154
+                                method_call(D,B) 0.903846153846154
+                                method_call(D,E) 0.903846153846154
+             directed_edge(C,D),in(D,B) 1.0
+                                in(C,B) 0.980769230769231
+                                directed_edge(D,E) 0.980769230769231
+                                method_call(B,E) 0.903846153846154
+                                method_call(E,B) 0.903846153846154
+                                method_call(E,F) 0.903846153846154
+             method_call(B,C),in(D,C) 0.903846153846154
+                              method_call(C,D) 0.576923076923077
+                              method_call(D,B) 0.576923076923077
+             method_call(C,B),method_call(D,C) 0.576923076923077
+             method_call(C,D),in(A,D) 0.903846153846154
+                              in(A,C) 0.903846153846154
+                              method_call(D,E) 0.576923076923077
+     directed_edge(A,B),directed_edge(B,C),directed_edge(C,A) 0.75
+                                           directed_edge(C,D) 0.961538461538462
+                                           directed_edge(A,C) 0.75
+                                           method_call(D,E) 0.903846153846154
+                        method_call(C,D),method_call(D,E) 0.576923076923077
+c_counter(4,99)
+f_counter(4,95)

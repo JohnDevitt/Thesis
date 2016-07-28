@@ -3,6 +3,8 @@
 
 import os
 import iterative_compiler
+import report_generator.app as rg
+
 
 def main(source_directory, flag_database, iterative_compilation_depth):
 #def main():
@@ -15,9 +17,8 @@ def main(source_directory, flag_database, iterative_compilation_depth):
 
 	for directory in subdirectories:
 		print "Computing for directory: " + directory
-		reports[directory] = iterative_compiler.main(os.path.join(source_directory, directory), directory, flag_database, iterative_compilation_depth)
-
-	return reports
+		iterative_compiler.main(os.path.join(source_directory, directory), directory, flag_database, iterative_compilation_depth)
+		rg.main()
 
 
 if __name__ == '__main__':

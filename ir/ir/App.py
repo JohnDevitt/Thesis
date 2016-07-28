@@ -35,7 +35,8 @@ def main():
 	if(config.run_iterative_compilation):
 		## Iterative Compilation
 		report = IterativeCompiler.main(config.source_directory, config.flag_database, config.iterative_compilation_depth)
-		
+
+
 	## IR Parse
 	for subdirectory in subdirectories:
 

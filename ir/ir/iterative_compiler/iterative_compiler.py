@@ -122,7 +122,7 @@ def compile_and_run(directory, filename, configuration):
 	if( command_executor.compile_program(compile_command) ):
 		return command_executor.run_program(run_command)
 
-	return 0
+	return float('inf')
 
 def get_optimisiation_level(configuration):
 	return configuration[0][1:]
