@@ -1,6 +1,0 @@
-*.w
-blocks.function.*
-blocks.results
-.ace_compile
-.blocks.keycode
-*.po

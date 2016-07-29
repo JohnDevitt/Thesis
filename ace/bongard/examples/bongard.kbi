@@ -1,1 +1,0 @@
-example_predicates([pos/0,triangle/1,config/2,square/1,in/2,circle/1,neg/0]).
