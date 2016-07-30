@@ -17,13 +17,13 @@ def plot_categorical_data(dataframe, filename, output_directory):
 
 	## Plot
 	plt.figure(figsize=(18.2, 10))
-	ax = sns.stripplot(y=dataframe["Decrease"], x=dataframe["Program"], size=8)
+	ax = sns.stripplot(y=dataframe["Speedup"], x=dataframe["Program"], size=8)
 	
 	## Plot style
 	plt.yticks(fontsize=15)
 	plt.xticks(rotation=45, fontsize=7.5)
 	plt.gca().yaxis.set_major_formatter(mticker.FormatStrFormatter('%d %%'))
-	plt.suptitle('Decrease in runtime over the baseline.', fontsize = 24)
+	plt.suptitle('Speed Up Over Baseline.', fontsize = 24)
 	
 	## axhlines
 	cutoff_upper = plt.axhline(10, color='r', linestyle='--', label='Upper Suggested Cut Off Point.', linewidth=1)

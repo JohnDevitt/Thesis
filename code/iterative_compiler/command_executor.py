@@ -4,6 +4,7 @@
 import subprocess
 import timeit
 import numpy
+import runner
 
 def compile_program(command):
 
@@ -16,11 +17,10 @@ def compile_program(command):
 
 def run_program(path):
 
+	#subprocess.Popen("time " + path, shell=True, stdout=subprocess.PIPE)
 
-	command = 'p = subprocess.Popen(\'time ' + path + '\', shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE); out, err = p.communicate()'
-
-	result = timeit.Timer(command, setup='import subprocess').repeat(1, 10)
-	return numpy.median(result)
+	times = [runner.timer(path) for num in range(0, 10)]
+	return numpy.median(times)
 
 
 

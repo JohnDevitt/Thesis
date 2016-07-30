@@ -1,10 +1,13 @@
 
 #include <time.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdio.h>
 
 
-int main(int argc, char *argv[]) {
-
-	char *filepath = argv[1];
+double timer(char *filepath) {
 
 	clock_t start, end;
 	double cpu_time_used;
