@@ -52,14 +52,14 @@ def find_bad_flags(directory, filename, baseline_runtime, configuration):
 	working_configuration = cp.deepcopy(configuration)
 	runtimes = []
 
-	for flag in configuration[1:]:
+	for flag in configuration:
 		tmp_configuration = cp.deepcopy(working_configuration)
 		tmp_configuration.remove(flag)
 
 		runtime = compile_and_run(directory, filename, tmp_configuration)
 		runtimes.append(runtime)
 
-		if(runtime < (100*baseline_runtime)/100):
+		if(runtime < (101*baseline_runtime)/100):
 			if(runtime < baseline_runtime):
 				baseline_runtime = runtime
 			working_configuration.remove(flag)
@@ -85,7 +85,7 @@ def find_good_flags(directory, filename, baseline_runtime, configuration, flags)
 		runtimes.append(runtime)
 
 
-		if( runtime < (100*baseline_runtime)/100 ):
+		if( runtime < (99*baseline_runtime)/100):
 			if(runtime < baseline_runtime):
 				baseline_runtime = runtime
 			working_configuration = cp.deepcopy(tmp_configuration)
@@ -100,7 +100,7 @@ def remove_flags(best_runtime, configuration, runtimes):
 	working_configuration = cp.deepcopy(configuration)
 
 	for flag, runtime in zip(configuration, runtimes)[1:]:
-		if(runtime < (100*working_best)/100):
+		if(runtime < (101*working_best)/100):
 			if(runtime < working_best):
 				working_best = runtime
 			working_configuration.remove(flag)
@@ -120,7 +120,7 @@ def add_flags(best_runtime, configuration, runtimes, flags):
 	working_configuration = cp.deepcopy(configuration)
 
 	for flag, runtime in zip(alternate_flags, runtimes)[1:]:
-		if(runtime < (100*working_best)/100):
+		if(runtime < (99*working_best)/100):
 			if(runtime < working_best):
 				working_best = runtime
 			working_configuration.append(flag)
