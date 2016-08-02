@@ -37,6 +37,7 @@ def generate_flag_list(flags, optimisations, optimisation):
 
 def generate_configuration(flag_list):
 	flags = [flag for flag in flag_list[1: len(flag_list)] if rand.uniform(0, 1) > 0.5]
+	flags.reverse()
 	flags.insert(0, flag_list[0])
 	return flags
 
