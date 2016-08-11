@@ -1,0 +1,8 @@
+
+name('Discretize').
+
+end_of_header.
+
+command(store_discretizations,sdis,[],'store_discretizations -- sdis','store discretization information to app.discr',store_discretizations,discretize).
+
+command(predict,p,[T],'predict(T) -- p(T)','make predictions for examples in .kb file using .tree file T and calculate accuracy',predict_tree(T),predict).

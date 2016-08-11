@@ -14,7 +14,7 @@ def main(source_directory, subdirectory, flag):
 
 
 	## FILE IO
-	filename = subdirectory + ".c.018t.ssa"
+	filename = subdirectory + ".c.011t.cfg"
 	filepath = os.path.join(source_directory, subdirectory, filename) 
 	raw_ir = open(filepath, "r")
 	processed_ir = raw_ir.readlines()
@@ -23,7 +23,8 @@ def main(source_directory, subdirectory, flag):
 
 
 
-###############################################################################################
+########################################################################
+#######################
 
 	ace_ir += "%%%%%%%%%% STRUCTURAL ELEMENTS %%%%%%%%%%\n"
 	

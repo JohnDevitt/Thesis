@@ -1,0 +1,22 @@
+
+name('Tilde').
+
+authors(['Hendrik Blockeel']).
+
+contact(['Hendrik.Blockeel@cs.kuleuven.ac.be']).
+
+use_package('tildewrap').
+
+load_package('prediction').
+
+load_package('statistics/exdistr_statistic').
+
+load_package('cpacks').
+
+use_module('prediction/tilde/tildeB').
+
+on_load(init_tilde_module,tildeB).
+
+classdef_module(tdidt).
+
+end_of_header.

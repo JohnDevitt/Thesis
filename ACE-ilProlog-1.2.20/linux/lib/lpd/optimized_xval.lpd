@@ -1,0 +1,12 @@
+
+name('Tilde optimized nfold').
+
+authors(['Jan Struyf']).
+
+load_message('Loading Optimized Cross Validation').
+
+end_of_header.
+
+command(nfold,nf,[N],'nfold(N) -- nf(N)','perform an N-fold crossvalidation with Tilde',nfold(N),tildeB).
+
+command(nfold,nf,[N,R],'nfold(N,R) -- nf(N,R)','perform an N-fold crossvalidation with Tilde using seed R for random generator',nfold(N,R),tildeB).

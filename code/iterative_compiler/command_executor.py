@@ -31,13 +31,13 @@ def run_program(path, output_directory, filename):
 
 	times = []
 
-	for i in range (0, 10):
+	for i in range (0, 9):
 		subprocess.Popen(path, shell=True, stdout=subprocess.PIPE).wait()
 		subprocess.Popen("gprof " + path + " /home/john/Thesis/code/gmon.out > " + outfile, shell=True, stdout=subprocess.PIPE).wait()
 		times.append(analysis_report_reader.read_run_time('/home/john/Thesis/output/reports/', filename))
 
-	print times
-	print numpy.median(times)
+	print sorted(times)
+	print numpy.mean(sorted(times)[3:6])
 	print "-------------------------------------------------------------"
 
-	return numpy.median(times)
+	return numpy.mean(sorted(times)[3:6])

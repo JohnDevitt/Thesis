@@ -1,0 +1,8 @@
+.ace_compile
+.*.kb
+.*.keycode
+I
+M
+*.kb.tmp
+*.multi
+*.out

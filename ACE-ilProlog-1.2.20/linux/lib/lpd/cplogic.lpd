@@ -1,0 +1,40 @@
+
+name('CPLVE').
+
+authors(['Wannes Meert, Jan Struyf']).
+
+contact(['Wannes.Meert@cs.kuleuven.be, Jan.Struyf@cs.kuleuven.be']).
+
+load_message('Loading CP-Logic for ACE').
+
+use_module('cplogic/cplogic').
+
+end_of_header.
+
+command(test_cplogic,test_cplogic,[],'test_cplogic','Run CP-Logic test cases',cplogic_test_cmd,cplogic,[globalvars]).
+
+command(cplogic_read,cpl_read,[FName],'cplogic_read(FName)','Load a CP-theory from a .cpl file',cplogic_read_theory_cmd(FName),cplogic,[globalvars]).
+
+command(cplogic_read_fo,cpl_read_fo,[FName],'cplogic_read_fo(FName)','Load a first-order CP-theory from a .cpl file',cplogic_read_fo_theory_cmd(FName),cplogic,[globalvars]).
+
+command(cplogic_save_grounding,cpl_ground,[Query,Evidence],'cplogic_save_grounding(Query, Evidence)','Save grounding of a given CP-theory',cplogic_save_grounding_cmd(Query,Evidence),cplogic,[globalvars]).
+
+command(cplogic_query,cpl_query,[Query,Evidence],'cplogic_query(Query, Evidence)','Run a query against a CP-theory',cplogic_query_theory_cmd(Query,Evidence),cplogic,[globalvars]).
+
+command(cplogic_query_time,cpl_query_time,[Query,Evidence],'cplogic_query_time(Query, Evidence)','Run a query against a CP-theory',cplogic_query_theory_time_cmd(Query,Evidence),cplogic,[globalvars]).
+
+setting(cplogic_logfile,cpl_log,_R,true,'must be filename').
+
+setting(cplogic_graphfile,'',_R,true,'must be filename').
+
+setting(cplogic_ccnodes,yes,_R,[yes,no],'must be yes or no').
+
+setting(cplogic_breakcycles,no,_R,[yes,no],'must be yes or no').
+
+setting(cplogic_transformation,cf,_R,[cf,cfme,tables,cpts],'must be one of cf, cfme, tables or cpts').
+
+setting(cplogic_inference,cst,_R,[cst,absorption],'must be one of cst or absorption').
+
+setting(cplogic_ordering,degreed,_R,[topological,degreed],'must be one of topological or degreed').
+
+setting(cplogic_grounder,bayes_ball,_R,[bayes_ball,sld,sld_tabling],'must be bayes_ball, sld or sld_tabling').

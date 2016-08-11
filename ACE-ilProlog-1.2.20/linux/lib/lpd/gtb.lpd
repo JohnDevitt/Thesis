@@ -1,0 +1,32 @@
+
+name('Gradient Tree Booster').
+
+authors(['Kurt Driessens']).
+
+contact(['kurtd@cs.kuleuven.ac.be']).
+
+load_message('Loading the Gradient Tree Booster').
+
+load_package(tb).
+
+class(gtb,[tb],[],[method(init(Type,Object),init_gtb__M_gtb(Object),[virtual]),method(update(Type,Examples,Values,InObject,OutObject),update_gtb__M_gtb(Examples,Values,InObject,OutObject),[virtual]),method(predict_value(Type,Example,Prediction,InObject,InObject),predict_value_gtb__M_gtb(Example,Prediction,InObject),[virtual])]).
+
+use_module('inc/gtb/gtb').
+
+end_of_header.
+
+setting(gtb_numberOfExamples,0,I,(integer(I)),'must be an integer').
+
+setting(gtb_numberOfEpisodes,1,I,(integer(I)),'must be an integer').
+
+setting(gtb_maxTrees,0,I,(integer(I)),'must be an integer, set to 0 for no maximum').
+
+setting(gtb_compressTimes,[],I,(true),'must be a list of integers').
+
+setting(gtb_discardZeros,on,I,(member(I,[on,off])),'must be on or off').
+
+setting(gtb_reduceDigitsForTree,off,I,(member(I,[on,off])),'must be on or off').
+
+setting(gtb_precisionDigits,off,I,(integer(I) ; I = 'off'),'must be off or an integer').
+
+setting(gtb_optimizeWeights,no,I,(member(I,[yes,no])),'must be yes or no').

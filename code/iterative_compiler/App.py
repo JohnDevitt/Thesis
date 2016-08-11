@@ -15,7 +15,7 @@ def main(source_directory, flag_database, iterative_compilation_depth, output_di
 
 	reports = {}
 
-	for directory in subdirectories[3:]:
+	for directory in subdirectories:
 		print "Computing for directory: " + directory
 		iterative_compiler.main(os.path.join(source_directory, directory), directory, flag_database, iterative_compilation_depth, output_directory)
 		rg.main(output_directory)

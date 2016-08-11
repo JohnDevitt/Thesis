@@ -1,0 +1,82 @@
+
+name('Warmr3').
+
+authors(['Jan Ramon, Jan Struyf']).
+
+contact(['Jan.Ramon@cs.kuleuven.ac.be, Jan.Struyf@cs.kuleuven.ac.be']).
+
+load_message('Loading Warmr v3 for ACE').
+
+use_module('warmr3/warmr3').
+
+load_package(cpacks).
+
+load_package(ctransform).
+
+classdef_module(ap_validfunc).
+
+classdef_module(ap_io).
+
+classdef_module(rmode_sampling).
+
+classdef_module(aggregate_refinement).
+
+end_of_header.
+
+command(warmr,w,[],'warmr -- w','Start the Warmr discovery process',run_warmr,warmr3,[globalvars]).
+
+command(generate_arff,gen_arff,[FreqFile,ArffFile],'generate_arff -- gen_arff','Generate a Weka .arff file, which indicates for every example if the patterns in FreqFile (as feature) hold or not',gen_arff(FreqFile,ArffFile),warmr3,[globalvars]).
+
+command(get_warmr_frequent,gwf,[ResultVar],'get_warmr_frequent(ResultVar) -- gwf(ResultVar)','starts the Warmr discovery process and returns the resulting queries in ResultVar',get_warmr_frequent(ResultVar),warmr3,[globalvars]).
+
+setting(minfreq,0.01,R,(number(R), R >= 0, R =< 1),'must be a positive real number =< 1').
+
+setting(minconf,0.01,R,(number(R), R > 0, R =< 1),'must be a positive real number =< 1').
+
+setting(warmr_maxdepth,100,T,(integer(T), T > 0),'should be an integer').
+
+setting(warmr_batch_size,50000,T,(integer(T), T > 0),'should be an integer').
+
+setting(warmr_infreq_spec_level,inf,T,(T = inf ; integer(T)),'should be an integer').
+
+setting(warmr_output_options,[freq_queries,freq_packs,show_query_index],T,is_list(T),'should be a list of options: freq_queries, freq_packs, ...').
+
+setting(warmr_valid_func,std_meta,T,member(T,[std,th_all_queries,std_meta,std_queries,th_meta,th_queries,candidate_queries_meta,rmode_order,rmode_order_full,rmode_order_full_meta,std_nospec,nohash_parent,trivial_hash,th_candidate_queries,candidate_time_unpack,candidate_queries,assoc_std,rules,w_set1,w_set2,w_set3,w_set4,w_set5,w_set6,infreq_queries,explicit(_)]),'name of the set of tests done by the validation function').
+
+setting(warmr_assoc,off,T,(T = off ; T = [] ; T = [_|_]),'must be off or a list of options').
+
+setting(warmr_assoc_output_options,[queries,show_query_index],T,is_list(T),'should be a list of options: queries, packs, ...').
+
+setting(warmr_coverage_list,off,T,member(T,[on,off,level(_)]),'should be on, off or level(N)').
+
+setting(warmr_object_identity,off,T,member(T,[on,off]),'must be on or off').
+
+setting(bias,warmode,L,[dlab,rmode,warmode,no],'must be dlab, rmode, warmode or no').
+
+setting(addclass,off,T,[on,off],'must be on or off').
+
+setting(bw_cell,on,T,[on,off],'must be on or off').
+
+setting(bw_disj,off,T,[on,off],'must be on or off').
+
+setting(bw_regression,off,T,[on,off],'must be on or off').
+
+setting(jan_warmr_make_freq_files,on,T,[on,off],'must be on or off').
+
+setting(jan_warmr_output_to_disk,on,T,[on,off],'must be on or off').
+
+setting(jan_warmr_output_to_memory,off,T,true,'should be an atom or integer').
+
+setting(jan_warmr_incremental_base,[],T,true,'should be a list of atoms or integers').
+
+setting(jan_warmr_sig_constraint,(_, true),T,(equals(T,(Sig, C)), var(Sig)),'should be in the format (Sig,constraint)').
+
+setting(jan_warmr_maxdepth,100,T,(integer(T), T > 0),'should be an integer').
+
+setting(jan_warmr_confirm_overwrite,off,T,[on,off],'should be on or off').
+
+setting(jan_warmr_cache_queries,off,T,[write,read,off],'should be write,read or off').
+
+setting(warmr_version,v2_2,T,[v2_2],'should be v2_2').
+
+setting(arff_skip_examples,0,T,true,'influences the .arff file generation').

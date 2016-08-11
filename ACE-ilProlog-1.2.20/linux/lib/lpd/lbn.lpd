@@ -1,0 +1,60 @@
+
+name('LBN').
+
+authors(['Daan Fierens, Jan Ramon']).
+
+contact(['Daan.Fierens@cs.kuleuven.be, Jan.Ramon@cs.kuleuven.be']).
+
+load_message('Loading Logical Bayesian Networks').
+
+use_module('prob/lbn').
+
+use_module('prob/lbn_learning_algo').
+
+use_module('prob/lbn_inference_algo').
+
+use_module('prob/tree_manipulation').
+
+load_package(gapic).
+
+classdef_module('lbn_learning_algo').
+
+classdef_module('lbn_inference_algo').
+
+end_of_header.
+
+command(lbn_induce,lbn_induce,[],'lbn_induce','run the learning algorithm for LBNs',user_induce_lbn,lbn_learning_algo,[globalvars]).
+
+command(lbn_nfold,lbn_nfold,[NbFolds],'lbn_nfold','run cross-validation with the learning algorithm for LBNs',user_nfold_lbn(NbFolds),lbn_learning_algo,[globalvars]).
+
+command(lbn_test_inference,lbn_test_inference,[],'lbn_test_inference','test of inference algorithm for LBNs (TEMPORARY !!!)',user_test_lbn_inference,lbn_inference_algo,[globalvars]).
+
+command(rdn_test_inference,rdn_test_inference,[],'rdn_test_inference','test of inference algorithm for RDNs (TEMPORARY !!!)',user_test_rdn_inference,lbn_inference_algo,[globalvars]).
+
+command(rdn_test_joint,rdn_test_joint,[],'rdn_test_joint','test of computation of joint probability according to RDN (TEMPORARY !!!)',user_test_compute_rdn_joint,lbn_inference_algo,[globalvars]).
+
+command(test_lpad_grounding,test_lpad_grounding,[],'test_lpad_grounding','test of computation of ground LPAD from LBN (TEMPORARY !!!)',user_test_lpad_grounding,tree_manipulation,[globalvars]).
+
+setting(lbn_talking,no,X,member(X,[no,yes]),'controls amount of output written to the screen (should be yes or no; default: no)').
+
+setting(mcmc_parallel_chains,1,X,X > 0,'the number of parallel chains in MCMC for LBNs (positive integer ; default: 1)').
+
+setting(mcmc_samples_per_chain,1000,X,X > 0,'the number of samples per independent chain in MCMC for LBNs (positive integer ; default: 1000)').
+
+setting(mcmc_burn_in,0.1,X,X >= 0,'the fraction of samples for the burn-in of each (positive number ; default: 0.1)').
+
+setting(lbn_learning_algo,hillclimb_ordering_search,X,(member(X,[hillclimb_ordering_search,hillclimb_structure_search,dependency_network,generalizedOS_hillclimb,generalizedOS_random])),'should be hillclimb_ordering_search or hillclimb_structure_search or dependency_network or generalizedOS_hillclimb or generalizedOS_random (default: hillclimb_ordering_search)').
+
+setting(lbn_restarts,none,X,(member(X,[none,random(_NbRestarts)])),'should be none or random(NbRestarts) (default: none)').
+
+setting(lbn_score_criterion,log_likelihood,X,(member(X,[log_likelihood,bic])),'should be log_likelihood or bic (default: log_likelihood)').
+
+setting(lbn_structure_search_start,random,X,(member(X,[empty,random])),'should be empty or random (default: random)').
+
+setting(lbn_structure_search_lookahead,no,X,(member(X,[no,yes])),'should be either yes or no (default: no)').
+
+setting(lbn_gos_nb_gcpfexamples_per_megaexample,100,_,true,'number of examples for _all_ GCPFs for Generalized Ordering-Search per mega example (should be a positive integer)').
+
+setting(lbn_gos_nb_orderingexamples_per_megaexample,100,_,true,'number of examples for _all_ ordering regression trees for Generalized Ordering-Search per mega example (should be a positive integer)').
+
+setting(lbn_gos_relearn_specific_CPDs,yes,X,member(X,[no,yes]),'indicates whether, when an ordering is learned, CPDs should be relearned that are specific for that ordering (should be yes or no; default: yes)').

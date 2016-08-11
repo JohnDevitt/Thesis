@@ -1,0 +1,10 @@
+
+load_message('Loading Test_Gapic').
+
+load_package('gapic').
+
+use_module('gapic/test_gapic').
+
+end_of_header.
+
+command(test_gapic,tg,[],'test_gapic -- tg','test gapic module',run_test,test_gapic).

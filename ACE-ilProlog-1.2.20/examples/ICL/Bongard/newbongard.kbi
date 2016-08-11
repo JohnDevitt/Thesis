@@ -1,0 +1,1 @@
+example_predicates([good/0,triangle/1,large/1,up/1,small/1,rectangle/1,horizontal/1,circle/1,left/2,in/2,under/2,down/1,wrong/0,vertical/1]).

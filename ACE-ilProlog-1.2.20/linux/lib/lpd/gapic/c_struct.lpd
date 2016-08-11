@@ -1,0 +1,12 @@
+
+name('C-structure support').
+
+authors(['Jan Ramon']).
+
+contact(['janr@cs.kuleuven.ac.be']).
+
+load_message('Loading C-structure support').
+
+use_module('gapic/struct/c_struct').
+
+end_of_header.

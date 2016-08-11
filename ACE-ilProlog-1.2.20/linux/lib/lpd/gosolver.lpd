@@ -1,0 +1,26 @@
+
+name('gosolver').
+
+authors(['Jan Ramon and Tristan Cazenave']).
+
+contact(['Jan.Ramon@cs.kuleuven.ac.be']).
+
+load_message('Loading GoSolver for ACE').
+
+load_package('gapic').
+
+use_module('gosolver/gosolver').
+
+end_of_header.
+
+command(gosolver_test,gosolver_test,[],'gosolver_test','does a short test of the gosolver functionality',gosolver_test,gosolver).
+
+command(gosolver_tree_to_c,gosolver_tree_to_c,[],'gosolver_tree_to_c','compiles the decision tree produced by tilde to c',gosolver_tree_to_c,gosolver).
+
+command(gosolver_exdemo,gosolver_exdemo,[],'gosolver_exdemo','shows some examples and their value',gosolver_exdemo,gosolver).
+
+command(gosolver_test_c_tree,gosolver_test_c_tree,[],'gosolver_test_prolog_tree','make stats and roc using c tree',gosolver_test_c_tree,gosolver).
+
+command(gosolver_test_prolog_tree,gosolver_test_prolog_tree,[],'gosolver_test_prolog_tree','make stats and roc using prolog tree',gosolver_test_prolog_tree,gosolver).
+
+command(gosolver_compare_prolog_c_tree,gosolver_compare_prolog_c_tree,[],'gosolver_compare_prolog_c_tree_tree','compares predictions and their value',gosolver_compare_prolog_c_tree,gosolver).

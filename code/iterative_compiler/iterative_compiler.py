@@ -13,28 +13,47 @@ import numpy
 def main(directory, filename, flag_database_location, iterative_compilation_depth, output_directory):
 
 	## Initial Setup
-	flags = configuration_generator.generate_flags(flag_database_location)
-	configurations = configuration_generator.generate_configurations(flags, iterative_compilation_depth)
+	#flags = configuration_generator.generate_flags(flag_database_location)
+	#configurations = configuration_generator.generate_configurations(flags, iterative_compilation_depth)
 	baseline_runtime = generate_baseline_runtime(directory, filename, output_directory)
+	O3 = baseline_runtime
 
 	## Initial Loop
-	initial_runtimes = generate_initial_runtimes(directory, filename, configurations, output_directory)
-	initial_best = min(initial_runtimes)
-	initial_configuration = configurations[initial_runtimes.index(initial_best)]
+	#initial_runtimes = generate_initial_runtimes(directory, filename, configurations, output_directory)
+	#initial_best = min(initial_runtimes)
+	#initial_configuration = configurations[initial_runtimes.index(initial_best)]
 
 	## Optimisations, Step 1:
-	optimised_runtimes = find_bad_flags(directory, filename, initial_best, initial_configuration, output_directory)
-	optimised_configuration = remove_flags(initial_best, initial_configuration, optimised_runtimes)
-	optimised_best = min(initial_runtimes + optimised_runtimes)
+	#optimised_runtimes = find_bad_flags(directory, filename, initial_best, initial_configuration, output_directory)
+	#optimised_configuration = remove_flags(initial_best, initial_configuration, optimised_runtimes)
+	#optimised_best = min(initial_runtimes + optimised_runtimes)
+
+	#O1 = compile_and_run(directory, filename, ['-O1'], output_directory)
+	O2 = compile_and_run(directory, filename, ['-O2'], output_directory)
+	#O3 = compile_and_run(directory, filename, ['-O3'], output_directory)
+	best_runtimes = [O2, O3]
+
+
+	best_configuration = ['-O3']
+
+	#if (O1 < O2 and O1 < O3):
+	#	best_configuration = ['-O1']
+	#elif (O2 < O1 and O2 < O3):
+	#	best_configuration = ['-O2']
+
+	if(O2 < O3):
+		best_configuration = ['-O2']
+
+	#optimised_best = compile_and_run(directory, filename, optimised_configuration, output_directory)
 
 	print "-------------------------------------------------------"
 
 	## Optimisations, Step 2:
-	best_runtimes = find_good_flags(directory, filename, optimised_best, optimised_configuration, flags, output_directory)
-	best_configuration = add_flags(optimised_best, optimised_configuration, best_runtimes, flags)
-	best = min(initial_runtimes + optimised_runtimes + best_runtimes)
+	#best_runtimes = find_good_flags(directory, filename, optimised_best, optimised_configuration, flags, output_directory)
+	#best_configuration = add_flags(optimised_best, optimised_configuration, best_runtimes, flags)
+	#best = min(initial_runtimes + optimised_runtimes + best_runtimes)
 
-	best = compile_and_run(directory, filename, best_configuration, output_directory)
+	best = min(O2, O3)
 
 	compilation_report_generator.generate_report(baseline_runtime, best_configuration, best, filename, best_runtimes, output_directory)
 
@@ -73,6 +92,8 @@ def find_bad_flags(directory, filename, baseline_runtime, configuration, output_
 def find_good_flags(directory, filename, baseline_runtime, configuration, flags, output_directory):
 
 
+	print (99.8*baseline_runtime)/100
+
 	working_configuration = cp.deepcopy(configuration)
 	runtimes = []
 	previous_runtime = 0
@@ -88,7 +109,8 @@ def find_good_flags(directory, filename, baseline_runtime, configuration, flags,
 		runtimes.append(runtime)
 
 
-		if( runtime < previous_runtime):
+		if( runtime < (99.8*baseline_runtime)/100):
+			baseline_runtime = runtime
 			working_configuration = cp.deepcopy(tmp_configuration)
 		previous_runtime = runtime
 
@@ -125,7 +147,8 @@ def add_flags(best_runtime, configuration, runtimes, flags):
 	previous_runtime = 0
 
 	for flag, runtime in zip(alternate_flags, runtimes):
-		if(runtime < previous_runtime):
+		if(runtime < (99.8*working_best)/100):
+			working_best = runtime
 			working_configuration.append(flag)
 		previous_runtime = runtime
 

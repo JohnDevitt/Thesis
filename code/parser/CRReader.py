@@ -2,21 +2,25 @@
 import os
 import pickle
 
-def binary_flag_reader(source_directory, subdirectory):
-	if os.path.isfile(os.path.join(source_directory, subdirectory, "compilation_report.pickle")):
-		with open(os.path.join(source_directory, subdirectory, "compilation_report.pickle"), 'rb') as input_file:
+def binary_flag_reader(output_directory, subdirectory):
+	if os.path.isfile(os.path.join(output_directory, subdirectory, "compilation_report.pickle")):
+		with open(os.path.join(output_directory, subdirectory, "compilation_report.pickle"), 'rb') as input_file:
 			compilation_report = pickle.load(input_file)
 
 		flags = compilation_report['Configuration'][1:]
 		return flags
 	return False
 
-def optimisation_flag_reader(source_directory, subdirectory):
-	if os.path.isfile(os.path.join(source_directory, subdirectory, "compilation_report.pickle")):
-		with open(os.path.join(source_directory, subdirectory, "compilation_report.pickle"), 'rb') as input_file:
+def optimisation_flag_reader(output_directory, subdirectory):
+
+	if os.path.isfile(os.path.join(output_directory, "reports", subdirectory, "compilation_report.pickle")):
+		with open(os.path.join(output_directory, "reports", subdirectory, "compilation_report.pickle"), 'rb') as input_file:
 			compilation_report = pickle.load(input_file)
 
-		flag = compilation_report['Configuration'][1:]
+		#print compilation_report
+
+		flag = compilation_report['Configuration'][0]
+		print "===============", flag, "==============="
 
 		if(flag == '-O1'):
 			return "one"

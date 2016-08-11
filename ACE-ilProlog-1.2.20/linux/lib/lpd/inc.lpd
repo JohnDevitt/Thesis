@@ -1,0 +1,20 @@
+
+name('Incremental Learning').
+
+authors(['Kurt Driessens, Jan Ramon']).
+
+contact(['kurtd,janr@cs.kuleuven.ac.be']).
+
+load_message('Loading incremental learning').
+
+class(incremental_learned_theory,[],[abstract],[method(update(Type,Examples,Values,InObject,OutObject),fail,[virtual,abstract]),method(predict_value(Type,Example,Prediction,InObject,OutObject),fail,[virtual,abstract]),method(show(Type,File,Object),true,[virtual]),method(init(Type,Object),true,[virtual]),method(destroy(Type,Object),true,[virtual])]).
+
+use_module('inc/inc_learning').
+
+use_module('inc/rrl_inc_learner').
+
+classdef_module(rrl_inc_learner).
+
+end_of_header.
+
+command(inctest,itest,[],'inctest -- itest','Test Incremental Learning',inc_test,inc_learning).

@@ -1,0 +1,26 @@
+
+name('Support for Instance Based Laerning (IBL)').
+
+authors(['Jan Ramon']).
+
+contact(['janr@cs.kuleuven.ac.be']).
+
+load_package(distance).
+
+load_message('Loading IBL support').
+
+use_module('distance/ibl/ibl').
+
+end_of_header.
+
+command(ibl,ibl,[],'instancebasedlearning','performs instance based learning',ibl_run,ibl).
+
+command(ibl,ibl,[Opt],'instancebasedlearning','performs instance based learning (argument is a list of options)',ibl_run(Opt),ibl).
+
+command(ibl_acc_graph,iblag,[Iter,Opt],'instancebasedlearning accuracy graph','iterates ibl to produce an accuracy graph; arg1=iterator, arg2=options',ibl_acc_graph(Iter,Opt),ibl).
+
+command(ibl_graph,iblag,[Iter,Opt],'instancebasedlearning graph','iterates ibl to produce a graph; arg1=iterator, arg2=options',ibl_graph(Iter,Opt),ibl).
+
+setting(ibl_default_mode,knn(1,ibl_dist),_,true,'must be valid ibl mode').
+
+setting(ibl_default_traintest,leaveoneout(all),_,true,'must be valid ibl traintestset').

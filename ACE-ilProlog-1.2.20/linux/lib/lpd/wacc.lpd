@@ -1,0 +1,14 @@
+
+name('Wacc').
+
+end_of_header.
+
+command(wacc,wacc,[],'wacc -- wacc','start the WACC clustering process',wacc_main,wacc).
+
+setting(info_size_weight,2.0,I,(number(I), I >= 0),'must be a positive real number').
+
+setting(wacc_punish_high_branching,0.0,I,(number(I), I >= 0),'must be a positive real number').
+
+setting(random_training_set,on,I,(member(I,[on,off])),'must be on or off').
+
+setting(wacc_objfunc,nlnn,I,(member(I,[nlnn,sqr])),'must be nlnn or sqr').

@@ -1,0 +1,20 @@
+
+name('Incremental Rote learning for Clustering').
+
+authors(['Jan Ramon']).
+
+contact(['janr@cs.kuleuven.ac.be']).
+
+load_message('Loading Incremental Rote learning for Clusters').
+
+load_package(inc).
+
+use_module('inc/irc/irc').
+
+classdef_module(irc).
+
+class(irc,[incremental_learned_theory],[],[method(update(Type,Examples,Values,InObject,OutObject),update_irc_theory__M_irc(Examples,Values,InObject,OutObject),[virtual]),method(predict_value(Type,Ex,Prediction,InObject,OutObject),predict_irc_value__M_irc(Ex,Prediction,InObject,OutObject),[virtual]),method(show(Type,F,Obj),show_irc_theory__M_irc(F,Obj),[virtual]),method(init(Type,Object),init_irc_theory__M_irc(Object),[virtual]),method(destroy(Type,Obj),destroy_irc_theory__M_irc(Obj),[virtual])]).
+
+end_of_header.
+
+setting(irc_class,simple,I,true,'').

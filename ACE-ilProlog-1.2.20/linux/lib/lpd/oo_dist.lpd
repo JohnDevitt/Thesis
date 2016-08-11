@@ -1,0 +1,16 @@
+
+name('Support for oo distances').
+
+authors(['Jan Ramon']).
+
+contact(['janr@cs.kuleuven.ac.be']).
+
+load_package(gapic).
+
+load_package('gapic/c_struct').
+
+load_message('Loading oo distance support').
+
+use_module('oo_dist/oo_dist').
+
+end_of_header.

@@ -1,0 +1,44 @@
+
+name('Relational IB3').
+
+authors(['Kurt Driessens, Jan Ramon']).
+
+contact(['kurtd,janr@cs.kuleuven.ac.be']).
+
+load_message('Loading Relational IB').
+
+load_package(oo_dist).
+
+load_package(gapic).
+
+load_package(inc).
+
+class(ribc,[incremental_learned_theory],[],[method(update(Type,Examples,Values,InObject,OutObject),update_rib_theory__M_rib(Examples,Values,InObject,OutObject),[virtual]),method(predict_value(Type,Example,Prediction,InObject,OutObject),predict_rib_value__M_rib(Example,Prediction,InObject,OutObject),[virtual]),method(show(Type,File,Object),show_rib_theory__M_rib(File,Object),[virtual]),method(init(Type,Object),init_rib_theory__M_rib(Object),[virtual]),method(destroy(Type,Object),destroy_rib_theory__M_rib(Object),[virtual])]).
+
+use_module('inc/rib3/rib').
+
+use_module('inc/rib3/rib_learner').
+
+classdef_module(rib_learner).
+
+end_of_header.
+
+setting(rib_distance,(X, Y, D, delta_distance__M_rib(X,Y,D)),_,true,'must be an oo distance').
+
+setting(rib_maxdiff,-1.0,X,(float(X)),'must be a float').
+
+setting(rib_maxlndiff,-1.0,X,(float(X)),'must be a float').
+
+setting(rib_max_theory_size,10000,X,(integer(X)),'must be an integer').
+
+setting(rib_safe_lowerbound,yes,X,(X = yes ; X = no),'must be yes or no').
+
+setting(rib_const_fg,off,X,(X = off ; float(X)),'must be off or float').
+
+setting(rib_const_fl,off,X,(X = off ; float(X)),'must be off or float').
+
+setting(rib_limit_inflow,off,X,(X = off ; X = fg ; X = fl),'must be off, fg or fl').
+
+setting(rib_size_reduction_mode,off,X,(X = off ; X = error_proximity ; X = error_contribution),'must be off, error_proximity or error_contribution').
+
+setting(rib_reduction_size,0,X,integer(X),'must be an integer').

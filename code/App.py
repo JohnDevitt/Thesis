@@ -43,36 +43,39 @@ def main():
 	for subdirectory in subdirectories:
 
 		## SSA generation
-		generated = IntermediateRepresentationGenerator.main(config.source_directory, subdirectory)
+		generated = IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory)
 
 		## If SSA generation worked
 		if(generated):
 			## Fetch the configuration
-			compiler_configuration = CRReader.binary_flag_reader(config.source_directory, subdirectory)
+			#compiler_configuration = CRReader.binary_flag_reader(config.beebs_directory, subdirectory)
 			## And parse the optimisation flag
-			optimisation_level = CRReader.optimisation_flag_reader(config.source_directory, subdirectory)
+			optimisation_level = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
 
-			if(not compiler_configuration == False or 
-				not optimisation_level == False):
+			if(not optimisation_level == False):
+			#or not compiler_configuration == False):
+
 
 				## And write accordingly to that datum
 				directory_name = "optimisation-level"
-				filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
+				filepath = os.path.join(config.output_directory, "training-data", directory_name, "train.kb")
 				file = open(filepath, 'a')
-				file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, optimisation_level))		
+				file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, optimisation_level))		
 
-				for flag in flags:
-					directory_name = "dir" + flag
-					filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
-					file = open(filepath, 'a')
+				#for flag in flags:
+				#	directory_name = "dir" + flag
+				#	filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
+				#	file = open(filepath, 'a')
 					
 					## Parse the intermediate representation once per flag.
-					if flag in compiler_configuration:
-						file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, True))
-					else:
-						file.write(IntermediateRepresentationParser.main(config.source_directory, subdirectory, False))
+				#	if flag in compiler_configuration:
+				#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, True))
+				#	else:
+				#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, False))
 
-					file.close()
+				file.close()
+		else:
+			print "==========", subdirectory, "==========" 
 	
 	################################### Model Builder ###################################
 	build_all()
@@ -106,11 +109,20 @@ def build_model(path):
 	print subprocess.Popen(os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE).stdout.read()
 
 def build_all():
-	path = os.path.join(config.training_data_directory, "optimisation-level")
+
+	training_data_directory = os.path.join(config.output_directory, "training-data")
+	if not os.path.exists(training_data_directory):
+		os.makedirs(training_data_directory)
+
+	path = os.path.join(training_data_directory, "optimisation-level")
+	if not os.path.exists(path):
+		os.makedirs(path)
 	build_model(path)
 
 	for flag in flags:
-		path = os.path.join(config.training_data_directory, "dir" + flag)
+		path = os.path.join(training_data_directory, "dir" + flag)
+		if not os.path.exists(path):
+			os.makedirs(path)
 		build_model(path)
 
 
