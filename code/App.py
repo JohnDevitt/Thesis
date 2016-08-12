@@ -119,11 +119,11 @@ def build_all():
 		os.makedirs(path)
 	build_model(path)
 
-	for flag in flags:
-		path = os.path.join(training_data_directory, "dir" + flag)
-		if not os.path.exists(path):
-			os.makedirs(path)
-		build_model(path)
+	#for flag in flags:
+	#	path = os.path.join(training_data_directory, "dir" + flag)
+	#	if not os.path.exists(path):
+	#		os.makedirs(path)
+	#	build_model(path)
 
 
 if __name__ == '__main__':
