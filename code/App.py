@@ -43,39 +43,37 @@ def main():
 	for subdirectory in subdirectories:
 
 		## SSA generation
-		generated = IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory)
+		IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory)
 
 		## If SSA generation worked
-		if(generated):
-			## Fetch the configuration
-			#compiler_configuration = CRReader.binary_flag_reader(config.beebs_directory, subdirectory)
-			## And parse the optimisation flag
-			optimisation_level = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
+		#if(generated):
+		## Fetch the configuration
+		#compiler_configuration = CRReader.binary_flag_reader(config.beebs_directory, subdirectory)
+		## And parse the optimisation flag
+		optimisation_level = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
 
-			if(not optimisation_level == False):
-			#or not compiler_configuration == False):
+		if(not optimisation_level == False):
+		#or not compiler_configuration == False):
 
 
-				## And write accordingly to that datum
-				directory_name = "optimisation-level"
-				filepath = os.path.join(config.output_directory, "training-data", directory_name, "train.kb")
-				file = open(filepath, 'a')
-				file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, optimisation_level))		
+			## And write accordingly to that datum
+			directory_name = "optimisation-level"
+			filepath = os.path.join(config.output_directory, "training-data", directory_name, "train.kb")
+			file = open(filepath, 'a')
+			file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, optimisation_level))		
 
-				#for flag in flags:
-				#	directory_name = "dir" + flag
-				#	filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
-				#	file = open(filepath, 'a')
-					
-					## Parse the intermediate representation once per flag.
-				#	if flag in compiler_configuration:
-				#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, True))
-				#	else:
-				#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, False))
+			#for flag in flags:
+			#	directory_name = "dir" + flag
+			#	filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
+			#	file = open(filepath, 'a')
+				
+				## Parse the intermediate representation once per flag.
+			#	if flag in compiler_configuration:
+			#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, True))
+			#	else:
+			#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, False))
 
-				file.close()
-		else:
-			print "==========", subdirectory, "==========" 
+			file.close()
 	
 	################################### Model Builder ###################################
 	build_all()

@@ -9,9 +9,8 @@ output_directory = os.path.join(root_directory, "output")
 database_directory = os.path.join(root_directory, "database")
 database_path = os.path.join(database_directory, "arm-none-eabi-gcc-4.8.2-flags.csv")
 
-run_iterative_compilation = True
+run_iterative_compilation = False
 iterative_compilation_depth = 30
-
 
 
 ## ACE settings 
@@ -50,6 +49,10 @@ log_queries([prettypacks]).
 
 minfreq(0.5).
 warmr_maxdepth(4).
+
+
+random_test_set(0.15).
+write_predictions([training, testing]).
 
 warmr_assoc([horn_clauses,
 assoc_min_confidence(0.4),
