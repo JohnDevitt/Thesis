@@ -22,7 +22,8 @@ use_packs(ilp).
 
 classes([two, three]).
 
-
+%heuristic(gain).
+%pruning(none).
 
 rmode(method(+-S)).
 rmode(basic_block(+-S)).
@@ -51,7 +52,7 @@ minfreq(0.5).
 warmr_maxdepth(4).
 
 
-random_test_set(0.15).
+%random_test_set(0.15).
 write_predictions([training, testing]).
 
 warmr_assoc([horn_clauses,

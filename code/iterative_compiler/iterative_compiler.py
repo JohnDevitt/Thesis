@@ -46,7 +46,7 @@ def main(directory, filename, flag_database_location, iterative_compilation_dept
 
 	#optimised_best = compile_and_run(directory, filename, optimised_configuration, output_directory)
 
-	print "-------------------------------------------------------"
+	#print "-------------------------------------------------------"
 
 	## Optimisations, Step 2:
 	#best_runtimes = find_good_flags(directory, filename, optimised_best, optimised_configuration, flags, output_directory)

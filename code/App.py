@@ -15,6 +15,7 @@ import parser.IntermediateRepresentationGenerator as IntermediateRepresentationG
 import parser.IntermediateRepresentationParser as IntermediateRepresentationParser
 import parser.FlagParser as FlagParser
 import parser.CRReader as CRReader
+import ModelExtractor
 
 ## This is a list of all the programs in beebs
 subdirectories = [ name for name in os.listdir(config.beebs_directory)
@@ -25,58 +26,98 @@ flags = FlagParser.main(config.database_path)
 
 def main():
 
-	################################### Initial directory structure setup ###################################
-	## Build the directory for the optimistation level flag
-	build_directory("optimisation-level", config.optimisation_settings)
-	for flag in flags:
-		## Build the directory for every other flag
-		directory_name = "dir" + flag
-		build_directory(directory_name, config.binary_settings)
+	total = 0
+	correct = 0
 
-	################################### And this is the pipeline ###################################
+	## Iterative Compilation
 	if(config.run_iterative_compilation):
-		## Iterative Compilation
 		report = IterativeCompiler.main(config.beebs_directory, config.database_path, config.iterative_compilation_depth, config.output_directory)
 
+	## Build the ACE directory
+	build_directory("optimisation-level", config.optimisation_settings)
 
-	## IR Parse
-	for subdirectory in subdirectories:
+	## Leave on out cv
+	for target_data in subdirectories:
 
-		## SSA generation
-		IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory)
+		## Reset the data to be mined
+		reset_knowledge_base("optimisation-level")
 
-		## If SSA generation worked
-		#if(generated):
-		## Fetch the configuration
-		#compiler_configuration = CRReader.binary_flag_reader(config.beebs_directory, subdirectory)
-		## And parse the optimisation flag
-		optimisation_level = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
+		gen = [subdirectory for subdirectory in subdirectories if subdirectory != target_data and subdirectory != "blowfish" and subdirectory != "trio"]
+		for subdirectory in gen:
 
-		if(not optimisation_level == False):
-		#or not compiler_configuration == False):
+			## Build the mine
+			IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory) 
+			instance_class = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
+			ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, instance_class)
+			if(not instance_class == False):
+				write_training_data_to_file("optimisation-level", config.output_directory, ace_instance)
+
+		## Build the model
+		build_all()
+		## Generate target data
+		IntermediateRepresentationGenerator.main(config.beebs_directory, target_data)
+		target_class = CRReader.optimisation_flag_reader(config.output_directory, target_data)
+		ace_target = IntermediateRepresentationParser.main(config.beebs_directory, target_data, "%%%%%%")
+		## Write to file
+		write_testing_data_to_file("optimisation-level", config.output_directory, ace_target)
+		write_model_to_file("optimisation-level", config.output_directory)
+		## Run the model on the data
+		output,error = subprocess.Popen( "echo 'prog.' | swipl -s " + os.path.join(config.output_directory, "training-data", "optimisation-level", "test.P"), shell=True, stdout=subprocess.PIPE).communicate()
+		## Get results
+		file = open("/home/john/Thesis/output/training-data/optimisation-level/predicted.txt")
+		predicted_class = file.read().replace(" ", "").replace("\n", "")
 
 
-			## And write accordingly to that datum
-			directory_name = "optimisation-level"
-			filepath = os.path.join(config.output_directory, "training-data", directory_name, "train.kb")
-			file = open(filepath, 'a')
-			file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, optimisation_level))		
-
-			#for flag in flags:
-			#	directory_name = "dir" + flag
-			#	filepath = os.path.join(config.training_data_directory, directory_name, "train.kb")
-			#	file = open(filepath, 'a')
-				
-				## Parse the intermediate representation once per flag.
-			#	if flag in compiler_configuration:
-			#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, True))
-			#	else:
-			#		file.write(IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, False))
-
+		if predicted_class == target_class:
+			correct = correct + 1
+		else:
+			file = open("/home/john/Thesis/output/training-data/optimisation-level/failed.txt", 'a')
+			file.write(target_data + "\n")
 			file.close()
-	
-	################################### Model Builder ###################################
-	build_all()
+
+		total = total + 1
+
+		file = open("/home/john/Thesis/output/training-data/optimisation-level/results.txt", 'w')
+		file.write("total: " + str(total) + "\n")
+		file.write("correct: " + str(correct) + "\n")
+		file.write("accuracy:" + str((correct*100)/total) + "% \n")
+		file.close()
+
+def write_training_data_to_file(directory_name, output_directory ,instance_data):
+	filepath = os.path.join(config.output_directory, "training-data", directory_name, "train.kb")
+	file = open(filepath, 'a')
+	file.write(instance_data)		
+	file.close()
+
+def write_testing_data_to_file(directory_name, output_directory, target_data):
+	filepath = os.path.join(config.output_directory, "training-data", directory_name, "test.P")
+	file = open(filepath, 'w')
+	file.write(target_data)		
+	file.close()
+
+def write_model_to_file(directory_name, output_directory):
+	model = ModelExtractor.extractModel(config.output_directory, directory_name)
+	filepath = os.path.join(config.output_directory, "training-data", directory_name, "test.P")
+	file = open(filepath, 'a')
+	file.write(model)
+
+	file.write('''prog :- 
+	open("/home/john/Thesis/output/training-data/optimisation-level/predicted.txt", write, Stream),
+	(class([A]), write(Stream, '\n'), write(Stream, A), write(Stream, '\n'), fail
+	; true
+	),
+	close(Stream).\n\n\n''')
+
+	file.close()
+
+def reset_knowledge_base(directory_name):
+
+	directory = os.path.join(config.output_directory, "training-data" ,directory_name)
+
+	## Build the knowledge base
+	filepath = os.path.join(directory, "train.kb")
+	file = open(filepath, 'w')
+	file.close()
 
 def build_directory(directory_name, settings):
 
@@ -102,9 +143,18 @@ def build_directory(directory_name, settings):
 	runner_script.write(config.runner_script)
 	runner_script.close()
 
+	## Build the runner script
+	path = os.path.join(directory, "predicted.txt")
+	runner_script = open(path, 'w')
+	runner_script.close()
+
+	filepath = os.path.join(directory, "failed.txt")
+	file = open(filepath, 'w')
+	file.close()
+
 def build_model(path):
-	print subprocess.Popen("chmod +x " + os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE).stdout.read()
-	print subprocess.Popen(os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE).stdout.read()
+	subprocess.call("chmod +x " + os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE)
+	subprocess.call(os.path.join(path, "run.sh"), shell=True, stdout=subprocess.PIPE)
 
 def build_all():
 
@@ -117,11 +167,6 @@ def build_all():
 		os.makedirs(path)
 	build_model(path)
 
-	#for flag in flags:
-	#	path = os.path.join(training_data_directory, "dir" + flag)
-	#	if not os.path.exists(path):
-	#		os.makedirs(path)
-	#	build_model(path)
 
 
 if __name__ == '__main__':

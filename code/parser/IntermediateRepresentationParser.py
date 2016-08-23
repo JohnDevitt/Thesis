@@ -52,6 +52,8 @@ def generate_method_variable_name(method, file):
 	return method + file
 
 def build_ir_header(source_directory, subdirectory, classification):
+
+
 	header = "\nbegin(model(" + subdirectory + ")).\n"
 
 	## Special cases
@@ -66,8 +68,8 @@ def build_ir_header(source_directory, subdirectory, classification):
 
 	for file in glob.glob(source_directory + "/" + subdirectory + "/" + "*.cfg"):
 		filename = extract_filename(subdirectory, file)
-		if not filename == "main" and not filename == "boardsupport":
-			header += "file(" + filename + "file).\n"
+		#if not filename == "main" and not filename == "boardsupport":
+		header += "file(" + filename + "file).\n"
 
 	return header
 
@@ -173,3 +175,8 @@ def link_method_calls_and_return_statements(method_dict, file):
 					link += "return_statement(" + returning_basic_block + ", " + source_basic_block + ").\n"
 
 	return link
+
+
+if __name__ == "__main__":
+	ir = main("/home/john/Thesis/beebs/src", "blowfish", "test")
+	print ir

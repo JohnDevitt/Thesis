@@ -3,10 +3,14 @@ import os
 import numpy
 import pickle
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 total = 0
 count = 0
 
+numo2 = 0
+
+treecount = 0
 
 folders = [ name for name in os.listdir('/home/john/Desktop/cbeebs-ft-extract/src')
 		if os.path.isdir(os.path.join('/home/john/Desktop/cbeebs-ft-extract/src', name)) ]
@@ -66,8 +70,11 @@ for target in folders:
 		X = numpy.array(features_list)
 		y = numpy.array(flags)
 
-		clf = KNeighborsClassifier(n_neighbors=1)
+		clf = KNeighborsClassifier(n_neighbors=5)
 		clf.fit(X, y)
+
+		dtree = RandomForestClassifier()
+		dtree.fit(X, y)
 
 		example = open('/home/john/Desktop/cbeebs-ft-extract/src/' + target + '/ici_features_function.ft', 'rb')
 		features = example.read().split()
@@ -85,15 +92,31 @@ for target in folders:
 
 			if(flag == "-O2"):
 				flg = "two"
+				numo2 = numo2 + 1
 			else:
 				flg = "three"
 
 
-		if flg == clf.predict(features):
+		#str = target + ", " + flg + ", " + clf.predict(features)
+
+		#file = open("/home/john/Thesis/output/training-data/optimisation-level/nn.txt", 'a')
+		#file.write(STR)		
+		#file.close()
+
+
+		if flg == clf.predict(features)[0]:
 			count = count + 1
 
-print count
-print total
+		if flg == dtree.predict(features)[0]:
+			treecount = treecount + 1
 
+
+print numo2
+print total
+print "----------- NEIGHBOURS ------------"
+print count
 print float((float(count)/float(total))) * 100
 
+print "-------------- TREE ----------------"
+print treecount
+print float((float(treecount)/float(total))) * 100
