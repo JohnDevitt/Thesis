@@ -39,10 +39,9 @@ def main():
 	## Leave on out cv
 	for target_data in subdirectories:
 
-		## Reset the data to be mined
 		reset_knowledge_base("optimisation-level")
 
-		gen = [subdirectory for subdirectory in subdirectories if subdirectory != target_data and subdirectory != "blowfish" and subdirectory != "trio"]
+		gen = [subdirectory for subdirectory in subdirectories if subdirectory != target_data]
 		for subdirectory in gen:
 
 			## Build the mine

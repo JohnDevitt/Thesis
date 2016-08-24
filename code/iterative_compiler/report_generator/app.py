@@ -12,8 +12,8 @@ def main(output_directory):
 	dataframe = compilation_report_reader.parse_best_runtimes(output_directory)
 	chart_generator.plot_categorical_data(dataframe, "best_runtimes.png", output_directory)
 
-	dataframe = compilation_report_reader.parse_all_runtimes(output_directory)
-	chart_generator.plot_categorical_data(dataframe, "all_runtimes.png", output_directory)
+	#dataframe = compilation_report_reader.parse_all_runtimes(output_directory)
+	#chart_generator.plot_categorical_data(dataframe, "all_runtimes.png", output_directory)
 
 	app_key = 'bp74ulr6bwxi0te'
 	app_secret = 'iu81rfk9bjwj7uq'
@@ -29,4 +29,4 @@ def main(output_directory):
 	f.close()
 
 if __name__ == '__main__':
-	main()
+	main("/home/john/Thesis/output")
