@@ -18,7 +18,7 @@ def generate_compile_command(configuration, directory):
 	compile_command += directory 
 	compile_command += "/ clean; make -C "
 	compile_command += directory
-	compile_command += "/ CFLAGS=' -pg "
+	compile_command += "/ CFLAGS='-pg "
 	compile_command += configuration
 	compile_command += "'"
 

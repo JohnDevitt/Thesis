@@ -16,71 +16,98 @@ import parser.IntermediateRepresentationParser as IntermediateRepresentationPars
 import parser.FlagParser as FlagParser
 import parser.CRReader as CRReader
 import ModelExtractor
+import random
+import relational_classifier
+import propositional_classifier
+import numpy
+import iterative_compiler.command_executor as command_executor
+import iterative_compiler.command_generator as command_generator
 
 ## This is a list of all the programs in beebs
 subdirectories = [ name for name in os.listdir(config.beebs_directory)
 		if os.path.isdir(os.path.join(config.beebs_directory, name)) ]
 
-## Parse the Flags into a list
-flags = FlagParser.main(config.database_path)
+flags = ["-fipa-pta", "-ftree-loop-if-convert-stores", "-ftree-loop-im", "-ftree-loop-ivcanon", "-ftree-vectorize", "-fstrict-aliasing", "-fbtr-bb-exclusive", "-ffast-math", "-funroll-loops"]
 
 def main():
 
-	total = 0
-	correct = 0
+	test_set = random.sample(subdirectories, len(subdirectories)/5)
+	training_set = [subdirectory for subdirectory in subdirectories if subdirectory not in test_set]
 
+	features_list = {}
+	configuration_list = {}
+
+	initial_setup()
+
+	for subdirectory in training_set:
+
+		## Instance
+		IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory) 
+
+		## Target Variables
+		optimisation_level = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
+		optimisation_flags = CRReader.binary_flag_reader(config.output_directory, subdirectory)
+
+		features = read_features(subdirectory)
+		if features:
+			features_list[subdirectory] = features
+			configuration_list[subdirectory] = [optimisation_level]
+			
+			ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, optimisation_level)
+			write_training_data_to_file("optimisation-level", config.output_directory, ace_instance)
+			
+			for flag in flags:
+				if flag in optimisation_flags:
+					configuration_list[subdirectory].append(flag)
+					ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, "on")
+				else:
+					ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, "off")
+				
+				write_training_data_to_file("dir" + flag, config.output_directory, ace_instance)
+
+	test_set = [instance for instance in test_set if read_features(instance)]
+
+
+	baselines = {}
+	for subdirectory in test_set:
+		compile_command = command_generator.parse_configuration(["-O3"], os.path.join(config.beebs_directory, subdirectory))
+		run_command = command_generator.generate_run_command(os.path.join(config.beebs_directory, subdirectory), subdirectory)
+	
+		if( command_executor.compile_program(compile_command) ):
+			baselines[subdirectory] = command_executor.run_program(run_command, config.output_directory, subdirectory)
+
+
+
+
+	randomForests, nearestNeighbours = propositional_classifier.build_classifiers(features_list, configuration_list)
+	forestResults = propositional_classifier.classify(test_set, randomForests)
+	neighoursResults = propositional_classifier.classify(test_set, nearestNeighbours)
+
+	build_all()
+	relational_results = relational_classifier.classify(test_set)
+
+	print " "
+	print baselines
+	print " "
+	print forestResults
+	print " "
+	print neighoursResults
+	print " "
+	print relational_results
+
+	return baselines, forestResults, neighoursResults, relational_results
+
+
+
+def initial_setup():
 	## Iterative Compilation
 	if(config.run_iterative_compilation):
-		report = IterativeCompiler.main(config.beebs_directory, config.database_path, config.iterative_compilation_depth, config.output_directory)
+		IterativeCompiler.main(config.beebs_directory, config.database_path, config.iterative_compilation_depth, config.output_directory)
 
-	## Build the ACE directory
+	## Build directories
 	build_directory("optimisation-level", config.optimisation_settings)
-
-	## Leave on out cv
-	for target_data in subdirectories:
-
-		reset_knowledge_base("optimisation-level")
-
-		gen = [subdirectory for subdirectory in subdirectories if subdirectory != target_data]
-		for subdirectory in gen:
-
-			## Build the mine
-			IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory) 
-			instance_class = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
-			ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, instance_class)
-			if(not instance_class == False):
-				write_training_data_to_file("optimisation-level", config.output_directory, ace_instance)
-
-		## Build the model
-		build_all()
-		## Generate target data
-		IntermediateRepresentationGenerator.main(config.beebs_directory, target_data)
-		target_class = CRReader.optimisation_flag_reader(config.output_directory, target_data)
-		ace_target = IntermediateRepresentationParser.main(config.beebs_directory, target_data, "%%%%%%")
-		## Write to file
-		write_testing_data_to_file("optimisation-level", config.output_directory, ace_target)
-		write_model_to_file("optimisation-level", config.output_directory)
-		## Run the model on the data
-		output,error = subprocess.Popen( "echo 'prog.' | swipl -s " + os.path.join(config.output_directory, "training-data", "optimisation-level", "test.P"), shell=True, stdout=subprocess.PIPE).communicate()
-		## Get results
-		file = open("/home/john/Thesis/output/training-data/optimisation-level/predicted.txt")
-		predicted_class = file.read().replace(" ", "").replace("\n", "")
-
-
-		if predicted_class == target_class:
-			correct = correct + 1
-		else:
-			file = open("/home/john/Thesis/output/training-data/optimisation-level/failed.txt", 'a')
-			file.write(target_data + "\n")
-			file.close()
-
-		total = total + 1
-
-		file = open("/home/john/Thesis/output/training-data/optimisation-level/results.txt", 'w')
-		file.write("total: " + str(total) + "\n")
-		file.write("correct: " + str(correct) + "\n")
-		file.write("accuracy:" + str((correct*100)/total) + "% \n")
-		file.close()
+	for flag in flags:
+		build_directory("dir" + flag, config.binary_settings)
 
 def write_training_data_to_file(directory_name, output_directory ,instance_data):
 	filepath = os.path.join(config.output_directory, "training-data", directory_name, "train.kb")
@@ -97,11 +124,11 @@ def write_testing_data_to_file(directory_name, output_directory, target_data):
 def write_model_to_file(directory_name, output_directory):
 	model = ModelExtractor.extractModel(config.output_directory, directory_name)
 	filepath = os.path.join(config.output_directory, "training-data", directory_name, "test.P")
-	file = open(filepath, 'a')
+	file = open(filepath, 'w')
 	file.write(model)
 
 	file.write('''prog :- 
-	open("/home/john/Thesis/output/training-data/optimisation-level/predicted.txt", write, Stream),
+	open("/home/john/Thesis/output/training-data/''' + directory_name + '''/predicted.txt", write, Stream),
 	(class([A]), write(Stream, '\n'), write(Stream, A), write(Stream, '\n'), fail
 	; true
 	),
@@ -166,6 +193,26 @@ def build_all():
 		os.makedirs(path)
 	build_model(path)
 
+	for flag in flags:
+		path = os.path.join(training_data_directory, "dir" + flag)
+		if not os.path.exists(path):
+			os.makedirs(path)
+		build_model(path)
+
+	write_model_to_file("optimisation-level", config.output_directory)
+	for flag in flags:
+		write_model_to_file("dir" + flag, config.output_directory)
+
+def read_features(directory):
+	filepath = os.path.join('/home/john/Desktop/cbeebs-ft-extract/src', directory, 'ici_features_function.ft')
+	features_file = open(filepath, 'rb')
+	features = features_file.read().split()
+	features = [feature[2:].split('=') for feature in features]
+	features = sorted([[ float(feature[0]), float(feature[1].replace(",", "")) ] for feature in features])
+	features = [ feature[1] for feature in features ]
+	features_file.close()
+
+	return features
 
 
 if __name__ == '__main__':

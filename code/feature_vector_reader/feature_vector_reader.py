@@ -70,6 +70,9 @@ for target in folders:
 		X = numpy.array(features_list)
 		y = numpy.array(flags)
 
+		print X
+		print y
+
 		clf = KNeighborsClassifier(n_neighbors=5)
 		clf.fit(X, y)
 

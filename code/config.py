@@ -70,25 +70,43 @@ load(models).
 prune_rules(false).
 use_packs(ilp).
 
-classes([true, false]).
+classes([on, off]).
 
+%heuristic(gain).
+%pruning(none).
 
-use_packs(0).
-resume(off).
-sampling_strategy(none).
+rmode(method(+-S)).
+rmode(basic_block(+-S)).
+rmode(in(+-S1,+-S2)).
+rmode(directed_edge(+-S1,+-S2)).
+rmode(conditional_edge(+-S1,+-S2)).
+rmode(method_call(+-S1,+-S2)).
+rmode(return_statement(+-S1,+-S2)).
 
-warmode(method(+-obj)).
-warmode(basic_block(+-obj)).
-warmode(in(+-obj, +-obj)).
-warmode(directed_edge(+-obj, +-obj)).
-warmode(method_call(+-obj, +-obj)).
+typed_language(yes).
+type(method(obj)).
+type(basic_block(obj)).
+type(in(obj,obj)).
+type(directed_edge(obj,obj)).
+type(conditional_edge(obj,obj)).
+type(method_call(obj,obj)).
+type(return_statement(obj,obj)).
 
 load_package(query).
 log_queries([prettypacks]).
 
 minfreq(0.5).
 warmr_maxdepth(4).
-warmode(method_call(+-obj, +-obj)).
+
+
+%random_test_set(0.15).
+write_predictions([training, testing]).
+
+warmr_assoc([horn_clauses,
+assoc_min_confidence(0.4),
+assoc_min_support(0.2)]).
+warmr_valid_func(assoc_std).
+warmr_assoc_output_options([assoc_pred]).
 
 
 """
