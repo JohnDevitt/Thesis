@@ -58,6 +58,9 @@ def parse_best_runtimes(output_directory):
 	print program_runtimes
 
 	best_runtimes, directories = zip(*program_runtimes)
+
+	print sum(best_runtimes)/len(best_runtimes)
+
 	dataframe = pd.DataFrame({"Speedup": best_runtimes, "Program": directories})
 
 	return dataframe

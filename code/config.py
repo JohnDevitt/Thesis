@@ -27,7 +27,7 @@ classes([two, three]).
 
 rmode(method(+-S)).
 rmode(basic_block(+-S)).
-rmode(in(+-S1,+-S2)).
+rmode(in(+-S1,+S2)).
 rmode(directed_edge(+-S1,+-S2)).
 rmode(conditional_edge(+-S1,+-S2)).
 rmode(method_call(+-S1,+-S2)).
@@ -77,11 +77,11 @@ classes([on, off]).
 
 rmode(method(+-S)).
 rmode(basic_block(+-S)).
-rmode(in(+-S1,+-S2)).
-rmode(directed_edge(+-S1,+-S2)).
-rmode(conditional_edge(+-S1,+-S2)).
-rmode(method_call(+-S1,+-S2)).
-rmode(return_statement(+-S1,+-S2)).
+rmode(in(+-S1,+S2)).
+rmode(directed_edge(+-S1,+S2)).
+rmode(conditional_edge(+-S1,+S2)).
+rmode(method_call(+-S1,+S2)).
+rmode(return_statement(+-S1,+S2)).
 
 typed_language(yes).
 type(method(obj)).

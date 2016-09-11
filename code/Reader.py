@@ -5,21 +5,17 @@ import numpy as np
 import matplotlib.pyplot as plt
 sns.set(style="darkgrid", color_codes=True)
 
-#baseline = {'mergesort': 4.1700000000000008, 'nettle-arcfour': 0.49333333333333335, 'tarai': 0.026666666666666668, 'recursion': 0.046666666666666669, 'levenshtein': 1.9033333333333333, 'sglib-hashtable': 0.39999999999999997, 'bs': 0.0, 'ud': 0.096666666666666679}
- 
-#propositional = {'mergesort': 3.1833333333333336, 'nettle-arcfour': 0.47333333333333333, 'tarai': 0.049999999999999996, 'recursion': 0.05000000000000001, 'levenshtein': 1.5466666666666666, 'sglib-hashtable': 0.42999999999999999, 'bs': 0.0, 'ud': 0.12}
- 
-#relational = {'mergesort': 3.1633333333333336, 'nettle-arcfour': 0.46999999999999997, 'tarai': 0.01, 'recursion': 0.033333333333333333, 'levenshtein': 1.5566666666666666, 'sglib-hashtable': 0.41999999999999998, 'bs': 0.0, 'ud': 0.096666666666666679}
 
-#############################33
+# Returned from App.py
+baseline = {'whetstone': 1.0566666666666666, 'stb_perlin': 1.0800000000000001, 'levenshtein': 1.8933333333333333, 'bubblesort': 2.063333333333333, 'sha': 98.773333333333326, 'sqrt': 6.3700000000000001, 'ndes': 1.0600000000000003, 'wikisort': 18.506666666666664, 'sglib-listsort': 1.0700000000000001}
+ 
+forests = {'bubblesort': 2.0566666666666666, 'stb_perlin': 1.04, 'sqrt': 6.956666666666667, 'whetstone': 0.36999999999999994, 'sha': 81.366666666666674, 'levenshtein': 1.8999999999999997, 'ndes': 0.93666666666666665, 'wikisort': 22.493333333333336, 'sglib-listsort': 1.0766666666666667}
+ 
+neighbours = {'bubblesort': 1.9533333333333331, 'stb_perlin': 0.94000000000000006, 'sqrt': 7.253333333333333, 'whetstone': 0.36999999999999994, 'sha': 84.140000000000001, 'levenshtein': 1.8633333333333333, 'ndes': 0.89000000000000001, 'wikisort': 15.18, 'sglib-listsort': 1.0433333333333332}
+ 
+tilde = {'whetstone': 0.38000000000000006, 'stb_perlin': 0.65000000000000002, 'levenshtein': 1.5666666666666667, 'bubblesort': 1.5533333333333335, 'sha': 85.856666666666669, 'sqrt': 6.9500000000000002, 'ndes': 0.93333333333333324, 'wikisort': 14.656666666666666, 'sglib-listsort': 0.94666666666666666}
 
-baseline = {'sglib-dllist': 1.2633333333333334, 'newlib-mod': 0.0, 'cubic': 0.48999999999999999, 'rijndael': 20.59, 'fft': 0.0, 'qsort': 0.023333333333333334, 'ctl-string': 0.18000000000000002, 'sglib-hashtable': 0.46333333333333332, 'dtoa': 0.15333333333333332, 'statemate': 0.026666666666666668, 'nettle-cast128': 0.12333333333333334, 'minver': 0.029999999999999999, 'expint': 0.92000000000000004, 'crc32': 0.31, 'fac': 0.01, 'sglib-rbtree': 3.5, 'bubblesort': 2.0699999999999998, 'select': 0.096666666666666679}
- 
-forests = {'dtoa': 0.19666666666666668, 'expint': 0.90666666666666673, 'cubic': 0.49333333333333335, 'rijndael': 20.129999999999999, 'fft': 0.0, 'qsort': 0.02, 'ctl-string': 0.15666666666666665, 'sglib-hashtable': 0.41666666666666669, 'sglib-dllist': 1.1766666666666667, 'statemate': 0.02, 'nettle-cast128': 0.13, 'minver': 0.043333333333333335, 'newlib-mod': 0.0, 'crc32': 0.32666666666666666, 'fac': 0.01, 'sglib-rbtree': 3.5533333333333332, 'bubblesort': 2.0566666666666666, 'select': 0.10666666666666667}
- 
-neighbours = {'dtoa': 0.15333333333333332, 'expint': 0.90666666666666673, 'cubic': 0.3833333333333333, 'rijndael': 20.393333333333334, 'fft': 0.0, 'qsort': 0.02, 'ctl-string': 0.17666666666666667, 'sglib-hashtable': 0.59666666666666668, 'sglib-dllist': 1.2366666666666666, 'statemate': 0.026666666666666668, 'nettle-cast128': 0.13, 'minver': 0.033333333333333333, 'newlib-mod': 0.0033333333333333335, 'crc32': 0.29666666666666663, 'fac': 0.029999999999999999, 'sglib-rbtree': 3.5600000000000001, 'bubblesort': 1.5566666666666666, 'select': 0.099999999999999992}
- 
-tilde = {'sglib-dllist': 1.3, 'newlib-mod': 0.0, 'cubic': 0.41333333333333333, 'rijndael': 20.686666666666667, 'fft': 0.0, 'qsort': 0.023333333333333334, 'ctl-string': 0.17000000000000001, 'sglib-hashtable': 0.39333333333333331, 'dtoa': 0.15000000000000002, 'statemate': 0.02, 'nettle-cast128': 0.11666666666666665, 'minver': 0.01, 'expint': 0.92333333333333334, 'crc32': 0.31666666666666665, 'fac': 0.013333333333333334, 'sglib-rbtree': 3.5133333333333332, 'bubblesort': 2.0600000000000001, 'select': 0.033333333333333333}
+
 
 forest_speedups = {}
 neighbours_speedups = {}
@@ -82,7 +78,7 @@ rects3 = ax.bar(ind+width+width, values_tilde, width,
 ax.set_xlim(-width,len(ind)+width)
 ax.set_ylim(min(all_vals) - 10, max(all_vals) + 10)
 ax.set_ylabel('Speed up over baseline(-O3)')
-ax.set_title('Performance of TILDE vs Random Forests')
+ax.set_title('Performance of TILDE vs Nearest NeighboursRandom Forests')
 xTickMarks = ['Group'+str(i) for i in range(1,6)]
 ax.set_xticks(ind+width)
 xtickNames = ax.set_xticklabels(keys)

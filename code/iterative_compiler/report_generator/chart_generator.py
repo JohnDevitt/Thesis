@@ -26,11 +26,11 @@ def plot_categorical_data(dataframe, filename, output_directory):
 	plt.suptitle('Speed Up Over Baseline.', fontsize = 24)
 	
 	## axhlines
-	cutoff_upper = plt.axhline(10, color='r', linestyle='--', label='Upper Suggested Cut Off Point.', linewidth=1)
-	baseline = plt.axhline(0, color='b', linestyle='--', label='Median Baseline Runtime.', linewidth=1)
+	#cutoff_upper = plt.axhline(10, color='r', linestyle='--', label='Upper Suggested Cut Off Point.', linewidth=1)
+	#baseline = plt.axhline(0, color='b', linestyle='--', label='Median Baseline Runtime.', linewidth=1)
 		
 	## Legend
-	plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0, handles=[cutoff_upper, baseline], fontsize = 17)
+	#plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0, handles=[cutoff_upper, baseline], fontsize = 17)
 	
 	if not os.path.exists(os.path.join(output_directory, "plots")):
 		os.makedirs(os.path.join(output_directory, "plots"))
@@ -48,4 +48,4 @@ def plot_categorical_data(dataframe, filename, output_directory):
 	#plt.ylabel('Increse over the baseline', fontsize=11)
 
 	#plt.axhline(0, color='b', linestyle='--', label='Baseline')
-	#plt.show()
+	plt.show()

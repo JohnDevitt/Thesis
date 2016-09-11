@@ -12,7 +12,10 @@ flags = ["-fipa-pta", "-ftree-loop-if-convert-stores", "-ftree-loop-im", "-ftree
 def build_classifiers(features_list, configuration_list):
 
 
-	list_values = [ v for v in features_list.values() ]
+	if not configuration_list:
+		list_values = []
+	else:
+		list_values = [ v for v in features_list.values() ]
 	X = numpy.array(list_values)
 
 	randomForests = {}
@@ -23,24 +26,28 @@ def build_classifiers(features_list, configuration_list):
 
 	y = []
 	for subdirectory in configuration_list:
-		y.append(configuration_list[subdirectory][0])
+		# END HERE
+		y.append(configuration_list[subdirectory])
+		#y.append(configuration_list[subdirectory][0])
+
 
 	randomForests["optimisation_level"].fit(X, numpy.array(y))
 	nearestNeighbours["optimisation_level"].fit(X, numpy.array(y))
 
-	for flag in flags:
-		y = []
-		for subdirectory in configuration_list:
-			if flag in configuration_list[subdirectory]:
-				y.append("on")
-			else:
-				y.append("off")
+	if configuration_list:
+		for flag in flags:
+			y = []
+			for subdirectory in configuration_list:
+				if flag in configuration_list[subdirectory]:
+					y.append("on")
+				else:
+					y.append("off")
 
-		randomForests[flag] = RandomForestClassifier()
-		randomForests[flag].fit(X, numpy.array(y))
+			randomForests[flag] = RandomForestClassifier()
+			randomForests[flag].fit(X, numpy.array(y))
 
-		nearestNeighbours[flag] = KNeighborsClassifier()
-		nearestNeighbours[flag].fit(X, numpy.array(y))
+			nearestNeighbours[flag] = KNeighborsClassifier()
+			nearestNeighbours[flag].fit(X, numpy.array(y))
 
 	return randomForests, nearestNeighbours
 
@@ -70,6 +77,16 @@ def classify(test_set, classifiers):
 
 
 	return runtimes
+
+def classify_flag(features, classifiers):
+
+	print features
+
+	print "=================="
+	print classifiers["optimisation_level"].predict(features)
+	print "=================="
+	return classifiers["optimisation_level"].predict(features)
+
 
 def read_features(directory):
 	filepath = os.path.join('/home/john/Desktop/cbeebs-ft-extract/src', directory, 'ici_features_function.ft')

@@ -14,7 +14,7 @@ import random as rand
 def generate_flags():
 
 	optimisations = ["-O2", "-O3"]
-	flags = ["-fipa-pta", "-ftree-loop-if-convert-stores", "-ftree-loop-im", "-ftree-loop-ivcanon", "-ftree-vectorize -fstrict-aliasing", "-fbtr-bb-exclusive", "-ffast-math", "-funroll-loops"]
+	flags = ["-fipa-pta", "-ftree-loop-if-convert-stores", "-ftree-loop-im", "-ftree-loop-ivcanon", "-ftree-vectorize", "-fstrict-aliasing", "-fbtr-bb-exclusive", "-ffast-math", "-funroll-loops"]
 
 	configurations = []
 

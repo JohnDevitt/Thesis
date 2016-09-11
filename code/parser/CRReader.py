@@ -20,7 +20,6 @@ def optimisation_flag_reader(output_directory, subdirectory):
 		#print compilation_report
 
 		flag = compilation_report['Configuration'][0]
-		print "===============", flag, "==============="
 
 		if(flag == '-O1'):
 			return "one"

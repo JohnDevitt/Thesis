@@ -47,6 +47,19 @@ def classify(subdirectories):
 
 	return runtimes
 
+def classify_flag(subdirectories):
+
+	runtimes = {}
+
+	for subdirectory in subdirectories:
+		IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory)
+		ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, "%%%%%%%%%%")
+
+
+		output,error = subprocess.Popen( "echo 'prog.' | swipl -s " + os.path.join(config.output_directory, "training-data", "optimisation-level", "test.P"), shell=True, stdout=subprocess.PIPE).communicate()
+		file = open("/home/john/Thesis/output/training-data/optimisation-level/predicted.txt")
+		return file.read().replace(" ", "").replace("\n", "")
+
 
 if __name__ == "__main__":
 	classify("rijndael")

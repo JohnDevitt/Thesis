@@ -6,7 +6,9 @@ This is the pipeline for this prject. This runs everything from iterative compil
 Should take days to run so use with caution!!!
 '''
 
-
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 import os
 import subprocess
 import config
@@ -31,72 +33,101 @@ flags = ["-fipa-pta", "-ftree-loop-if-convert-stores", "-ftree-loop-im", "-ftree
 
 def main():
 
-	#test_set = random.sample(subdirectories, len(subdirectories)/10)
-	test_set = ["bubblesort", "levenshtein", "ndes", "sglib-listsort", "whetstone", "wikisort", "stb_perlin", "sqrt", "sha"]
-	training_set = [subdirectory for subdirectory in subdirectories if subdirectory not in test_set]
+	initial_setup()
 
-	features_list = {}
-	configuration_list = {}
+	actualResults = []
+	decisionTreeResults = []
+	randomForestResults = []
+	one_nnResults = []
+	five_nnResults = []
+	relational_results = []
 
 	initial_setup()
 
-	for subdirectory in training_set:
+	for test_dir in subdirectories:
+		
+		test_features = read_features(test_dir)
+		
+		if test_features:
+			test_set = [test_dir]
+			training_set = [subdirectory for subdirectory in subdirectories if subdirectory not in test_set]
 
-		## Instance
-		IntermediateRepresentationGenerator.main(config.beebs_directory, subdirectory) 
+			features_list = {}
+			configuration_list = {}
 
-		## Target Variables
-		optimisation_level = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
-		optimisation_flags = CRReader.binary_flag_reader(config.output_directory, subdirectory)
+			initial_setup()
 
-		features = read_features(subdirectory)
-		if features:
-			features_list[subdirectory] = features
-			configuration_list[subdirectory] = [optimisation_level]
-			
-			ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, optimisation_level)
-			write_training_data_to_file("optimisation-level", config.output_directory, ace_instance)
-			
-			for flag in flags:
-				if flag in optimisation_flags:
-					configuration_list[subdirectory].append(flag)
-					ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, "on")
-				else:
-					ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, "off")
-				
-				write_training_data_to_file("dir" + flag, config.output_directory, ace_instance)
+			for subdirectory in training_set:
 
-	test_set = [instance for instance in test_set if read_features(instance)]
+				features = read_features(subdirectory)
+				if features:
+					
+					features_list[subdirectory] = features
+					configuration_list[subdirectory] = CRReader.optimisation_flag_reader(config.output_directory, subdirectory)
 
 
-	baselines = {}
-	for subdirectory in test_set:
-		compile_command = command_generator.parse_configuration(["-O3"], os.path.join(config.beebs_directory, subdirectory))
-		run_command = command_generator.generate_run_command(os.path.join(config.beebs_directory, subdirectory), subdirectory)
-	
-		if( command_executor.compile_program(compile_command) ):
-			baselines[subdirectory] = command_executor.run_program(run_command, config.output_directory, subdirectory)
+					ace_instance = IntermediateRepresentationParser.main(config.beebs_directory, subdirectory, configuration_list[subdirectory])
+					write_training_data_to_file("optimisation-level", config.output_directory, ace_instance)
+
+
+			list_values = [ v for v in features_list.values() ]
+			X = numpy.array(list_values)
+
+			list_values = [ v for v in configuration_list.values() ]
+			y = numpy.array(list_values)
+
+			decisionTree = DecisionTreeClassifier()
+			randomForest = RandomForestClassifier()
+			one_nn = KNeighborsClassifier(n_neighbors=1)
+			five_nn = KNeighborsClassifier()
+
+			decisionTree.fit(X, y)
+			randomForest.fit(X, y)
+			one_nn.fit(X, y)
+			five_nn.fit(X, y)
+			build_all()
+
+			actualResults.append(CRReader.optimisation_flag_reader(config.output_directory, test_dir))
+			decisionTreeResults.append(decisionTree.predict(test_features)[0])
+			randomForestResults.append(randomForest.predict(test_features)[0])
+			one_nnResults.append(one_nn.predict(test_features)[0])
+			five_nnResults.append(five_nn.predict(test_features)[0])
+			relational_results.append(relational_classifier.classify_flag(test_dir))
+
+
+	decisionAccuracy = 0
+	forestsAccuracy = 0
+	one_nnAccuracy = 0
+	five_nnAccuracy = 0
+	tildeAccuracy = 0
+
+
+	for i in range(0, len(actualResults)):
+		if(actualResults[i] == decisionTreeResults[i]):
+			decisionAccuracy = decisionAccuracy + 1
+
+		if(actualResults[i] == randomForestResults[i]):
+			forestsAccuracy = forestsAccuracy + 1
+
+		if(actualResults[i] == one_nnResults[i]):
+			one_nnAccuracy = one_nnAccuracy + 1
+
+		if(actualResults[i] == five_nnResults[i]):
+			five_nnAccuracy = five_nnAccuracy + 1
+
+		if(actualResults[i] == relational_results[i]):
+			tildeAccuracy = tildeAccuracy + 1
 
 
 
+	print float(decisionAccuracy)/float(len(actualResults))
+	print float(forestsAccuracy)/float(len(actualResults))
+	print float(one_nnAccuracy)/float(len(actualResults))
+	print float(five_nnAccuracy)/float(len(actualResults))
+	print float(tildeAccuracy)/float(len(actualResults))
 
-	randomForests, nearestNeighbours = propositional_classifier.build_classifiers(features_list, configuration_list)
-	forestResults = propositional_classifier.classify(test_set, randomForests)
-	neighoursResults = propositional_classifier.classify(test_set, nearestNeighbours)
 
-	build_all()
-	relational_results = relational_classifier.classify(test_set)
 
-	print " "
-	print baselines
-	print " "
-	print forestResults
-	print " "
-	print neighoursResults
-	print " "
-	print relational_results
-
-	return baselines, forestResults, neighoursResults, relational_results
 
 
 
