@@ -11,33 +11,23 @@ be used in conjunction with an iterative compilation framework
 import pandas as pd
 import random as rand
 
-def generate_flags(flag_database_location):
+def generate_flags():
 
-	## Load Database
-	flag_database = pd.read_csv(flag_database_location)
+	optimisations = ["-O2", "-O3"]
+	flags = ["-fipa-pta", "-ftree-loop-if-convert-stores", "-ftree-loop-im", "-ftree-loop-ivcanon", "-ftree-vectorize", "-fstrict-aliasing", "-fbtr-bb-exclusive", "-ffast-math", "-funroll-loops"]
 
-	## Read the database
-	flags = flag_database['Flag'].dropna()
-	optimisations = ['O1', 'O2', 'O3']
+	configurations = []
 
-	return {optimisation:
-			generate_flag_list(flags, flag_database[optimisation].dropna(), optimisation)
-			for optimisation in optimisations}
+	for i in range(0, 30):
+		configuration = [rand.choice(optimisations)]
+		for flag in flags:
+			if rand.uniform(0, 1) > 0.5:
+				configuration.append(flag)
 
-def generate_configurations(flags, iterative_compilation_depth):
+		configurations.append(configuration)
 
-	## Generate 1000 random configurations
-	return [generate_configuration(rand.choice(flags.values()))
-			for index in range(0, iterative_compilation_depth)]
+	return configurations
 
-def generate_flag_list(flags, optimisations, optimisation):
-	flags = [flag for flag, active in zip(flags, optimisations) if int(active) == 1]
-	flags.insert(0, "-" + optimisation)
-	return flags
+if __name__ == "__main__":
 
-def generate_configuration(flag_list):
-	flags = [flag for flag in flag_list[1: len(flag_list)] if rand.uniform(0, 1) > 0.5]
-	flags.reverse()
-	flags.insert(0, flag_list[0])
-	return flags
-
+	print generate_flags()

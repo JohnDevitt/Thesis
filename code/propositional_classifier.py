@@ -26,10 +26,10 @@ def build_classifiers(features_list, configuration_list):
 
 	y = []
 	for subdirectory in configuration_list:
-		# END HERE
-		y.append(configuration_list[subdirectory])
-		#y.append(configuration_list[subdirectory][0])
-
+		if not configuration_list:
+			y.append(configuration_list[subdirectory])
+		else:
+			y.append(configuration_list[subdirectory][0])
 
 	randomForests["optimisation_level"].fit(X, numpy.array(y))
 	nearestNeighbours["optimisation_level"].fit(X, numpy.array(y))

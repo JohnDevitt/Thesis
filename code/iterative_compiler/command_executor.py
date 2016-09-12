@@ -4,7 +4,6 @@
 import subprocess
 import timeit
 import numpy
-import runner
 import os
 import analysis_report_reader
 

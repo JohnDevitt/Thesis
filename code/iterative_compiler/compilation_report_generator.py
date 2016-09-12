@@ -4,7 +4,7 @@
 import os
 import pickle
 
-def generate_report(baseline_runtime, best_configuration, best_runtime, directory, runtimes, output_directory):
+def generate_report(baseline_runtime, best_configuration, best_runtime, directory, output_directory):
 
 	directory_path = os.path.join(output_directory, "reports", directory)
 	if not os.path.exists(directory_path):
@@ -52,8 +52,7 @@ def generate_report(baseline_runtime, best_configuration, best_runtime, director
 	file.close()
 
 	report = {'Best': best_runtime, 'Baseline': baseline_runtime, 'Difference': difference,
-			'Proportion': proportion, 'Configuration': best_configuration,
-			'Runtimes': runtimes}
+			'Proportion': proportion, 'Configuration': best_configuration}
 
 	with open(os.path.join(directory_path, "compilation_report.pickle"), 'w') as f:
 		pickle.dump(report, f)

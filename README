@@ -1,0 +1,16 @@
+Step 1: In the root directory of the project, there is a file named setup.sh. Run this file to download the beebs data set and perform any necessary set up.
+
+In the downloaded beebs directory, there is a file located in the include directory named support.sh. There are two variables in this file named BOARD_REPEAT_FACTOR. By modifying these variables, the programs in the beebs data set can be made to have longer or short run times. For experiment one both of thse varibles were set to . For experiment two these varibles were set to 200000.
+
+In the code directory there is a file named config. This file has some directory listing that tells the code where to save certain files. Make sure to rename these to run the code on your own machine
+
+Step 2: To run iterative compilation, navigate to to code/iterative compilation and run the App.py file. This wll generate a set of reports in the output/reports directory. There are both machine and human readable version of these reports. The compilation_report.txt is the human readable version.
+
+Itis iomportant when running iterative compilation to run it from the code directory, i.e. run python iterative_compilation/App.py rather than just python App.py
+
+The reports generated on my machine are saved in output/reports_exp_one and output/reports_exp_two.
+Rename either one these to "reports" and follows steps 3 and 4 in order to recreate an experiment outlined in the thesis.
+
+Step 3, to run the first experiment, run code/experiment_one.py or run App.py to run the revised second experiment.
+
+Step 4, copy and paste the output from the App.py file into the Reader.py file to plot the fold of data.
